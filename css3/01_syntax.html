@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_syntax</title>
+    <link rel="stylesheet" type="text/css" href="css/syntax.css">
+    <style>
+        /* 인라인 스타일이 인터널 스타일보다 우선순위가 높다.*/
+        /* Internal, External syntax :
+            선택자(Selector)
+                { 프로퍼티(property):값(value); }
+            - 선택자 종류 : id(#), class(.), 경로(부모/자식 관계..)
+        */
+
+        /* css에서는 class사용을 권장한다. js에서 id를 사용하기 때문*/
+
+        /* .과 #앞에 공백은 없어야 한다.*/
+        li#internal {
+            color: green;
+        }
+        li.internal {
+            color: green;
+        }
+        /* 익스터널 스타일은 별도의 css파일을 만들어 관리하는 방식 */
+    </style>
+</head>
+<body>
+    <h1>CSS 문법</h1>
+    <ul>
+        <!-- Inline syntax : style="프로퍼티:값;" -->
+        <li style="color: red;">Inline style</li>
+        <li id="internal">Internal style</li>
+        <li class="external">External style</li>
+    </ul>
+</body>
+</html>
