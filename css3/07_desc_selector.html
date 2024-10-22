@@ -13,7 +13,7 @@
                         : Tag(형제) ~ Tag (같은 형제 중) { ... }
         */
         ul label {
-            color: greenyellow;
+            color: black;
         }
         ul.first > li > label {
             color: tomato;
@@ -24,23 +24,23 @@
         ul.first > li.back-end > ul {
             color: gray;
         }
-
-        
-
+        ul.first ~ ul {
+            background-color: yellow;
+        }        
     </style>
 </head>
 <body>
     <h1>Desc(자손) Selector</h1>
     <ul class="first">
-        <li>
+            <li>
             <label for="">Front-end</label>
-            <ul>
+                <ul>
                 <li>HTML</li>
                 <li>CSS</li>
                 <li>JavaScript</li>
                 <li>React</li>
-            </ul>
-        </li>
+                </ul>
+            </li>
         <li class="back-end">
             <label for="">Back-end</label>
             <ul>
