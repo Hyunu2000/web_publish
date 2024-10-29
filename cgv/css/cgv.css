@@ -130,7 +130,7 @@ footer {
     background-color: var(--color-footer-bg);
     margin-top: 60px;
 }
-.footer-content {
+.footer-content, .footer-content-bottom {
     width: 1000px;
     margin: 0 auto;
 }
@@ -286,6 +286,7 @@ footer {
     /* border: 1px solid red; */
     display: flex;
     justify-content: space-between;
+    list-style-type: none;
 }
 .event-list p {
     /* border: 1px solid red; */
