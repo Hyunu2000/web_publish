@@ -693,7 +693,7 @@ table {
     border-bottom: 1px solid var(--color-silver);
 }
 .support-content > table tfoot td {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     padding: 30px 0;
     font-size: 1.2em;
     font-weight: 700;
