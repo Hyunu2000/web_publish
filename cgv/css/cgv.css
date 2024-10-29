@@ -133,6 +133,7 @@ footer {
 .footer-content, .footer-content-bottom {
     width: 1000px;
     margin: 0 auto;
+
 }
 .footer-content-top {
     background-color: orange;
@@ -151,7 +152,7 @@ footer {
     border-bottom: 1px solid var(--color-silver);
 }
 .footer-intro > ul a {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: bold;
     color: var(--color-primary);
     text-decoration: none;
@@ -164,11 +165,14 @@ footer {
     font-weight: 600;
     text-decoration: underline;
 }
-.footer-intro ~ p {
+.footer-intro > p {
+    /* border: 1px solid red; */
     color: var(--color-primary);
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 600;
     padding: 3px 0;
+    line-height: 1.5;
+
 }
 .p {
     /* border: 1px solid red; */
@@ -176,6 +180,11 @@ footer {
 }
 .p2 {
     margin-bottom: 20px;
+}
+.p2 a {
+    text-decoration: none;
+    color: var(--color-primary);
+    cursor: default;
 }
 
 /************************************************************
@@ -419,7 +428,7 @@ footer {
 /************************************************************
 * title : login form style
 * author : kang@naver.com
-* final date : 2024/10/24
+* final date : 2024/10/28
 *************************************************************/
 .login-form form {
     /* border: 1px solid green; */
@@ -467,6 +476,236 @@ footer {
     color: var(--color-login-font);
     font-weight: 700;
 }
-    
-
-
+/************************************************************
+* title : join form style
+* author : kang@naver.com
+* final date : 2024/10/29
+*************************************************************/
+.join-form form {
+    /* border: 1px solid green; */
+    width: 500px;
+    margin: 0 auto;
+}
+.join-form ul {
+    list-style-type: none;
+}
+.join-form ul li {
+    /* border: 1px solid red; */
+    padding-top: 10px;
+}
+.join-form ul li div:not(.join-form ul li:nth-child(6) div) {
+    border: 1px solid var(--color-silver);
+    border-radius: 4px;
+    padding: 3px 10px;
+}
+.join-form ul li:nth-child(6) input,
+.join-form ul li:nth-child(6) select {
+    border: 1px solid var(--color-silver);
+    border-radius: 4px;
+    padding: 10px;
+}
+.join-form ul li:nth-child(6) select {
+    width: 100%;
+}
+.join-form ul li:nth-child(6) span {
+    margin: 0 20px;
+}
+.join-form ul li:first-child > div,
+.join-form ul li:nth-child(6) > div {
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.join-form ul li label {
+    display: inline-block;
+    font-size: 0.9em;
+    font-weight: 700;
+    text-indent: 7px;
+    margin-right: 6px;
+    /* border: 1px solid red; */
+}
+.join-form ul li label + span {
+    /* border: 1px solid red; */
+    font-size: 0.7em;
+    font-weight: 300;
+    color: red;
+}
+.join-form ul li:first-child input {
+    border: 1px solid white;
+    width: 80%;
+    padding-left: 10px;
+}
+.join-form ul li input {
+    border: 1px solid white;
+    width: 100%;
+    padding: 7px 10px;
+}
+.join-form ul li:first-child input:focus,
+.join-form ul li input:focus {
+    border: none;
+    outline: none;
+}
+.join-form ul li:first-child button,
+.join-form ul li:last-child button {
+    border: 1px solid white;
+    width: 100px;
+    padding: 7px 12px;
+    background-color: var(--color-button);
+    color: var(--color-white);
+    border-radius: 4px;
+    margin-left: 10px;
+}
+.join-form ul li:last-child button {
+    border-radius: 0;
+    width: 150px;
+    padding: 10px 0;   
+}
+.join-form ul li:last-child button:last-child {
+    background-color: var(--color-gray-222);
+    color: var(--color-black);
+}
+.join-form ul li:last-child {
+    padding: 30px 0 10px;
+    text-align: center;
+}
+/************************************************************
+* title : mycgv style
+* author : kang@naver.com
+* final date : 2024/10/29
+*************************************************************/
+.mycgv div {
+    /* border: 1px solid green; */
+    display: flex;
+    justify-content: center;
+}
+.mycgv div span {
+    border: 1px solid tomato;
+    display: inline-block;
+    width: 200px;
+    padding: 30px;
+    margin: 30px 20px;
+    text-align: center;
+}
+.mycgv div span:hover {
+    background-color: beige;
+}
+/************************************************************
+* title : notice/news style
+* author : kang@naver.com
+* final date : 2024/10/29
+*************************************************************/
+.support-content {
+    /* border: 1px solid green; */
+    width: 700px;
+    margin: 0 auto;
+    color: var(--color-primary);
+}
+.search-content {
+    /* border: 1px solid red; */
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-start;
+    height: 30px;
+}
+.search-content select {
+    width: 100px;
+    outline: none;
+}
+.search-content input {
+    /* border: 1px solid red; */
+    width: 200px;
+    padding-left: 10px;
+    margin-left: 5px;    
+}
+.search-content button {
+    /* border: 1px solid red; */
+    background-color: var(--color-black); 
+    color: var(--color-white);  
+    width: 80px;
+    margin-left: 5px;    
+    text-align: center;
+    border: 1px double var(--color-gray-222);
+    font-weight: 500;    
+}
+.search-menu {
+    /* border: 1px solid red; */
+    margin-top: 15px;
+    list-style-type: none;
+}
+.search-menu li {
+    /* border: 1px solid red; */
+    background-color: var(--color-button);
+    display: inline-block;
+    justify-content: flex-start;
+    text-align: center;   
+}
+.search-menu li:not(.search-menu li:first-child) {
+    background-color: var(--color-black-102);
+}
+.search-menu li a {
+    /* border: 1px solid red; */
+    text-decoration: none;
+    color: var(--color-white);
+    display: inline-block;
+    width: 90px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 14px;
+    font-weight: 500;
+}
+.search-menu > div {
+    /* border: 1px solid red; */
+    border-bottom: 2px solid var(--color-black-102);
+}
+.search-menu ~ p {
+    /* border: 1px solid red; */
+    margin: 20px 0;
+    font-size: 14px;
+}
+.support-content-header {
+    /* border: 1px solid red; */
+    width: 700px;
+    border: none;
+    text-align: center;
+    font-size: 13px;
+}
+.support-content-header th {
+    /* border: 1px solid red; */
+    border-top: 1px solid var(--color-silver);
+    border-bottom: 1px solid var(--color-silver);
+    padding: 10px 20px;
+    background-color: #f8f8f8;  
+}
+.support-content-header th:nth-child(3) {
+    /* border: 1px solid red; */
+    text-align: left;
+    text-indent: 15px;
+}
+table {
+    border-collapse: collapse;
+}
+.support-content-body td {
+    /* border: 1px solid red; */
+    padding: 15px;
+}
+.support-content-body a {
+    /* border: 1px solid red; */
+    text-decoration: none;
+    color: var(--color-primary);
+}
+.support-content-body a:hover {
+    text-decoration: underline;
+    color: black;
+    font-weight: 600;
+}
+.support-content-body tr:last-child td {
+    border-bottom: 1px solid var(--color-silver);
+}
+.support-content > table tfoot td {
+    border: 1px solid red;
+    padding: 30px 0;
+    font-size: 1.2em;
+    font-weight: 700;
+    letter-spacing: 7px;
+}
