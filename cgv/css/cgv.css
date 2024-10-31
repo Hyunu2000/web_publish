@@ -118,6 +118,11 @@ header {
     border: none;
     padding: 5px
 }
+.header-search {
+    font-size: 1.3em;
+    color: var(--color-primary);
+    cursor: pointer;
+}
 
 /************************************************************
 * title : footer style
@@ -429,7 +434,7 @@ footer {
     color: var(--color-login-font)
 }
 .login-form ul {
-    border: 1px solid green;
+    /* border: 1px solid green; */
     list-style-type: none;
     width: 420px;
     font-size: 13px;
@@ -437,15 +442,25 @@ footer {
 .login-form ul li {
     padding: 10px;
 }
-.login-form input:not(input[type="checkbox"]),
-.login-form button {
-    width: 263px;
-    padding: 10px;
+.login-form-input /* icon, input */ {
+    border: 2px solid silver;
+    width: 270px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+
 }
-.login-form input[type="text"],
-.login-form input[type="password"] {
-    /* border: 1px solid blue;
-    padding-left: 20px; */
+.login-form input:not(input[type="checkbox"]) {
+    width: 230px;
+    padding: 5px;
+    margin-left: 10px;
+    border: none;
+    outline: none;
+}
+/* .login-form ul li:nth-child(5), */
+.login-form button {
+    width: 270px;
+    padding: 10px;
 }
 .login-form button {
     outline-color: var(--color-button);
@@ -453,11 +468,12 @@ footer {
     outline-width: 1px;
 }
 .login-form ul > li:nth-child(5) {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 10pt;
+    width: 300px;
 }
 .login-form ul > li:nth-child(5) div:last-child > :nth-child(2) {
     padding-right: 10px;
@@ -465,6 +481,10 @@ footer {
 .login-form ul > li:nth-child(5) div:last-child > a {
     color: var(--color-login-font);
     font-weight: 700;
+}
+.naver-login {
+    border: 1px solid red;
+    cursor: pointer;
 }
 /************************************************************
 * title : join form style
@@ -699,3 +719,5 @@ table {
     font-weight: 700;
     letter-spacing: 7px;
 }
+
+
