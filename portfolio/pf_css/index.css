@@ -2,6 +2,7 @@
 header style              2024/11/01
 kang hyunu
 **********************************************/
+
 .header {
     width: 100%;
     height: 600px;
@@ -12,7 +13,7 @@ kang hyunu
     height: 60px;
     display: flex;
     color: white;
-    /* border: 1px solid red;     */
+    border: 1px solid red;
 }
 .header-top a {
     /* border: 1px solid red; */
@@ -99,11 +100,10 @@ kang hyunu
 content style              2024/11/01
 kang hyunu
 **********************************************/
+
 .content {
     border: 1px solid red;
     width: 100%;
-    height: 600px;
-    padding-top: 60px;
 }
 /* about me */
 .skills-icons i {
@@ -114,9 +114,14 @@ kang hyunu
     margin-bottom: 10px;
 }
 .about-content {
+    border: 1px solid red;
     text-align: center;
     width: 700px;
+    height: 600px;
     margin: 0 auto;
+}
+.about-content h1 {
+    padding-top: 60px;
 }
 .about-content h1 + p {
     /* border: 1px solid red; */
@@ -144,7 +149,7 @@ kang hyunu
     background-color: black;
     color: white;
     display: inline-block;
-    width: 230px;
+    width: 225px;
     height: 180px;
     margin: 20px 5px;
 }
@@ -170,4 +175,35 @@ kang hyunu
     flex-direction: column;
     text-align: left;
 }
+
 /* my skills */
+
+.my-skills {
+    border: 1px solid red;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 850px;
+    height: 700px;
+    margin: 0 auto;
+}
+.skill-content {
+    border: 1px solid red;
+    width: 700px;
+    height: 600px;
+    margin: 0 auto;
+    margin-top: 50px;
+    color: white;
+}
+.skill-content-top {
+    border: 1px solid red;
+    text-align: center;
+}
+.skill-content-top h3 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+.skill-content-top > p {
+    border: 1px solid red;
+    font-size: 9pt;
+}
+
