@@ -3,42 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Display</title>
     <style>
-        .block {
-            display: block;
-        }
-        .inline {
-            display: inline;
-        }
-        .inline_block {
-            display: inline-block;
-        }
+        .block { display: block; }
+        .inline { display: inline; }
+        .inline_block { display: inline-block;}
         .box {
             width: 50px;
             height: 50px;
             display: inline-block;
-            background-color: rgb(217, 0, 255);            
+            background-color: rgb(217, 0, 255);
         }
-        span {
+        span { 
             background-color: aqua;
         }
         ul.subject > li {
             /* border: 1px solid red; */
             width: 100px;
-            list-style-type: none;
+            list-style-type: none;   
             display: inline-block;
-            /* background-color: aquamarine; */
+            /* background-color: aquamarine;          */
             border-right: 1px solid silver;
-            margin: 10px;
+            margin-left: 10px;
         }
-        ul.subject {
-            padding: 0;
-        }
+        ul.subject { padding: 0; }
         ul.subject li:last-child {
             border-right: none;
         }
-        ul.lunch {
+        ul.lunch { 
             display: table;
             padding: 0;
             /* border: 1px solid red; */
@@ -47,25 +39,19 @@
             width: 100px;
             padding: 5px;
             color: white;
-            display: table-cell; /* inline-block */
+            display: table-cell;  /* inline-block */
             border: 1px solid silver;
             background-color: green;
         }
-        div.box-group-show {
-            display: none;
-            
-        }
-        div.box-group-hidden {
-            display: block;
-        }
+        div.box-group-show { visibility: hidden; /*display: none;*/  }
+        div.box-group-hidden { display: block; }
         p.show-box:hover + div.box-group-show {
+            visibility: visible;
             /* display: block; */
             /* cursor: pointer; */
-            visibility: visible;
         }
         p.hidden-box:hover + div.box-group-hidden {
-            /* display: none; */
-            visibility: hidden;
+            display: none;
         }
         h4:hover {
             opacity: 0.5;
@@ -100,7 +86,7 @@
     <ul class="subject">
         <li>HTML</li>
         <li>CSS</li>
-        <li>Javascript</li>
+        <li>JavaScript</li>
         <li>React</li>
     </ul>
     <ul class="lunch">

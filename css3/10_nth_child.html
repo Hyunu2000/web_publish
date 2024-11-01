@@ -9,17 +9,12 @@
             list-style-type: none;
             padding: 0;
         }
-        ul.first li:first-child {
-            color: blue;
-        }
-        li:last-child {
-            text-decoration: underline;
-        }
-        li:nth-child(3) {
-            background-color: aqua;
-        }
-        /* ul.first > li:last-child(2) > a {} */
-        ul.first > li:nth-child(4) > a {
+        ul.first li:first-child { color: blue; }
+        li:last-child { text-decoration: underline;}
+        li:nth-child(3) { background-color: aqua;}
+        /* naver - 토마토, 밑줄X, 진하게 */
+        /* ul.first > li:nth-child(4) > a { */
+        ul.first > li:nth-last-child(2) > a {
             color: tomato;
             font-weight: 700;
             text-decoration: none;
@@ -29,12 +24,8 @@
             height: 70px;
             border: 1px solid silver;
         }
-        article:first-child {
-            background-color: yellow;
-        }
-        article:nth-child(3) {
-            background-color: green;
-        }
+        article:first-child { background-color: yellow;}
+        article:nth-child(3) { background-color: green;}
     </style>
 </head>
 <body>
@@ -44,12 +35,6 @@
         <li>CSS3</li>
         <li>JavaScript</li>
         <li><a href="#">naver</a></li>
-        <li>React</li>
-    </ul>
-    <ul>
-        <li>HTML5</li>
-        <li>CSS3</li>
-        <li>JavaScript</li>
         <li>React</li>
     </ul>
     <div class="box">

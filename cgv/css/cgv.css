@@ -1,10 +1,9 @@
-/************************************************************
-* title : header style
-* author : kang@naver.com
-* final date : 2024/10/24
-*************************************************************/
+/*******************************************
+*  title : header style
+*  author : hong@naver.com
+*  final date : 2024/0/24
+********************************************/
 header {
-    /* border: 1px solid var(--color-border); */
     width: 100%;
     height: 150px;
     margin: 0 auto;
@@ -15,7 +14,8 @@ header {
     justify-content: space-between;
     align-items: center;
 }
-.header-top, .header-bottom-content, .content-all {
+.header-top, 
+.header-bottom-content {
     width: 1000px;
     margin: 0 auto;
 }
@@ -34,6 +34,9 @@ header {
     letter-spacing: 5px;
     font-weight: 500;
 }
+.header-top {
+    padding: 20px 0;
+}
 .header-top ul, .header-bottom ul {
     /* border: 1px solid green; */
     display: flex;
@@ -50,9 +53,6 @@ header {
     text-decoration: none;
     color: var(--color-primary);
 }
-.header-top {
-    padding: 20px 0;
-}
 .header-bottom dl {
     display: none;
 }
@@ -61,36 +61,40 @@ header {
     height: 40px;
     padding: 5px 0;
     border-top: 1px solid silver;
-    /* border-bottom: 2px solid tomato; */
+    /* border-bottom: 2px solid tomato;     */
 }
 .header-bottom-content {
     /* border: 1px solid blue; */
 }
+
 .header-bottom li {
     padding: 10px 25px;
+}
+.header-bottom li:first-child {
+    padding-left: 0;
 }
 .header-bottom li a {
     text-decoration: none;
     font-weight: 700;
-    color: var(--color-primary);;
+    color: var(--color-primary);
 }
-.header-top ul {
-    /* border: 1px solid red; */
+.header-top ul { 
+    /* border: 1px solid tomato; */
 }
 .header-menu-icon {
     /* border: 1px solid blue; */
     display: block;
-    width: 46px;
+    width:46px;
     min-height: 55px;
     position: relative;
 }
 .header-menu-icon img {
-    width: 36px;
+    width:36px;
     height: 36px;
     /* border: 1px solid green; */
 }
 .header-menu-icon span {
-    width: 46px;
+    width:46px;
     height: 19px;
     font-size: 11px;
     /* border: 1px solid red; */
@@ -109,36 +113,35 @@ header {
     width: 250px;
     display: flex;
     justify-content: space-between;
-    padding: 0 5px; 
+    padding: 0 10px;
     border-right: 1px solid silver;
     border-left: 1px solid silver;
 }
 .header-bottom-search input {
     width: 80%;
     border: none;
-    padding: 5px
+    padding: 5px;
 }
 .header-search {
+    /* border: 1px solid red; */
     font-size: 1.3em;
     color: var(--color-primary);
     cursor: pointer;
 }
-
-/************************************************************
-* title : footer style
-* author : kang@naver.com
-* final date : 2024/10/24
-*************************************************************/
+/*******************************************
+*  title : footer style
+*  author : hong@naver.com
+*  final date : 2024/0/24
+********************************************/
 footer {
     width: 100%;
     height: 420px;
-    background-color: var(--color-footer-bg);
+    background-color: var(--color-footerbg);
     margin-top: 60px;
 }
-.footer-content, .footer-content-bottom {
+.footer-content {
     width: 1000px;
     margin: 0 auto;
-
 }
 .footer-content-top {
     background-color: orange;
@@ -157,7 +160,7 @@ footer {
     border-bottom: 1px solid var(--color-silver);
 }
 .footer-intro > ul a {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: bold;
     color: var(--color-primary);
     text-decoration: none;
@@ -170,47 +173,45 @@ footer {
     font-weight: 600;
     text-decoration: underline;
 }
-.footer-intro > p {
-    /* border: 1px solid red; */
+.footer-intro ~ p {
     color: var(--color-primary);
     font-size: 12px;
     font-weight: 600;
     padding: 3px 0;
-    line-height: 1.5;
-
 }
-.p {
-    /* border: 1px solid red; */
-    margin-top: 30px;
-}
-.p2 {
-    margin-bottom: 20px;
-}
-.p2 a {
+.p {  margin-top: 20px; }
+.p2 { margin-bottom: 20px;}
+.p2 > a {
     text-decoration: none;
     color: var(--color-primary);
     cursor: default;
 }
 
-/************************************************************
-* title : content style
-* author : kang@naver.com
-* final date : 2024/10/24
-*************************************************************/
-.content, .content-top, .content-moviechart {
+/*******************************************
+*  title : content style
+*  author : hong@naver.com
+*  final date : 2024/0/24
+********************************************/
+.content, 
+.content-top,
+.content-moviechart
+{
     width: 100%;
 }
 .content-top {
     background-color: #000;
     position: relative;
-    top: -4px;
+    top: -5px;
 }
-.content-top iframe, .content-moviechart > div {
+.content-top iframe,
+.content-moviechart > div,
+.content-event-special {
     display: block;
     width: 1000px;
     margin: 0 auto;
 }
-/* 무비차트 리스트, 상영예정작 리스트 */
+
+/** 무비차트/상영예정작 타이틀 */
 .content-moviechart {
     background-color: var(--color-moviechart);
     padding: 40px 0;
@@ -220,20 +221,17 @@ footer {
     justify-content: space-between;
     padding: 10px 0;
 }
-/*
-    공통적으로 적용되는 클래스는 직접 셀렉팅하는 겨우 부모를 직관적으로 지정함
-*/
 
 /* 무비차트/상영예정작 텍스트 */
-.content-moviechart .content-title-style > div:first-child {
+.content-moviechart .content-title-style > div:first-child  {
     position: relative;
     width: 240px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
+} 
 /* 무비차트/상영예정작 중간 라인 */
-.content-moviechart .content-title-style > div > span:first-child + span {
+.content-moviechart .content-title-style > div > span:first-child + span{
     display: inline-block;
     width: 1px;
     height: 12px;
@@ -243,6 +241,7 @@ footer {
     left: 45%;
 }
 /* .content-moviechart .content-title-style > div > span:last-child {
+    border: 1px solid red;
     margin-left: 10px;
 } */
 /* .content-moviechart-title div:last-child button {
@@ -250,6 +249,8 @@ footer {
     border-radius: 15px;
     padding: 7px 15px;
 } */
+
+/** 무비차트/상영예정작 리스트 */
 .content-moviechart-list ul {
     /* border: 1px solid red; */
     list-style-type: none;
@@ -257,74 +258,67 @@ footer {
     justify-content: space-between;
 }
 .content-moviechart-list ul li {
-    /* border: 1px solid  blue; */
-    padding: 15px 15px 0;
+    /* border: 1px solid blue; */
+    padding: 15px 15px 0 ;
 }
 .content-moviechart-list ul li:first-child {
-    /* border: 1px solid  blue; */
+    /* border: 1px solid blue; */
     padding-left: 0px;
 }
 .content-moviechart-list ul li:last-child {
-    /* border: 1px solid  blue; */
+    /* border: 1px solid blue; */
     padding-right: 0px;
 }
-.content-moviechart-list ul li img {
+.content-moviechart-list ul li img{
     border-radius: 15px;
     width: 170px;
 }
-.content-moviechart-list ul li h3 {
+.content-moviechart-list ul li h3{
     text-align: center;
     padding: 10px 0;
     color: var(--color-primary);
 }
-.content-moviechart-list ul li h5 {
+.content-moviechart-list ul li h5{
     text-align: center;
     padding-top: 3px;
     color: var(--color-primary);
 }
 
-/* 이벤트 섹션 */
+/** 이벤트 섹션 */
+.content-event-special section:first-child {
+    /* border: 1px solid red; */
+}
 .content-event-list {
-    /* border: 1px solid red; */
-    margin-top: 50px;
-}
-.event-top {
-    /* border: 1px solid red; */
+    /* border: 1px solid blue; */
     display: flex;
-    justify-content: space-between;
-}
-.event-list img {
-    border-radius: 15px;
-}
-.event-list {
-    /* border: 1px solid red; */
-    display: flex;
-    justify-content: space-between;
     list-style-type: none;
 }
-.event-list p {
-    /* border: 1px solid red; */
-    padding-top: 20px;
+.content-event-list li {
+    /* border: 1px solid blue; */
+    padding: 20px;
+}
+.content-event-list li p {
+    /* border: 1px solid blue; */
+    padding: 5px;
 }
 .event-content-title {
-    font-size: 1em;
+    font-size: 18px;
     font-weight: 700;
+    color: var(--color-primary);
+    margin-top: 10px;
 }
-.event-content-date {
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--color-primary)
+.event-content-title-date {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-gray-222);
 }
-/* 특별관 섹션 */
-.content-special {
-    /* border: 1px solid red; */
-    margin-top: 50px;
-}
+
+/* 특별관 */
 .special-content-list {
     display: flex;
     justify-content: space-between;
 }
-.special-content-list div img,
+.special-content-list div img, 
 .special-content-list ul {
     /* border: 1px solid green; */
     width: 480px;
@@ -332,7 +326,7 @@ footer {
 .special-content-list ul li {
     border-top: 1px solid var(--color-silver);
     list-style-type: none;
-    padding: 20px 20px;
+    padding: 18px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -342,27 +336,27 @@ footer {
 }
 .special-content-list ul li span:first-child {
     font-size: 1.1em;
-    font-weight: 600;
     letter-spacing: 1px;
 }
 .special-content-list ul li span:last-child {
     display: inline-block;
     padding: 5px;
-    background-color: var(--color-footer-bg);
+    background-color: var(--color-footerbg);
     border-radius: 6px;
     font-size: 12px;
-    color: var(--color-black);
+    color: var(--color-gray-222);
 }
-.special-content-list ul li:hover {
+.special-content-list ul li:hover{
     border: 1px solid var(--color-primary);
     border-radius: 10px;
 }
-.special-content-list ul li:hover + li {
+.special-content-list ul li:hover + li{
     border-top: 1px solid white;
 }
+
 /* 패키지, 영화관람권, 기프트카드 */
 .package-content-list {
-    /* border: 1px solid red; */
+    /* border: 1px solid blue; */
     display: flex;
     justify-content: space-between;
     margin: 60px 0 30px 0;
@@ -372,12 +366,13 @@ footer {
     font-weight: 600;
 }
 .package-title-button {
-    border: 1px solid var(--color-silver);
+    border: 1px solid var(--color-buttonbg);
+    background-color: #fff;
     border-radius: 12px;
     padding: 4px 7px;
     color: var(--color-primary);
-    font-size: 11;
-    font-weight: 600;
+    font-size: 11px;
+    font-weight: 500;
 }
 .package-content-border {
     border: 1px solid silver;
@@ -399,8 +394,10 @@ footer {
     justify-content: flex-start;
     padding: 20px;
 }
-/* 공지사항, 앱 다운로드 */
+
+/* 공지사항, 앱다운로드 */
 .notice-content-list, .notice-content-list > div:first-child {
+    /* border: 1px solid green; */
     display: flex;
     justify-content: space-between;
 }
@@ -420,47 +417,78 @@ footer {
     height: 230px;
     border-radius: 10px;
 }
-/************************************************************
-* title : login form style
-* author : kang@naver.com
-* final date : 2024/10/28
-*************************************************************/
+
+/*******************************************
+*  title : login form style
+*  author : hong@naver.com
+*  final date : 2024/0/24
+********************************************/
 .login-form form {
     /* border: 1px solid green; */
     width: 800px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    color: var(--color-login-font)
+    color: var(--color-login-font);
 }
 .login-form ul {
-    /* border: 1px solid green; */
     list-style-type: none;
     width: 420px;
-    font-size: 13px;
+    display: flex;
+    flex-direction:column;
+    justify-content: flex-start;
 }
-.login-form ul li {
+.login-form ul li:not(.login-form ul li:first-child,.login-form ul li:nth-child(5) ) {
     padding: 10px;
+    padding-left: 70px;
+}
+.login-form ul li:first-child p {
+    font-size: 15px; 
+    color: var(--color-primary);
+    margin: 10px;
+    padding-left: 20px;
 }
 .login-form-input /* icon, input */ {
     border: 2px solid silver;
     width: 270px;
-    padding: 5px 10px;
+    padding: 7px;
     display: flex;
     align-items: center;
-
+}
+.login-form-input i {
+    padding: 0 15px 0 10px;
+    border-right: 1px solid silver;
 }
 .login-form input:not(input[type="checkbox"]) {
     width: 230px;
-    padding: 5px;
+    padding: 7px;
     margin-left: 10px;
     border: none;
     outline: none;
 }
-/* .login-form ul li:nth-child(5), */
+.login-form ul li:nth-child(5),
 .login-form button {
     width: 270px;
     padding: 10px;
+}
+.login-form ul li:nth-child(5) {
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 270px;
+    margin: 0 auto;
+    padding: 8px 0;
+}
+/* .login-form ul li:nth-child(5) div {
+    margin: 0;
+    padding: 0;
+  
+} */
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    /* border: 1px solid blue; */
+    /* padding-left: 20px; */
 }
 .login-form button {
     outline-color: var(--color-button);
@@ -468,12 +496,11 @@ footer {
     outline-width: 1px;
 }
 .login-form ul > li:nth-child(5) {
-    /* border: 1px solid red; */
+    /* border: 1px solid green; */
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 10pt;
-    width: 300px;
 }
 .login-form ul > li:nth-child(5) div:last-child > :nth-child(2) {
     padding-right: 10px;
@@ -482,66 +509,63 @@ footer {
     color: var(--color-login-font);
     font-weight: 700;
 }
-.naver-login {
-    border: 1px solid red;
-    cursor: pointer;
-}
-/************************************************************
-* title : join form style
-* author : kang@naver.com
-* final date : 2024/10/29
-*************************************************************/
+
+/*******************************************
+*  title : join form style
+*  author : hong@naver.com
+*  final date : 2024/0/24
+********************************************/
 .join-form form {
     /* border: 1px solid green; */
-    width: 500px;
+    width: 600px;
     margin: 0 auto;
 }
 .join-form ul {
     list-style-type: none;
 }
 .join-form ul li {
-    /* border: 1px solid red; */
-    padding-top: 10px;
+    /* border: 1px solid tomato; */
+    padding-top: 15px;
+    padding-bottom: 10px;
 }
-.join-form ul li div:not(.join-form ul li:nth-child(6) div) {
-    border: 1px solid var(--color-silver);
+.join-form ul li div:not(.join-form ul li:nth-child(6) div)
+ {
+    border: 2px solid var(--color-join-border);
     border-radius: 4px;
-    padding: 3px 10px;
+    padding: 5px 10px;
 }
 .join-form ul li:nth-child(6) input,
 .join-form ul li:nth-child(6) select {
-    border: 1px solid var(--color-silver);
+    border: 2px solid var(--color-join-border);
     border-radius: 4px;
-    padding: 10px;
+    padding: 12px 10px;
 }
 .join-form ul li:nth-child(6) select {
-    width: 100%;
+    width: 40%;
 }
 .join-form ul li:nth-child(6) span {
     margin: 0 20px;
 }
 .join-form ul li:first-child > div,
 .join-form ul li:nth-child(6) > div {
-    /* border: 1px solid red; */
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 .join-form ul li label {
     display: inline-block;
-    font-size: 0.9em;
+    font-size: 1em;
     font-weight: 700;
-    text-indent: 7px;
-    margin-right: 6px;
+    text-indent: 3px;
+    margin: 0 0 6px 10px;
     /* border: 1px solid red; */
 }
 .join-form ul li label + span {
-    /* border: 1px solid red; */
     font-size: 0.7em;
     font-weight: 300;
     color: red;
 }
-.join-form ul li:first-child input {
+.join-form ul li:first-child input{
     border: 1px solid white;
     width: 80%;
     padding-left: 10px;
@@ -557,33 +581,33 @@ footer {
     outline: none;
 }
 .join-form ul li:first-child button,
-.join-form ul li:last-child button {
+.join-form ul li:last-child button{
     border: 1px solid white;
     width: 100px;
     padding: 7px 12px;
     background-color: var(--color-button);
     color: var(--color-white);
-    border-radius: 4px;
+    border-radius: 7px;
     margin-left: 10px;
 }
 .join-form ul li:last-child button {
     border-radius: 0;
     width: 150px;
-    padding: 10px 0;   
+    padding: 10px 0;
 }
 .join-form ul li:last-child button:last-child {
     background-color: var(--color-gray-222);
-    color: var(--color-black);
 }
 .join-form ul li:last-child {
     padding: 30px 0 10px;
     text-align: center;
 }
-/************************************************************
-* title : mycgv style
-* author : kang@naver.com
-* final date : 2024/10/29
-*************************************************************/
+
+/*******************************************
+*  title : mycgv style
+*  author : hong@naver.com
+*  final date : 2024/0/24
+********************************************/
 .mycgv div {
     /* border: 1px solid green; */
     display: flex;
@@ -600,124 +624,127 @@ footer {
 .mycgv div span:hover {
     background-color: beige;
 }
-/************************************************************
-* title : notice/news style
-* author : kang@naver.com
-* final date : 2024/10/29
-*************************************************************/
+
+/*******************************************
+*  title : notice/news style
+*  author : hong@naver.com
+*  final date : 2024/0/24
+********************************************/
 .support-content {
     /* border: 1px solid green; */
     width: 700px;
     margin: 0 auto;
     color: var(--color-primary);
+    font-size: 11pt;
 }
-.search-content {
-    /* border: 1px solid red; */
-    margin-top: 20px;
+.support-content > div /* 검색 카테고리 */{
+    /* border: 1px solid blue; */
+    margin: 20px 0;
+}
+.support-content > div select, 
+.support-content > div input, 
+.support-content > div button 
+{
+    /* border: 1px solid blue; */
+    padding: 5px 15px;
+}
+.support-content > div select {
+    padding: 5px 25px;
+}
+.support-content > div button {
+    background-color: #000;
+    color: var(--color-white);
+    border: 1px solid var(--color-silver);
+    outline: 1px solid #000;
+    padding: 4px 25px;
+}
+.support-content > nav ul {
+    border-bottom: 2px solid rgb(137,137,135);
     display: flex;
-    justify-content: flex-start;
-    height: 30px;
-}
-.search-content select {
-    width: 100px;
-    outline: none;
-}
-.search-content input {
-    /* border: 1px solid red; */
-    width: 200px;
-    padding-left: 10px;
-    margin-left: 5px;    
-}
-.search-content button {
-    /* border: 1px solid red; */
-    background-color: var(--color-black); 
-    color: var(--color-white);  
-    width: 80px;
-    margin-left: 5px;    
-    text-align: center;
-    border: 1px double var(--color-gray-222);
-    font-weight: 500;    
-}
-.search-menu {
-    /* border: 1px solid red; */
-    margin-top: 15px;
     list-style-type: none;
+    /* height: 40px; */
+    overflow: hidden;    
 }
-.search-menu li {
-    /* border: 1px solid red; */
-    background-color: var(--color-button);
+.support-content > nav ul a{
+    width: 90px;
+    border: 1px solid var(--color-white);
+    border-bottom: 2px solid rgb(137,137,135);
     display: inline-block;
-    justify-content: flex-start;
-    text-align: center;   
-}
-.search-menu li:not(.search-menu li:first-child) {
-    background-color: var(--color-black-102);
-}
-.search-menu li a {
-    /* border: 1px solid red; */
+    text-align: center;
+    padding: 8px 0;
     text-decoration: none;
     color: var(--color-white);
-    display: inline-block;
-    width: 90px;
-    height: 35px;
-    line-height: 35px;
-    font-size: 14px;
-    font-weight: 500;
+    background-color: rgb(137,137,135);  
+    font-family: '맑은 고딕';
+    font-size: 12px;
+    font-weight: 600;
 }
-.search-menu > div {
-    /* border: 1px solid red; */
-    border-bottom: 2px solid var(--color-black-102);
+.support-content > nav ul li:first-child a{
+    background-color: var(--color-button);
+    border-left: 1px solid var(--color-button);
+    border-bottom: 2px solid var(--color-button);
+    /* height: 40px; */
 }
-.search-menu ~ p {
-    /* border: 1px solid red; */
-    margin: 20px 0;
-    font-size: 14px;
+.support-content > nav + p {
+    margin: 40px 0 20px; 
 }
-.support-content-header {
-    /* border: 1px solid red; */
+.support-content > table {
     width: 700px;
-    border: none;
     text-align: center;
-    font-size: 13px;
 }
-.support-content-header th {
-    /* border: 1px solid red; */
-    border-top: 1px solid var(--color-silver);
-    border-bottom: 1px solid var(--color-silver);
-    padding: 10px 20px;
-    background-color: #f8f8f8;  
-}
-.support-content-header th:nth-child(3) {
-    /* border: 1px solid red; */
-    text-align: left;
-    text-indent: 15px;
-}
-table {
+.support-content > table,
+.support-content > table th,
+.support-content > table td
+{
     border-collapse: collapse;
 }
-.support-content-body td {
-    /* border: 1px solid red; */
-    padding: 15px;
+.support-content > table th
+ {
+    padding: 10px 0;
 }
-.support-content-body a {
-    /* border: 1px solid red; */
+.support-content > table tbody td
+ {
+    padding: 18px 0;
+}
+.support-content > table thead th:first-child
+ {
+    width: 12%;
+}
+.support-content > table thead th:nth-child(2),
+.support-content > table thead th:nth-child(4),
+.support-content > table thead th:nth-child(5)
+ {
+    width: 16%;
+}
+.support-content > table thead th:nth-child(3)
+ {
+    text-align: left;
+    text-indent: 8px;
+}
+.support-content > table thead th
+ {
+    background-color: rgb(234, 234, 234);
+    border-top: 1px solid silver;
+    border-bottom: 1px solid silver;
+}
+.support-content > table tbody td:nth-child(3) a
+ {
     text-decoration: none;
     color: var(--color-primary);
 }
-.support-content-body a:hover {
+.support-content > table tbody td:nth-child(3) a:hover
+ {
     text-decoration: underline;
-    color: black;
-    font-weight: 600;
+    font-weight: 700;
 }
-.support-content-body tr:last-child td {
-    border-bottom: 1px solid var(--color-silver);
+.support-content > table tbody tr:last-child td
+ {
+    border-bottom: 1px solid silver;
 }
-.support-content > table tfoot td {
-    /* border: 1px solid red; */
-    padding: 30px 0;
+.support-content > table tfoot td
+ {
+    padding: 20px 0;
     font-size: 1.2em;
     font-weight: 700;
-    letter-spacing: 7px;
+    letter-spacing: 5px;
 }
-
-

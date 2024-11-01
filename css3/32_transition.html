@@ -9,7 +9,7 @@
             width: 200px;
             /* transition-property: width;
             transition-duration: 0.3s;
-            transition-delay: 1s;
+            transition-delay: 0s;
             transition-timing-function: ease-in; */
             transition: width 0.3s 0s ease-in;
         }
@@ -18,10 +18,10 @@
         }
         .frame {
             width: 300px;
-            height: 500px;
+            height:500px;
             border: 1px solid gray;
 
-            /* transition: height 5s 0s ease-out; */
+            /* transition: height 5s 0s ease-in-out; */
         }
         .frame p {
             margin: 0;
@@ -33,13 +33,13 @@
         .frame div {
             height: 0;
             background-color: tomato;
-            
-            transition: height 5s 0s ease-out;
+
+            transition: height 5s 0s ease-in-out;
         }
-        .frame:hover {
+        /* .frame:hover {
             height: 500px;
-        }
-        .frame p:hover + div {
+        } */
+        .frame p:hover +div {
             height: 300px;
         }
     </style>
