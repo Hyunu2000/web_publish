@@ -54,7 +54,7 @@ console.log('------------');
  */
 // 출력포맷 : 실행결과 ==> 
 let name = undefined;
-let result = undefined;
+let result = undefined; // 결과 저장 변수를 만드는 것이 좋다.
 name = '강연우';
 if(name === '강현우') {
     // console.log(`실행결과 ==> ${name}`);

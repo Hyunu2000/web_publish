@@ -23,7 +23,7 @@ let obj1 = {
     name : '강현우'
 };
 let obj2 = {
-    name : '강연우'
+    name : '강우현'
 };
 let obj3 = obj1;
 
