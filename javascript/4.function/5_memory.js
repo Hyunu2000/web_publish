@@ -2,9 +2,9 @@
 function add(a, b) {
     console.log(a + b);
 }
-// 실제로는 사용하지 않는 방식이다..
+// 실제로는 사용하지 않는 방식이다...
 console.log(add);
-let sum = add;
+let sum = add; // call by reference
 console.log(sum);
 add(1, 3);
 sum(1, 2);
