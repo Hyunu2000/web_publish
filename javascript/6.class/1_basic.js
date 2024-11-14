@@ -1,6 +1,6 @@
 // 객체를 생성하기 위한 틀 ==> class(클래스)
 /*
-    class 클래스명 {
+    class 클래스명(첫글자는 무조건 대문자 사용) {
         // constructor(생성자) 함수
         constructor() {
             //field
