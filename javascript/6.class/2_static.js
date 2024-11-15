@@ -24,3 +24,26 @@ orange.display();
 console.log(Fruit.getMax_Size());
 
 // apple.makeFruit();   // static 메모리 공간에 별도로 저장된다.
+
+
+console.log('-----------');
+class Student {
+    static schoolName = 'Dj School';
+    static totalStudents = 0;
+
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+        Student.totalStudents++;
+    }
+
+    static getSchoolInfo() {
+        return `${Student.schoolName}에는 ${Student.totalStudents}명의 학생이 있다.`
+    }
+
+}
+
+const kang = new Student('강현우', '24');
+const hyun = new Student('강우현', '30');
+console.log(Student.getSchoolInfo());
+

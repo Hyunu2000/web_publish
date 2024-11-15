@@ -1,4 +1,4 @@
-// 기본 데이터타입(Primitive DataType) - number, string, boolean
+// 기본(원시) 데이터타입(Primitive DataType) - number, string, boolean
 // 기본 데이터타입을 클래스로 정의한 것을 wrapper 클래스라 함
 
 /** Number class */
