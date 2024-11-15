@@ -6,10 +6,10 @@
     <title>Document</title>
     <script src="./8_Academic.js"></script>
     <style>
-        #student {display: block;}
-        #professor {display: none;}
-        #parent {display: none;}
-        #employee {display: none;}
+        #student {  display: block;     }
+        #professor {  display: none;     }
+        #parent {  display: none;     }
+        #employee {  display: none;     }
     </style>
 </head>
 <body>
@@ -29,7 +29,7 @@
             <input type="text" id="sno">
         </li>
         <li>
-            <label for="">학생명</label>
+            <label for="">성명</label>
             <input type="text" id="name">
         </li>
         <li>
@@ -45,14 +45,11 @@
             <button type="reset">Cancle</button>
         </li>
     </ul>
+
     <!-- 교수 정보 -->
     <ul id="professor">
         <li>
-            <label for="">강의과목</label>
-            <input type="text" id="sno">
-        </li>
-        <li>
-            <label for="">학생명</label>
+            <label for="">성명</label>
             <input type="text" id="name">
         </li>
         <li>
@@ -62,6 +59,10 @@
         <li>
             <label for="">주소</label>
             <input type="text" id="address">
+        </li>
+        <li>
+            <label for="">강의과목</label>
+            <input type="text" id="subject">
         </li>
         <li>
             <button type="button" onclick="signupCheck()">Signup</button>
@@ -71,11 +72,7 @@
     <!-- 학부모 정보 -->
     <ul id="parent">
         <li>
-            <label for="">자녀명</label>
-            <input type="text" id="sno">
-        </li>
-        <li>
-            <label for="">학생명</label>
+            <label for="">성명</label>
             <input type="text" id="name">
         </li>
         <li>
@@ -85,6 +82,10 @@
         <li>
             <label for="">주소</label>
             <input type="text" id="address">
+        </li>
+        <li>
+            <label for="">자녀명</label>
+            <input type="text" id="cname">
         </li>
         <li>
             <button type="button" onclick="signupCheck()">Signup</button>
@@ -94,11 +95,7 @@
     <!-- 직원 정보 -->
     <ul id="employee">
         <li>
-            <label for="">부서명</label>
-            <input type="text" id="sno">
-        </li>
-        <li>
-            <label for="">학생명</label>
+            <label for="">성명</label>
             <input type="text" id="name">
         </li>
         <li>
@@ -110,9 +107,16 @@
             <input type="text" id="address">
         </li>
         <li>
+            <label for="">부서명</label>
+            <input type="text" id="department">
+        </li>
+        <li>
             <button type="button" onclick="signupCheck()">Signup</button>
             <button type="reset">Cancle</button>
         </li>
     </ul>
+
+    <!-- 입력정보 출력 -->
+    <div id="result"></div>
 </body>
 </html>
