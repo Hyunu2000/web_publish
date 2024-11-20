@@ -30,7 +30,7 @@ switch(day) {
 }
 
 if(!(resultDay === undefined)) {
-    console.log(`선택한 요일은 [${resultDay}] 입니다.`);
+    console.log(`선택한 요일은 [${resultDay}] 입니다.`); // 선택한 요일은 [월요일] 입니다.
 }
 
 console.log('------------');
@@ -50,5 +50,5 @@ switch(number % 2) {
     default :
         result = '해당 과일 없음';
 }
-console.log(result);
+console.log(result); // 🍎
 

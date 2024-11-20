@@ -13,7 +13,7 @@ let b = 100; // 표현식
 let c = undefined; // 선언문
 let d = null; // 선언문
 
-console.log(a);
-console.log(b);
-console.log(c);
-console.log(d);
+console.log(a); // undefined
+console.log(b); // 100
+console.log(c); // undefined
+console.log(d); // null

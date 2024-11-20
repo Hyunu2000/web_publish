@@ -14,6 +14,6 @@ console.log(b++); // 9
 console.log(b); // 10
 
 let flag = true;
-console.log(flag);
-console.log(!flag);
-console.log(!!flag); // !(!flag)
+console.log(flag); // true
+console.log(!flag); // false
+console.log(!!flag); // true !(!flag)

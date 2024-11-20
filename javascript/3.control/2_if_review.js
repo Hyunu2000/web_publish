@@ -8,4 +8,4 @@ else if(fruit === 'orange') choice = '🍊';
 else if(fruit === 'lemon') choice = '🍋'; 
 else choice = `${fruit} 없어요`;
 
-console.log(`결과 : ${choice}`);
+console.log(`결과 : ${choice}`); // 결과 : 🍊

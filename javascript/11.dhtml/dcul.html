@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./dcul.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+        body {
+            width: 500px;
+            background-color: bisque;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+        }
+        h1 {
+            text-align: center;
+        }
+        input {
+            width: 150px;
+            height: 30px;
+            margin: 10px 0;
+        }
+        button {
+            margin: 0 auto;
+            display: inline-block;
+            justify-content: center;
+            align-items: center;
+            width: 30px;
+            height: 30px;            
+        }
+        h3 {
+            margin: 20px 0;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>DHTML Calculator</h1>
+        <ul>
+            <li>
+                <input type="text" id="number1" Placeholder="첫 번째 숫자">
+                <input type="text" id="number2" Placeholder="두 번째 숫자">
+            </li>
+            <li>
+                <button type="button" class="button" data-operation="sum">➕</button>
+                <button type="button" class="button" data-operation="sub">➖</button>
+                <button type="button" class="button" data-operation="mul">✖</button>
+                <button type="button" class="button" data-operation="div">➗</button>
+            </li>
+            <li>
+                <h3>Result : </h3>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

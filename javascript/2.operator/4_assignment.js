@@ -6,5 +6,5 @@ a *= 2; // a = a * 2;
 a /= 2; // a = a / 2;
 a %= 2; // a = a % 2;
 
-console.log(a);
+console.log(a); // 0
 

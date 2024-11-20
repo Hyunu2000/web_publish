@@ -12,8 +12,8 @@
 // 5. 조건식이 false가 되면 for 루프 블록을 빠져나온다. 
 
 // 숫자 1부터 5까지 반복해서 출력해주세요.
-for(let i=1 ; i <= 100 ; i++) {
-    console.log(i);
+for(let i=1 ; i <= 10 ; i++) {
+    console.log(i); // numberList.length = 3
 }
 
 // 숫자 배열을 출력해주세요.
@@ -22,9 +22,9 @@ let numberList = [1, 2, 3];
 // 배열의 크기 구하는 형식 : 배열 객체.length
 console.log(`numberList.length = ${numberList.length}`)
 for(let i=0; i <= numberList.length-1 ; i++) {
-    console.log(numberList[i]);
-}
-
+    console.log(numberList[i]); // 1    
+}                               // 2
+                                // 3
 console.log('-------------');
 
 // 과일 리스트 출력
@@ -38,15 +38,8 @@ for(let i=0; i <= length; i++) {
     let fruit = fruitList[i];
     let emoji = emojiList[i];
     if(fruit === 'lemon') {
-        console.log(emoji);
+        console.log(emoji); // 🍋
     }
 }
-
-
-
-
-
-
-
 
 // while : 종료하는 시점을 정확하게 알고 있을 때 <--> true, false 값을 통해 체크

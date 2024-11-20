@@ -15,7 +15,7 @@
 
 let a = 1;
 let b = 2;
-console.log('&&');
+console.log('&&'); // &&
 console.log((a < b) && (b > a)); // true && true => true
 console.log((a < b) && (b < a)); // true && false => false
 console.log((a === b) && (b > a)); // false && true => false
@@ -23,7 +23,7 @@ console.log((a === b) && (b < a)); // false && false => false
 
 console.log('------------------');
 
-console.log('||');
+console.log('||'); // ||
 console.log((a < b) || (b > a)); // true && true => true
 console.log((a < b) || (b < a)); // true && false => true
 console.log((a === b) || (b > a)); // false && true => true

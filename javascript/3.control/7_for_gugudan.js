@@ -16,11 +16,12 @@ for(let i = 1; i <= 9; i++) {
     for(let j = 2; j <= 9; j++) {
         rows += `${j} * ${i} = ${j * i}\t`; //2 * 1 = 2   3 * 1 = 3   ...
     }
-    console.log(rows); // 중간결과를 저장하는 변수를 지정하고 출력을 해야 행과 열을 표현할 수 있다.
-}
+    console.log(rows); // 중간결과를 저장하는 변수를 지정하고 
+}                      // 출력을 해야 행과 열을 표현할 수 있다.
+console.log('---------------------');
 
 // 별찍기
-for(let i = 1; i <= 10; i++) {
+for(let i = 1; i <= 5; i++) {
     let star = '';
     // 현재 줄의 번호(i)만큼 '*'를 추가하는 반복문
     for(let j = 1; j <= i; j++) {
@@ -28,15 +29,28 @@ for(let i = 1; i <= 10; i++) {
     }
     console.log(star);
 }
+/*
+        ⭐
+        ⭐⭐
+        ⭐⭐⭐
+        ⭐⭐⭐⭐
+        ⭐⭐⭐⭐⭐
+*/
 
 console.log('---------------------');
 
 // 반대로 별찍기
-for(let i = 10; i >= 1; i--) {
+for(let i = 5; i >= 1; i--) {
     let revStar = '';
     for(let j = i; j >= 1; j--) {
         revStar += '⭐';
     }
     console.log(revStar);
 }
-
+/*
+        ⭐⭐⭐⭐⭐
+        ⭐⭐⭐⭐
+        ⭐⭐⭐
+        ⭐⭐
+        ⭐
+*/

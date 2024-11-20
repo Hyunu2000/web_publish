@@ -17,22 +17,23 @@
 // camelCase
 let myName = '강현우';
 let myAge = 25;
-console.log(myName);
-console.log(myAge);
+console.log(myName); // 강현우
+console.log(myAge); // 25
 
 //snake_case
 let audio_name = '삼성';
 let audio_color = 'red';
-console.log(audio_name);
-console.log(audio_color);
+console.log(audio_name); // 삼성
+console.log(audio_color); // red
 
 // 저의 이름은 강현우이고, 나이는 25살 입니다.
 let output = '저의 이름은 ' + myName + '이고, 나이는 ' + myAge + '살 입니다.'
-console.log(output);
+console.log(output); // 저의 이름은 강현우이고, 나이는 25살 입니다.
 
 // 템플릿 리터럴 
 let output2 = `저의 이름은 ${myName}이고, 나이는 ${myAge}살 입니다.`
-console.log(output2);
+console.log(output2); // 저의 이름은 강현우이고, 나이는 25살 입니다.
+                      // output1과 출력 결과는 같지만 따옴표 때문에 번거롭지 않다!!
 
 // 상수 선언 :: 변수, 상수는 프로그램의 상단에 위치
 // 상수 선언시 모두 대문자, SNAKE_CASE로 선언하는 것이 좋다.
