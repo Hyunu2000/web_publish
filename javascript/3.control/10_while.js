@@ -10,6 +10,9 @@ for(let i = 1; i <=5; i++) {
     if(i === 3) break;
     console.log(`i = ${i}`);
 }
+// i = 1
+// i = 2
+
 
 // while문 : 1 ~ 5까지 출력
 // 3이면 종료
@@ -19,6 +22,9 @@ while(count <= 5) {
     console.log(`count = ${count}`);
     count++;
 }
+// count = 1
+// count = 2
+
 
 // 메뉴 선택
 let flag = true;
@@ -36,3 +42,5 @@ while(flag) {
         flag = false;
     }
 }
+// 1: 🍕    2: 🍔   0: 종료
+// 선택을 종료합니다.

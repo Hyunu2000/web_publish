@@ -10,7 +10,7 @@ const job2 = (a, b, callback) => {
 
 const print = (a) => console.log(a);
 const printSum = (a, b) => {
-    console.log(a + b);
+    console.log(a + b); // 3
 }
 job(100, print);
 console.log('----------');
@@ -19,3 +19,5 @@ job2(100, 200, printSum);
 // setTimeout 함수 호출
 console.clear();
 setTimeout((second) => console.log(`setTimeout ${second}초 후 실행!!`), 1000, 1); // ...), ms, 파라미터1, 파라미터2);
+// second 라는 매개변수로 1이 전달되고 
+// 이 코드는 1초 후에 "setTimeout 1초 후 실행!!"을 출력

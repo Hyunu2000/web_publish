@@ -12,16 +12,23 @@ class Fruit {
     static makeFruit = () => {
         return new Fruit('orange', 'coral', '🍊');
     }
-    display = () => console.log(`${this.name}, ${this.color}, ${this.emoji}`);
-}
+    display = () => console.log(`${this.name}, ${this.color}, ${this.emoji}`); 
+}                                            // apple, red, 🍎
 
 let apple = new Fruit('apple', 'red', '🍎');
-apple.display();
+apple.display(); 
 let orange = Fruit.makeFruit();
 console.log(orange);
-orange.display();
+/* Fruit {
+    display: [Function: display],
+    name: 'orange',
+    color: 'coral',
+    emoji: '🍊'
+} */
 
-console.log(Fruit.getMax_Size());
+orange.display(); // orange, coral, 🍊
+
+console.log(Fruit.getMax_Size()); // 100
 
 // apple.makeFruit();   // static 메모리 공간에 별도로 저장된다.
 
@@ -45,5 +52,5 @@ class Student {
 
 const kang = new Student('강현우', '24');
 const hyun = new Student('강우현', '30');
-console.log(Student.getSchoolInfo());
+console.log(Student.getSchoolInfo()); // Dj School에는 2명의 학생이 있다.
 

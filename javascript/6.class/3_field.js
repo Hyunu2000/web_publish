@@ -13,12 +13,12 @@ class Fruit {
     display = () => console.log(`${this.#name}, ${this.color}, ${this.emoji}`)
 }
 const apple = new Fruit('apple', 'green', '🍏');
-apple.display();
-console.log(apple.name);
-console.log(apple.color);
-console.log(apple.emoji);
+apple.display(); // apple, green, 🍏
+console.log(apple.name); // undefined (name이 private field로 선언되었기 때문에)
+console.log(apple.color); // green
+console.log(apple.emoji); // 🍏
 
-console.clear();
+console.log('----------');
 // 사번(#), 사원명, 부서명
 // info() 메서드 호출시 모든 정보 출력
 class Employee {
@@ -34,5 +34,5 @@ class Employee {
 }
 
 const kang = new Employee('1204', '강현우', '개발1팀');
-kang.info(); // 일반 정보 사원명, 부서명만 출력
-kang.infoAll(); // 모든 정보
+kang.info(); // 강현우, 개발1팀 (일반 정보 사원명, 부서명만 출력) 
+kang.infoAll(); // 1204, 강현우, 개발1팀 (모든 정보)

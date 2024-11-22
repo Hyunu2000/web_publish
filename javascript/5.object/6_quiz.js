@@ -15,15 +15,15 @@ const dog = new Animal('🐶','brown');
 const cat = new Animal('🐱', 'yellow');
 const rabbit = new Animal('🐰', 'gray', );
 
-dog.display();
-dog.eat();
-dog.sleep();
+dog.display(); // 🐶 
+dog.eat(); // 🐶 먹는다.
+dog.sleep(); // 🐶 자요~~
 
-cat.display();
-cat.eat();
-cat.sleep();
+cat.display(); // 🐱
+cat.eat(); // 🐱 먹는다.
+cat.sleep(); // 🐱 자요~~
 
-rabbit.display();
-rabbit.eat();
-rabbit.sleep();
+rabbit.display(); // 🐰
+rabbit.eat(); // 🐰 먹는다.
+rabbit.sleep(); // 🐰 자요~~
 

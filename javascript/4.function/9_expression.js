@@ -20,16 +20,15 @@ let add5 = (a, b, c) => {
     if (a > 0 && b > 0 && c > 0) {
         console.log(a + b + c);
     } else {
-        console.log(`a, b, c는 0보다 커야함`);
-    }
+        console.log(`a, b, c는 0보다 커야함`); // add5(1, 2, -3);
+    }                                         // a, b, c는 0보다 커야함
 }
-console.log(add());
+console.log(add()); // 3
 console.log('----------')
-console.log(add2());
+console.log(add2()); // 3
 console.log('----------')
-console.log(add3());
+console.log(add3()); // 3
 console.log('----------')
-console.log(add4(10, 20));
+console.log(add4(10, 20)); // 30
 console.log('----------')
 add5(1, 2, -3);
-console.log('----------')

@@ -21,4 +21,4 @@ class Animal {
 }
 
 const dog = new Animal('🐶', 'brown')
-dog.display();
+dog.display(); // 🐶

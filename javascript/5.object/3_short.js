@@ -4,8 +4,8 @@ let age = '24';
 const person = {
     name, age
 }
-console.log(person.name);
-console.log(person.age);
+console.log(person.name); // 강현우
+console.log(person.age); // 24
 console.log('----------');
 
 let x = 0; let y = 0;
@@ -18,8 +18,8 @@ let color = 'Red';
 
 const fruits = { fname, emoji, color };
 
-console.log(obj);
-console.log(fruits);
+console.log(obj); // { x: 0, y: 0 } 
+console.log(fruits); // { fname: 'apple', emoji: '🍎', color: 'Red' }
 
 console.log('----------');
 
@@ -29,9 +29,9 @@ function createObj(empno, ename, age) {
     return {empno, ename, age};
 }
 console.log(createObj('1204', '강현우', 24));
-console.log(createObj('0818', '강덕한', 28));
-let emp1 = createObj('1204', '강현우', 24); // {empno : '1204', ename : '강현우', age : 24} 
-let emp2 = createObj('0818', '강덕한', 28); // {empno : '0818', ename : '강덕한', age : 28} 
+console.log(createObj('0818', '강덕한', 28)); 
+let emp1 = createObj('1204', '강현우', 24);  
+let emp2 = createObj('0818', '강덕한', 28); 
 /*
 [
     {empno : '1204', ename : '강현우', age : 24},

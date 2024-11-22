@@ -11,6 +11,17 @@ const apple = {
     getEmoji : function () { console.log(this.emoji); }
 }
 console.log(apple);
-apple.getName();
-apple.getColor();
-apple.getEmoji();
+/*{
+    name: '사과',
+    color: 'Red',
+    emoji: '🍎',
+    display: [Function: display],
+    getName: [Function: getName],
+    getColor: [Function: getColor],
+    getEmoji: [Function: getEmoji]
+} */
+
+apple.getName(); // 사과
+apple.getColor(); // red
+apple.getEmoji(); // 🍎
+

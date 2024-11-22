@@ -13,10 +13,10 @@
 
 // 빌트인 함수 parseInt() 호출
 let a = '100';
-console.log(a, typeof a);
-console.log(parseInt(a), typeof parseInt(a));
-console.log(a + 100); // 앞이 string type이기 때문에 +를 접합연산자로 인식함
-console.log(parseInt(a) + 100);
+console.log(a, typeof a); // 100 string
+console.log(parseInt(a), typeof parseInt(a)); // 100 number
+console.log(a + 100); // 100100 (앞이 string type이기 때문에 +를 접합연산자로 인식함)
+console.log(parseInt(a) + 100); // 200
 console.log('----------');
 
 // 두개의 숫자를 입력받아, 합계를 출력하는 로직 작성
@@ -24,7 +24,7 @@ console.log('----------');
 function add(a, b) { // var a = 호출시 입력되는 값,
     let n1 = parseInt(a);
     let n2 = parseInt(b);
-    console.log(`sum ==> ${n1 + n2}`)
+    console.log(`sum ==> ${n1 + n2}`) 
 }
 
 
@@ -42,11 +42,11 @@ function min(a, b) {
 }
 
 // 함수호출 위치에 결과값 출력
-add(1, 2);
-min(10, 1);
+add(1, 2); // sum ==> 3
+min(10, 1); // sum ==> 9
 
-add('1', '2');
-min('10', '1');
+add('1', '2'); // sum ==> 3
+min('10', '1'); // sum ==> 9
 
 
 

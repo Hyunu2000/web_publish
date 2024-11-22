@@ -9,10 +9,25 @@ function Fruit(name, color, emoji) { // 생성자 함수명은 첫글자를 대�
     this.display = () => console.log(this.emoji);
 }
 
-const apple = new Fruit('apple', 'red', '🍎'); // new => heap에 Fruit타입으로 벨류값이 저장되어 그 주소가 apple(생성한 객체)에 저장된다.
+// new => heap에 Fruit타입으로 벨류값이 저장되어 그 주소가 apple(생성한 객체)에 저장된다.
+const apple = new Fruit('apple', 'red', '🍎'); 
 const orange = new Fruit('orange', 'coral', '🍊');
 console.log(apple);
+/* Fruit {
+    name: 'apple',
+    color: 'red',
+    emoji: '🍎',
+    display: [Function (anonymous)]
+} */
+
 console.log(orange);
+/* Fruit {
+    name: 'orange',
+    color: 'coral',
+    emoji: '🍊',
+    display: [Function (anonymous)]
+} */
+
 
 // // apple : property - name, color : method - display()
 // const apple = {

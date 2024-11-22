@@ -28,22 +28,22 @@ const deleteValue = (object, key) => delete object[key];
 
 setValue(person, 'address', '수원시'); // 새로운 키를 추가할때는 ''를 생략하지 않는다.
 setValue(fruits, 'color', 'red');
-console.log(person);
-console.log(fruits);
+console.log(person); // { name: '강현우', age: 24, job: '개발자', address: '수원시' }
+console.log(fruits); // { name: '사과', emoji: '🍎', color: 'red' }
 console.log('----------');
 
-console.log(getValue(person,'name'));
-console.log(getValue(fruits,'color'));
+console.log(getValue(person,'name')); // 강현우
+console.log(getValue(fruits,'color')); // red
 console.log('----------');
 
 updateValue(person, 'name', '강연우');
 updateValue(fruits, 'color', 'Green');
-console.log(person);
-console.log(fruits);
+console.log(person); // { name: '강연우', age: 24, job: '개발자', address: '수원시' }
+console.log(fruits); // { name: '사과', emoji: '🍎', color: 'Green' }
 console.log('----------');
 
 deleteValue(person, 'age');
 deleteValue(fruits, 'name');
-console.log(person);
-console.log(fruits);
+console.log(person); // { name: '강연우', job: '개발자', address: '수원시' }
+console.log(fruits); // { emoji: '🍎', color: 'Green' }
 

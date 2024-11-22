@@ -5,7 +5,7 @@ function add(a, b) {
     return (parseInt(a) + parseInt(b)); 
 }
 let result = add(1, 2); 
-console.log(`result = ${result}`);
+console.log(`result = ${result}`); // result = 3
 
 /*  이름, 나이를 매개변수로 입력하여, 객체를 생성한 후
     반환하는 함수를 정의해주세요.
@@ -19,9 +19,9 @@ function createObject(name, age) {
 }
 
 let resultObj = createObject('강현우', 24);
-console.log(resultObj);
-console.log(resultObj.name);
-console.log(resultObj.age);
+console.log(resultObj); // { name: '강현우', age: 24 }
+console.log(resultObj.name); // 강현우
+console.log(resultObj.age); // 24
 
 console.log('-----------');
 
@@ -39,7 +39,7 @@ function multi(a, b) {
     return result; // 지역변수를
 }
 let result2 = multi(10, 2); // 전역변수로
-console.log(result2);
+console.log(result2); // 20
 
 // {    전역변수 (Global variable)
 //     let a = undefined;
