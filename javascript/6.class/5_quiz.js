@@ -44,12 +44,12 @@ const hyun = new Student('강현우', '24', '수원시', '한우');
 // console.log(hyun.getAddress());
 // console.log(hyun.getNickname());
 // console.log(`${hyun.getName()}\n${hyun.getAge()}\n${hyun.getAddress()}\n${hyun.getNickname()}`); // \n enter키와 동일한 줄바꿈
-console.log(`${hyun.name}`); // get name() { return this.#name; };
+console.log(`${hyun.name}`); // 강현우 // get name() { return this.#name; };
 hyun.name = '강우현';
 console.log('----------');
 
-hyun.info();
-hyun.infoAll();
+hyun.info(); // 한우
+hyun.infoAll(); // 강우현, 24, 수원시, 한우
 console.log('----------');
 
 // hyun.setName('강우현');

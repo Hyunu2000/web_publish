@@ -1,0 +1,8 @@
+KMDB 인증키 : C8S353S3UMU8P7M4535B
+
+http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2&detail=N&actor=김혜수&ServiceKey=C8S353S3UMU8P7M4535B
+
+
+
+
+

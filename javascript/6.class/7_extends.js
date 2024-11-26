@@ -78,8 +78,27 @@ const smith = new Tiger('smith', 'gray', '🐯', 'meat', 3);
 const judy = new Dog('judy', 'white', '🐶', 'meat', '푸들');
 
 tom.display(); tom.sleep(); tom.eat();
+/*  tom, 🦁
+    tom 가(이) 잔다.
+    tom 가(이) 먹는다. */
 smith.display(); smith.sleep(); smith.eat(); smith.getAge();
+/*  smith, 🐯
+    smith 가(이) 잔다.
+    smith 가(이) 먹는다.
+    3 */
 judy.display(); judy.sleep(); judy.eat(); judy.getType();
-
+/*  judy, 🐶
+    judy 가(이) 잔다.
+    judy 가(이) 먹는다.
+    푸들 */
 const everZoo = new EverZoo(EverZoo.LION, tom);
 console.log(everZoo.type, everZoo.animal);
+/*  1 Lion {
+    display: [Function: display],
+    sleep: [Function: sleep],
+    eat: [Function: eat],
+    name: 'tom',
+    color: 'white',
+    emoji: '🦁',
+    taste: 'meat'
+} */

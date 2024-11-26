@@ -21,14 +21,14 @@ class Employee {
     infoAll = () => console.log(`${this.#empno}, ${this.ename}, ${this.dept}`);
 }
 const kang = new Employee('1204', '강현우', '개발1팀');
-kang.info();
-kang.infoAll();
+kang.info(); // 강현우, 개발1팀
+kang.infoAll(); // 1204, 강현우, 개발1팀
 kang.setEmpno('001204');
-kang.infoAll();
+kang.infoAll(); // 001204, 강현우, 개발1팀
 kang.setEname('강우현');
 kang.setDept('개발2팀');
-kang.infoAll();
+kang.infoAll(); // 001204, 강우현, 개발2팀
 
-console.log(kang.getEmpno());
-console.log(kang.getEname());
-console.log(kang.getDept());
+console.log(kang.getEmpno()); // 001204
+console.log(kang.getEname()); // 강우현
+console.log(kang.getDept()); // 개발2팀

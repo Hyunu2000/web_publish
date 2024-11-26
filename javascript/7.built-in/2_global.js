@@ -5,14 +5,14 @@
 let a = "100.10";
 // a = parseInt(a); // 정수
 a = parseFloat(a);  // 실수
-console.log(typeof a);
-console.log(a);
+console.log(typeof a); // number
+console.log(a); // 100.1
 
 // uri 인코딩 : ex) http://www.naver.com
 let uri = 'http://www.naver.com';
 let encode = encodeURI(uri);
-console.log(uri);
+console.log(uri); // http://www.naver.com
 
 // uri 디코딩
 let decode = decodeURI(encode);
-console.log(decode);
+console.log(decode); // http://www.naver.com
