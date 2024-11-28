@@ -272,7 +272,6 @@ footer {
 .content-moviechart-list ul li img{
     border-radius: 15px;
     width: 170px;
-    height: 250px;
 }
 .content-moviechart-list ul li h3{
     text-align: center;
@@ -286,7 +285,7 @@ footer {
 }
 
 /** 이벤트 섹션 */
-.content-event-special {
+.content-event-special section:first-child {
     /* border: 1px solid red; */
 }
 .content-event-list {
@@ -294,15 +293,9 @@ footer {
     display: flex;
     list-style-type: none;
 }
-.content-event-list img{
-    /* border: 1px solid blue; */
-    width: 300px;
-    border-radius: 10px;
-}
 .content-event-list li {
     /* border: 1px solid blue; */
-    padding: 20px 0;
-    padding-right: 20px;
+    padding: 20px;
 }
 .content-event-list li p {
     /* border: 1px solid blue; */
