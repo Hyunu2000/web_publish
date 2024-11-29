@@ -5,10 +5,10 @@ let [a, b, ...nlist] = numbers;
 /*
     let a = numbers[0];
 */
-console.log(aa);
-console.log(a);
-console.log(b);
-console.log(nlist);
+console.log(aa); // [ 1, 2, 3, 4, 5 ]
+console.log(a); // 1
+console.log(b); // 2
+console.log(nlist); // [ 3, 4, 5 ]
 
 let hong = {
     name: "홍길동",
@@ -25,9 +25,9 @@ let {name, age, address} = hong;
  */
 
 // hong이라는 사람의 정보를 각각의 변수로 정의
-console.log(name);
-console.log(age);
-console.log(address);
+console.log(name); // 홍길동
+console.log(age); // 20
+console.log(address); // 서울시 강남구
 console.log('----------');
 
 // 함수의 반환값을 받아 구조 분해 할당(destructure) 방식으로 정의
@@ -41,8 +41,8 @@ function createEmoji() {
 
 let {color, emoji, fname, price=1000} = createEmoji();
 // let price = 1000;
-console.log(fname, color, emoji, price);
+console.log(fname, color, emoji, price); // apple red 🍎 1000
 
 let flist = ['🍎', '🍊', '🍋'];
 let [apple, orange, lemon] = flist;
-console.log(apple, orange, lemon);
+console.log(apple, orange, lemon); // 🍎 🍊 🍋

@@ -5,6 +5,18 @@ let numbers = [1, 2, 3, 4, 5];
 for(let i=0; i<numbers.length; i++) {
     console.log(`numbers[${i}] = ${numbers[i]}`);
 }
+/*
+numbers[0] = 1
+numbers[1] = 2
+numbers[2] = 3
+numbers[3] = 4
+numbers[4] = 5
+numbers[0] = 1
+numbers[1] = 2
+numbers[2] = 3
+numbers[3] = 4
+numbers[4] = 5
+*/
 
 //forEach +> 순회(iterable) 메소드 지원 
 numbers.forEach((element, i) => console.log(`numbers[${i}] = ${element}`));
@@ -21,4 +33,4 @@ function replace3(array, origin, target) {
 
 let fruits = ['🍎', '🍍', '🍎'];
 let result = replace3(fruits,'🍎', '🍋');
-console.log(result);
+console.log(result); // [ '🍋', '🍍', '🍋' ]

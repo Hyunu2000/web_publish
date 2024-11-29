@@ -12,7 +12,7 @@ function add(...numbers) { // ...numbers[파라미터..] <-- 배열
 }
 
 let sum = add(1, 2, 3, 4, 5, '6');
-console.log(`sum = ${sum}`);
+console.log(`sum = ${sum}`); // sum = 21
 
 // 2. [ ...iterable ]
 let fruit1 = ['🍏', '🍋'];
@@ -22,8 +22,8 @@ let fruit2 = ['🍓', '🍊', '🍉'];
 let fruit3 = fruit1.concat('🍍', fruit2);
 let fruit4 = [...fruit1, '🍍', ...fruit2]; // fruit1, 2의 모든 요소를 가져옴 **...XXX 자주사용함**
 
-console.log(`fruit3 = ${fruit3}`);
-console.log(`fruit4 = ${fruit4}`);
+console.log(`fruit3 = ${fruit3}`); // fruit3 = 🍏,🍋,🍍,🍓,🍊,🍉
+console.log(`fruit4 = ${fruit4}`); // fruit4 = 🍏,🍋,🍍,🍓,🍊,🍉
 
 // 3. { ...iterable }
 const hong = {
@@ -37,4 +37,5 @@ const hongUpdate = {
     job: "개발자"
 }
 
-console.log(hongUpdate);
+console.log(hongUpdate); 
+// { name: '홍길동', age: 20, address: '서울시 강남구', job: '개발자' } 

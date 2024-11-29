@@ -38,8 +38,14 @@ function replace(array, origin, target) {
 
 let fruits = ['🍊', '🍎', '🍓', '🍎', '🍋', '🍎'];
 let result = replace(fruits, '🍎', '🍏'); 
-console.log(result);
+console.log(result); // [ '🍊', '🍏', '🍓', '🍏', '🍋', '🍏' ]
 
 let numbers = [1, 2, 3, 4, 2, 2, 5, 2];
 let result2 = replace(numbers, 2, 7);
 console.log(result2);
+/*
+[
+  1, 7, 3, 4,
+  7, 7, 5, 7
+]
+*/

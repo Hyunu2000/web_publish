@@ -8,8 +8,16 @@ let names = ["홍길동", "김영희", "최철수", "홍길동"];
 let resultObj = filter(numbers);
 let resultObj2 = filter(names);
 console.log(numbers);
-console.log(resultObj);
-console.log(resultObj2);
+/*
+[
+  1, 2, 3, 4, 1, 2,
+  1, 2, 3, 3, 5, 6,
+  7, 8, 9
+]
+*/
+
+console.log(resultObj); // Set(9) { 1, 2, 3, 4, 5, 6, 7, 8, 9 }
+console.log(resultObj2); // Set(3) { '홍길동', '김영희', '최철수' }
 
 console.log('----------');
 // 사원의 이름을 입력받아, 사번을 생성하고 각각의 변수로 반환(구조분해할당)하는 함수 작성
@@ -23,8 +31,8 @@ function createEmployeeNumber(array) {
 
 let employeeNames = ['smith', 'kelly'];
 let [smith, kelly] = createEmployeeNumber(employeeNames); // ['smith_123456', 'kelly_876543']
-console.log(`smith => ${smith}`);
-console.log(`kelly => ${kelly}`);
+console.log(`smith => ${smith}`); // smith => smith_9469599
+console.log(`kelly => ${kelly}`); // kelly => kelly_5596351
 
 
 

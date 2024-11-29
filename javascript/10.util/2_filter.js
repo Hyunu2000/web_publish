@@ -11,7 +11,7 @@ function textFilter2(object) {
 
 let textArray = ['nodeJS', 'javascript', 're', 'ja'];
 let result = textFilter(textArray);
-console.log(result);
+console.log(result); // [ 'nodeJS', 'javascript' ]
 console.log('-----------');
 
 // 2. 숫자 배열을 입력 받아, 짝수, 홀수로 필터링하여 출력하는 함수를 생성해 주세요.
@@ -24,8 +24,8 @@ const oddNumber = (array) => {
 }
 
 let numbers = [1, 2, 3, 4, 5, 6, 7, 8];
-console.log(evenNumber(numbers));
-console.log(oddNumber(numbers));
+console.log(evenNumber(numbers)); // [ 2, 4, 6, 8 ]
+console.log(oddNumber(numbers)); // [ 1, 3, 5, 7 ]
 console.log('-----------');
 
 // 3. 사원의 아이디를 받아서, 7자리 번호를 랜덤하게 생성하여 아이디와 번호를
@@ -48,3 +48,4 @@ const createEmployeeNumber = (array) => {
 const employeeIds = ['hong', 'test', 'abcd', 'test1234', 'hong', 'test'];
 const employeeNumbers = createEmployeeNumber(employeeIds);
 console.log(employeeNumbers);
+// [ 'hong_4132503', 'test_8181548', 'abcd_9462845', 'test1234_956279' ] 

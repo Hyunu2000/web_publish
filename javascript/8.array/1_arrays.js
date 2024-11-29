@@ -26,23 +26,23 @@
 
 // 배열 생성
 let array1 = new Array(2); // 크기 할당
-console.log(array1.length);
-console.log(array1[0]);
-console.log(typeof array1);
+console.log(array1.length); // 2
+console.log(array1[0]); // undefined
+console.log(typeof array1); // object
 
 let array2 = new Array(1,2,3); // 크기 할당 및 초기화
 // let array2 = new Array([1,2,3]);
-console.log(array2[0]);
+console.log(array2[0]); // 1
 
 let array3 = ['🍎', '🍊', '🍋', '🍏'];
-console.log(array3[array3.length-1]); // 마지막 요소 출력
+console.log(array3[array3.length-1]); // 🍏 (마지막 요소 출력)
 
 let obj1 = { name : "홍길동", age : 20 };
 let obj2 = { name : "김철수", age : 21 };
 let objList = [obj1, obj2];
-console.log(objList[0]);
-console.log(objList[0].name); // 홍길동 출력
-console.log(objList[1].name); // 김철수 출력
+console.log(objList[0]); // { name: '홍길동', age: 20 }
+console.log(objList[0].name); // 홍길동 
+console.log(objList[1].name); // 김철수 
 
 
 

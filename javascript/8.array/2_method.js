@@ -1,20 +1,28 @@
 // Array 빌트인 객체의 메소드 익히기 => MDN 사이트 참조
 let array1 = [1, 2, 3, 4, 5];
-console.log(array1[0]); // array1.0 <-- 사용불가
-console.log(array1['0']);  
-console.log(`array1.length = ${array1.length}`);
+console.log(array1[0]); // 1 (array1.0 <-- 사용불가)
+console.log(array1['0']); // 1  
+console.log(`array1.length = ${array1.length}`); // array1.length = 5
 
 let fruits = ['🍏', '🍋'];
-console.log(fruits);
-fruits[fruits.length] = '🍎';// 빨간사과 추가
-console.log(fruits);
+console.log(fruits); // [ '🍏', '🍋' ]
+fruits[fruits.length] = '🍎';
+console.log(fruits); // [ '🍏', '🍋', '🍎' ] 빨간사과 추가
 
 fruits.push('🍊'); // 배열의 마지막에 하나 또는 여러 개의 데이터 추가
-console.log(fruits);
+console.log(fruits); // [ '🍏', '🍋', '🍎', '🍊' ]
 
 // 1. 배열 요소 추가 : push( ietm1...itemN )
 fruits.push('🍍', '🍇', '🍓'); // 이 방식으로 사용 권장
 console.log(fruits);
+/*
+[
+  '🍏', '🍋',
+  '🍎', '🍊',
+  '🍍', '🍇',
+  '🍓'
+]
+*/
 
 // let a = ['🍍', '🍇', '🍓']; // [ '🍏', '🍋', '🍎', '🍊', [ '🍍', '🍇', '🍓' ] ]
 // fruits.push(a);                  // 0      1     2     3              4
@@ -23,17 +31,17 @@ console.log(fruits);
 // 2. fruits 배열의 전체 key값 반환 : Object.keys(인스턴스명)
 // 배열의 key값은 인덱스 주소
 let keyList = Object.keys(fruits);
-console.log(keyList[2]);
+console.log(keyList[2]); // 2
 
 // 3. 배열 요소 삭제
 // 3-1 배열 객체의 마지막 요소 삭제 - pop()
 console.log(fruits); // ['🍏', '🍋','🍎', '🍊','🍍', '🍇','🍓']
 let deleteItem = fruits.pop(); // 삭제된 마지막 요소 저장
 console.log(`deleteItem = ${deleteItem}`); // deleteItem = 🍓
-console.log(fruits);
+console.log(fruits); // [ '🍏', '🍋', '🍎', '🍊', '🍍', '🍇' ]
 console.log('----------');
 // 3-2 배열 객체의 처음 요소 삭제 - shift()
-console.log(fruits.shift());
+console.log(fruits.shift()); // 🍏
 console.log(fruits);
 
 // 3-3 배열 특정요소 삭제 - splice()
@@ -55,11 +63,10 @@ let sfruits1 = fruits.slice(1, 3); // [ '🍋', '🍎', '🍊', '🍍', '🍇' ]
 console.log(sfruits1); // [ '🍎', '🍊' ]
 
 // 3-5 배열 합치기 : concat(배열)
-console.clear();
 let numberList1 = [1, 2, 3];
 let numberList2 = [4, 5, 6];
-console.log(numberList1.concat(numberList2));
-console.log(numberList2.concat(numberList1));
+console.log(numberList1.concat(numberList2)); // [ 1, 2, 3, 4, 5, 6 ]
+console.log(numberList2.concat(numberList1)); // [ 4, 5, 6, 1, 2, 3 ]
 
 // 3-6 배열의 순서 바꾸기 : reverse() => 순서를 거꾸로 출력
 let numbers = [1, 2, 3, 4, 5, 6];
@@ -79,7 +86,7 @@ console.log(fnumbers1.flat(2)); // [ 1, 2, 3, 5, 6, 7, 8 ] 2 level 중첩 해제
 // 3-8 배열의 문자 요소를 하나의 string 문자열로 반환 : join() 
 let textList = ['a', 'b', 'c'];
 console.log(textList);
-console.log(textList.join()); // 문자열 a,b,c 로 반환
+console.log(textList.join()); // a,b,c (문자열 a,b,c 로 반환)
 console.log(textList.join().split(',')); // [ 'a', 'b', 'c' ] 문자 데이터를 배열로 반환
 console.log(textList.join().split(',').join()); // a,b,c
 

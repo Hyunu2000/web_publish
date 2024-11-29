@@ -7,6 +7,11 @@ for(let i=0; i<fruits.length; i++) {
     if(fruits[i] === '🍎') fruits[i] = '🍓';
     console.log(fruits[i]);
 }
+/*
+🍓
+🍍
+🍓
+*/
 
 console.log('----------');
 
@@ -21,9 +26,10 @@ function replace(array, oldValue, newValue) {
     console.log(result);
 }
 
-replace(fruits,'🍎', '🍓');
+replace(fruits,'🍎', '🍓'); 
 let numbers = [1, 2, 3, 1, 2, 1, 5];
 replace(numbers, 1, 9); //array / oldValue / newValue
+// 9       2       3       9       2       9       5 (1을 9로 변경)
 
 // 1-3 함수 : 파라미터(배열객체, old, new)
 // 배열 타입으로 객체를 반환
@@ -37,4 +43,4 @@ function replace2(array, oldValue, newValue) {
 
 let names = ['hong', 'kim', 'park', 'hong'];
 let resultObj = replace2(names, 'hong', 'gong');
-console.log(resultObj);
+console.log(resultObj); // [ 'gong', 'kim', 'park', 'gong' ] (hong을 gong으로 변경)

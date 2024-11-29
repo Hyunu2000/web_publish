@@ -6,13 +6,13 @@ console.log(numbers[2]);
 console.log(numbers[3]); // undefined
 
 numbers[0] = 100;
-console.log(numbers[0]);
+console.log(numbers[0]); // 100
 
 // 자바스크립트에서는 동적으로 배열을 재생성한 후 값을 입력한다.
 // 자바 언어에서는 동적으로 배열을 재생성하지 않는다.
 // ArrayIndexOutOfBoundsException 예외 상황이 발생함
 numbers[9] = 900;
-console.log(numbers[9]);
+console.log(numbers[9]); // 900
 
 let number = 1234;
 

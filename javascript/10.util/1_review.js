@@ -8,6 +8,15 @@
 function display(...params) {
     for(number of params) console.log(number);
 }
+/*
+1
+2
+1
+2
+3
+4
+*/
+
 display(1, 2);
 display(1, 2, 3, 4);
 console.log('----------');
@@ -21,7 +30,7 @@ const hongUpdate = {
     ...hong,
     address: "서울시 강남구"
 };
-console.log(hongUpdate);
+console.log(hongUpdate); // { name: '홍길동', age: 20, address: '서울시 강남구' }
 console.log('----------');
 
 // 2. Destructing Object(구조 분해 할당)
@@ -29,25 +38,34 @@ const getObject = () => {
     return {name: "공유", age: 30}; // {} --> { name, age }
 }
 const { name, age } = getObject();
-console.log(name, age);
+console.log(name, age); // 공유 30
 console.log('----------');
 
 const getObject2 = () => {
     return [ 1, 2, 3 ];
 }
 const [n1, n2, n3]  = getObject2();
-console.log(n1, n2, n3);
+console.log(n1, n2, n3); // 1 2 3
 console.log('----------');
 
 // 3. 인스턴스객체.forEach(콜백함수);
 const numbers = [1, 2, 3];
 numbers.forEach((element) => console.log(element)); // 인덱스가 필요하면 , 후에 i (element, i)
+/*
+1
+2
+3
+*/
 console.log('----------');
 
 const myMap = new Map();
 myMap.set('name', '홍길동');
 myMap.set('age', '20');
 myMap.forEach((value, key) => console.log(key, value));
+/*
+name 홍길동
+age 20
+*/
 // value, key 순서 주의 출력할때는 순서가 상관 없다
 console.log('----------');
 
@@ -57,5 +75,11 @@ mySet.add("홍길동");
 mySet.add("서현진");
 console.log(mySet);
 mySet.forEach((value, key) => console.log(key, value));
+/*
+Set(2) { '홍길동', '서현진' }
+홍길동 홍길동
+서현진 서현진
+*/
+
 // set은 별도의 키를 저장하지 않는다. value 값만 존재
 console.log('----------');
