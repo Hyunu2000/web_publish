@@ -3,7 +3,7 @@ function a() {
     console.log(`-----> a function!!`);
 }  
 function b() {
-    setTimeout(() => { console.log(`1초 후 setTimeout 함수 실행!!`)},3000);
+    setTimeout(() => { console.log(`3초 후 setTimeout 함수 실행!!`)},3000);
     console.log(`-----> b function!!`);
 }  
 function c() {
@@ -12,3 +12,11 @@ function c() {
 }  
 
 a();
+
+/*
+출력 순서
+-----> b function!!
+-----> c function!!
+-----> a function!!
+3초 후 setTimeout 함수 실행!!
+*/

@@ -14,8 +14,8 @@
 let a = 10; 
 const b = 20;
 
-console.log(a);
-console.log(b);
+console.log(a); // 10
+console.log(b); // 20
 
     {
         // 지역 변수, Local Variable
@@ -23,7 +23,7 @@ console.log(b);
         // 반드시 초기화를 진행 
         let aa = 100; 
         const bb = 200;
-        console.log(a, b);
+        console.log(a, b); // 10 20
     }
 // console.log(aa); // 호출 불가
 
@@ -32,4 +32,11 @@ for( let i = 1; i < 6; i++ ) { // i <-- 로컬 변수
     console.log(i);
 }
 
+/*
+1
+2
+3
+4
+5
+*/
 
