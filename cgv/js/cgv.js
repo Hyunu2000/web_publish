@@ -12,7 +12,8 @@ function createMovieChartList(page) {
     // const day = date.getDate()-1;
 
     const searchDt = date.getFullYear().toString()
-                        .concat(date.getMonth()+1,date.getDate()-1);
+                        .concat((date.getMonth()+1).toString().padStart(2, '0'),
+                                (date.getDate()-1).toString().padStart(2, '0'));
 console.log(searchDt);
 
     kobisBoxOffice('Daily', searchDt)
