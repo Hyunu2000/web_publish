@@ -1,22 +1,23 @@
 import PackageContentItem from "./PackageContentItem.jsx";
 import PackageContentTitle from "./PackageContentTitle.jsx";
 
-export default function PackageContent({ title, list }) {
+
+export default function PackageContent({title, list}) {
     return (
-        <section class="package-content-list">
+        <div className="package-content-border">
             <PackageContentTitle title={title} />
             <ul>
-                {list && list.map(item =>
+                {list && list.map(item => 
                     <li>
-                        <PackageContentItem
-                            src='/images/package1.jpg'
-                            alt='package1'
-                            text='PACONNIE A형'
-                            price={item.price}
+                        <PackageContentItem 
+                                src={item.src}
+                                alt={item.alt}
+                                text={item.text}
+                                price={item.price}
                         />
-                    </li>
+                    </li> 
                 )}
             </ul>
-        </section>
+    </div>
     );
 }

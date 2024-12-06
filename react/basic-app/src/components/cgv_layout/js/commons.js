@@ -6,7 +6,6 @@
  * @param {*} url 
  * @returns 
  */
-
 export async function fetchJSON(url) {
     const data = await fetch(url);
     const jsonData = await data.json();

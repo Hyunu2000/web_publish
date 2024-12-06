@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 export default function FooterContent() {
     const [companyInfo, setCompanyInfo] = useState({});
 
-    useEffect(() => {
+    useEffect(()=>{
         fetch("/data/cgv_compinfo.json")
             .then(data => data.json())
             .then(jsonData => setCompanyInfo(jsonData))
@@ -14,7 +14,7 @@ export default function FooterContent() {
         <div class="footer-content">
             <div class="footer-intro">
                 <ul>
-                    {companyInfo.list && companyInfo.list.map(menu =>
+                    {companyInfo.list && companyInfo.list.map(menu => 
                         <li><a href="#">{menu.name}</a></li>
                     )}
                 </ul>
