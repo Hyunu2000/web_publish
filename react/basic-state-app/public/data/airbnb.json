@@ -1,0 +1,44 @@
+[
+    {
+        "img": "https://a0.muscache.com/im/pictures/miso/Hosting-1206692947983125979/original/d9af2fc6-c3ed-423b-9eb1-a3b5b38100d1.jpeg?im_w=720&im_format=avif",
+        "d1": "한국 가평군",
+        "d2": "강변 전망",
+        "d3": "1월 5 ~ 10일",
+        "d4": "₩171,648",
+        "isGood": true,
+        "color": "coral"
+    },
+    {
+        "img": "https://a0.muscache.com/im/pictures/7259d88a-ac45-4b83-940a-c85fe40d373d.jpg?im_w=720&im_format=avif",
+        "d1": "한국 중구",
+        "d2": "해변 및 산 전망",
+        "d3": "12월 15 ~ 20일",
+        "d4": "₩77,600",
+        "isGood": true,
+        "color": "gray"
+    },
+    {
+        "img": "https://a0.muscache.com/im/pictures/e13ac058-ce69-4c48-9a05-f2f71667af93.jpg?im_w=720&im_format=avif",
+        "d1": "한국 서울",
+        "d2": "호수 및 강 전망",
+        "d3": "3월 1일 ~ 6일",
+        "d4": "₩178,024",
+        "color": "gray"
+    },
+    {
+        "img": "https://a0.muscache.com/im/pictures/e13ac058-ce69-4c48-9a05-f2f71667af93.jpg?im_w=720&im_format=avif",
+        "d1": "한국 서울",
+        "d2": "호수 및 강 전망",
+        "d3": "3월 1일 ~ 6일",
+        "d4": "₩178,024",
+        "color": "gray"
+    },
+    {
+        "img": "https://a0.muscache.com/im/pictures/e13ac058-ce69-4c48-9a05-f2f71667af93.jpg?im_w=720&im_format=avif",
+        "d1": "한국 서울",
+        "d2": "호수 및 강 전망",
+        "d3": "3월 1일 ~ 6일",
+        "d4": "₩178,024",
+        "color": "gray"
+    }
+]

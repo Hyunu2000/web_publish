@@ -14,7 +14,7 @@ export default function Special() {
     return (
         <section>
             <div className="content-title-style">
-                <h3>특별관</h3>
+                <h3 className="content-title-style-font">특별관</h3>
                 <button className="total-view-button">전체보기 &gt;</button>
             </div>
             <div className="special-content-list">
