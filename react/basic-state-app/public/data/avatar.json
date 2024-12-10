@@ -1,0 +1,15 @@
+[
+    {
+        "img": "/images/people1.webp",
+        "name": "Smith",
+        "new": true
+    },
+    {
+        "img": "/images/people2.webp",
+        "name": "James"
+    },
+    {
+        "img": "/images/people3.webp",
+        "name": "Kelly"
+    }
+]
