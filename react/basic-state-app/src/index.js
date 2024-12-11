@@ -1,15 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-// import AppCounter from './components/counter/AppCounter.jsx';
-import AppBestSeller from './components/yes24/AppBestSeller.jsx';
+import AppOlive from './components/olive/AppOlive.jsx';
 // import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AppBestSeller />
-    {/* <AppCounter /> */}
+    <AppOlive />
   </React.StrictMode>
 );
 // If you want to start measuring performance in your app, pass a function
