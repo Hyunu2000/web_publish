@@ -8,7 +8,7 @@ export default function Counter({total, click}) {
         click(number, '+');
     }
     function decrement() {
-        (number > 0) ? setNumber(number - 1) : setNumber(number) ;
+        (number > 0) ? setNumber(number - 1) : setNumber(number);
         click(number, '-');
     }
 

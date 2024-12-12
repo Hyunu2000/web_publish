@@ -43,7 +43,55 @@
         "description": "[2024 어워즈/올영쿠션 1위] 정샘물 에센셜 스킨누더 쿠션",
         "price": "45000",
         "sprice": "36000",
+        "isSale": false,
+        "isCoupon": true,
+        "isToday": false
+    },
+    {
+        "id": "p_0005",
+        "rank": "5",
+        "img": "https://image.oliveyoung.co.kr/cfimages/cf-goods/uploads/images/thumbnails/400/10/0000/0021/A00000021349504ko.jpg?l=ko",
+        "title": "메디힐",
+        "description": "[2024어워즈/4년연속 1위] 마녀공장 퓨어 클렌징 오일 300mlX2",
+        "price": "39900",
+        "sprice": "28900",
+        "isSale": false,
+        "isCoupon": true,
+        "isToday": true
+    },
+    {
+        "id": "p_0006",
+        "rank": "6",
+        "img": "https://image.oliveyoung.co.kr/cfimages/cf-goods/uploads/images/thumbnails/400/10/0000/0021/A00000021419126ko.jpg?l=ko",
+        "title": "에스트라",
+        "description": "[세럼1위/6년연속수상/총 120ml 대용량]구달 청귤 비타C 잡티케어",
+        "price": "33000",
+        "sprice": "26000",
         "isSale": true,
+        "isCoupon": true,
+        "isToday": false
+    },
+    {
+        "id": "p_0007",
+        "rank": "7",
+        "img": "https://image.oliveyoung.co.kr/cfimages/cf-goods/uploads/images/thumbnails/400/10/0000/0021/A00000021402112ko.jpg?l=ko",
+        "title": "어노브",
+        "description": "[4년 연속 수상]토리든 다이브인 세럼 50ml",
+        "price": "42000",
+        "sprice": "29800",
+        "isSale": true,
+        "isCoupon": false,
+        "isToday": false
+    },
+    {
+        "id": "p_0008",
+        "rank": "8",
+        "img": "https://image.oliveyoung.co.kr/cfimages/cf-goods/uploads/images/thumbnails/400/10/0000/0021/A00000021415406ko.jpg?l=ko",
+        "title": "정샘물",
+        "description": "[2024어워즈/수분크림]닥터지 레드 블레미쉬 클리어 수딩 크림 ",
+        "price": "45000",
+        "sprice": "36000",
+        "isSale": false,
         "isCoupon": false,
         "isToday": true
     }
