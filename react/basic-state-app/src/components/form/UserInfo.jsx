@@ -1,41 +1,28 @@
 import React, { useState, useRef } from 'react';
+import { validateForm } from '../../apis/validate.js'
 
 export default function UserInfo() {
-    const nameRef = useRef(null);
-    const addressRef = useRef(null);
-    const ageRef = useRef(null);
+    // const nameRef = useRef(null);
+    // const addressRef = useRef(null);
+    // const ageRef = useRef(null);
+    const refs = {
+        'nameRef': useRef(),
+        'addressRef':useRef(),
+        'ageRef': useRef()
+    };
 
-    const init = {'name':'', 'address':'', 'age':''};
+
+    const init = { 'name': '', 'address': '', 'age': '' };
     const [formData, setFormData] = useState(init);
 
     const handleChangeForm = (event) => {
-        const {name, value} = event.target;
-        setFormData({...formData, [name]:value});
-    }
-
-    const validateForm = () => {
-        let result = true;
-        if(nameRef.current.value === '') {
-            alert('이름을 입력해주세요')
-            nameRef.current.focus();
-            result = false;
-        } else if(addressRef.current.value === '') {
-            alert('주소를 입력해주세요')
-            addressRef.current.focus();
-            result = false;
-        } else if(ageRef.current.value === '') {
-            alert('나이를 입력해주세요')
-            ageRef.current.focus();
-            result = false;
-        }
-
-        return result;
+        const { name, value } = event.target;
+        setFormData({ ...formData, [name]: value });
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        
-        if(validateForm()) {
+        if (validateForm(refs)) {
             console.log(formData);
         }
     }
@@ -45,30 +32,30 @@ export default function UserInfo() {
         <div>
             <h1>UserInfo</h1>
             <form name="user-info" onSubmit={handleSubmit}>
-                <ul style={{'listStyleType':'none', 'padding': 0}}>
+                <ul style={{ 'listStyleType': 'none', 'padding': 0 }}>
                     <li>
                         <label>Name</label>
-                        <input  type="text"
-                                name="name"
-                                value={formData.name}
-                                ref={nameRef}
-                                onChange={handleChangeForm} />
+                        <input type="text"
+                            name="name"
+                            value={formData.name}
+                            ref={refs.nameRef}
+                            onChange={handleChangeForm} />
                     </li>
                     <li>
                         <label>Address</label>
-                        <input  type="text"
-                                name="address"
-                                value={formData.address}
-                                ref={addressRef}
-                                onChange={handleChangeForm} />
+                        <input type="text"
+                            name="address"
+                            value={formData.address}
+                            ref={refs.addressRef}
+                            onChange={handleChangeForm} />
                     </li>
                     <li>
                         <label>Age</label>
-                        <input  type="text"
-                                name="age"
-                                value={formData.age}
-                                ref={ageRef}
-                                onChange={handleChangeForm} />
+                        <input type="text"
+                            name="age"
+                            value={formData.age}
+                            ref={refs.ageRef}
+                            onChange={handleChangeForm} />
                     </li>
                     <li>
                         <button type="submit">Send</button>

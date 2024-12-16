@@ -526,6 +526,11 @@ footer {
     outline-color: rgb(25, 237, 68);
 }
 
+.join-form ul li label + span {
+    color: red !important;
+    padding-left: 10px;
+}
+
 /*******************************************
 *  title : join form style
 *  author : kang@naver.com
@@ -593,7 +598,6 @@ footer {
 }
 .join-form ul li:first-child input:focus,
 .join-form ul li input:focus {
-    border: none;
     outline: none;
 }
 .join-form ul li:first-child button,
