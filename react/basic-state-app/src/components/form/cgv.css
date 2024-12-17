@@ -527,7 +527,7 @@ footer {
 }
 
 .join-form ul li label + span {
-    color: red !important;
+    color: red ;
     padding-left: 10px;
 }
 
