@@ -1,0 +1,53 @@
+.container {
+    width: 1000px;
+    margin: auto;
+    /* border: 1px solid red; */
+}
+.container-avatar {
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+
+}
+.container-avatar p {
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0 15px;
+    
+}
+.container-avatar img {
+    width: 130px;
+    height: 200px;
+}
+.container-content {
+    /* border: 1px solid black; */
+    width: 300px;
+    padding: 0 40px;
+    background-color: bisque;
+    text-align: center;
+}
+.container-button {
+    box-sizing: border-box;
+    border: 1px solid red;
+    list-style-type: none;
+    background-color: antiquewhite;
+    padding: 25px 20px ;
+    height: 100%;
+    margin: 0;
+}
+.container-button li {
+    padding: 5px 0;
+}
+.container-bestbook {
+    display: flex;
+    height: 200px;
+    margin: 20px 0;
+}
+.menu-container {
+    /* border: 1px solid red; */
+    width: 1000px;
+    margin: 0;
+    padding: 10px 0;
+}
+/* .container-content span {
+} */
