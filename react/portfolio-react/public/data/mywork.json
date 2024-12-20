@@ -1,0 +1,72 @@
+[
+    {
+        "id": "1",
+        "title": "Project #1",
+        "description": "Front-end Project1",
+        "category": "Front-end",
+        "image": "images/projects/project1.webp"
+    },
+    {
+        "id": "2",
+        "title": "Project #2",
+        "description": "Back-end Project1",
+        "category": "Back-end",
+        "image": "images/projects/project2.webp"
+    },
+    {
+        "id": "3",
+        "title": "Project #3",
+        "description": "Front-end Project2",
+        "category": "Front-end",
+        "image": "images/projects/project3.webp"
+    },
+    {
+        "id": "4",
+        "title": "Project #4",
+        "description": "Back-end Project2",
+        "category": "Back-end",
+        "image": "images/projects/project4.webp"
+    },
+    {
+        "id": "5",
+        "title": "Project #5",
+        "description": "Mobile Project1",
+        "category": "Mobile",
+        "image": "images/projects/project5.webp"
+    },
+    {
+        "id": "6",
+        "title": "Project #6",
+        "description": "Front-end Project3",
+        "category": "Front-end",
+        "image": "images/projects/project6.webp"
+    },
+    {
+        "id": "7",
+        "title": "Project #7",
+        "description": "Mobile Project2",
+        "category": "Mobile",
+        "image": "images/projects/project7.webp"
+    },
+    {
+        "id": "8",
+        "title": "Project #8",
+        "description": "Back-end Project3",
+        "category": "Back-end",
+        "image": "images/projects/project8.webp"
+    },
+    {
+        "id": "9",
+        "title": "Project #9",
+        "description": "Back-end Project4",
+        "category": "Back-end",
+        "image": "images/projects/project8.webp"
+    },
+    {
+        "id": "10",
+        "title": "Project #10",
+        "description": "Mobile Project3",
+        "category": "Mobile",
+        "image": "images/projects/project8.webp"
+    }
+]

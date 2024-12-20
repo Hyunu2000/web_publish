@@ -1,6 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 export default function Skills() {
+    const [skills, setSkills] = useState({
+        codingSkills: [],
+        tools: [],
+        etc: []
+    });
+
+    useEffect(() => {
+        fetch('/data/skills.json')
+            .then(data => data.json())
+            .then(jsonData => setSkills(jsonData))
+            .catch(error => console.log(error));
+    }, []);
+
     return (
         <section id="skill" className="section max-container">
             <h2 className="title">My Skills</h2>
@@ -10,67 +23,43 @@ export default function Skills() {
                 eveniet cupiditate optio natus? Cum, harum eum sint id quod
                 nulla adipisci. Sunt?</p>
             <div className="skills">
+                {/* Coding Skills */}
                 <article className="skills__coding">
                     <h3 className="skill__title">Coding Skills</h3>
                     <ul>
-                        <li className="bar">
-                            <div className="bar__metadata"><span>HTML</span><span>98%</span></div>
-                            <div className="bar__bg">
-                                <div className="bar__value" style={{"width":"98%"}}></div>
-                            </div>
-                        </li>
-                        <li className="bar">
-                            <div className="bar__metadata"><span>CSS</span><span>90%</span></div>
-                            <div className="bar__bg">
-                                <div className="bar__value" style={{"width":"90%"}}></div>
-                            </div>
-                        </li>
-                        <li className="bar">
-                            <div className="bar__metadata"><span>JavaScript</span><span>90%</span></div>
-                            <div className="bar__bg">
-                                <div className="bar__value" style={{"width":"90%"}}></div>
-                            </div>
-                        </li>
-                        <li className="bar">
-                            <div className="bar__metadata"><span>TypeScript</span><span>80%</span></div>
-                            <div className="bar__bg">
-                                <div className="bar__value" style={{"width":"80%"}}></div>
-                            </div>
-                        </li>
-                        <li className="bar">
-                            <div className="bar__metadata"><span>React</span><span>79%</span></div>
-                            <div className="bar__bg">
-                                <div className="bar__value" style={{"width":"79%"}}></div>
-                            </div>
-                        </li>
-                        <li className="bar">
-                            <div className="bar__metadata"><span>NodeJS</span><span>68%</span></div>
-                            <div className="bar__bg">
-                                <div className="bar__value" style={{"width":"68%"}}></div>
-                            </div>
-                        </li>
+                        {skills.codingSkills.map((skill) => (
+                            <li className="bar" key={skill.name}>
+                                <div className="bar__metadata">
+                                    <span>{skill.name}</span><span>{skill.usage}</span>
+                                </div>
+                                <div className="bar__bg">
+                                    <div className="bar__value" style={{ width: skill.usage }}></div>
+                                </div>
+                            </li>
+                        ))}
                     </ul>
                 </article>
+
+                {/* Tools */}
                 <article className="skills__tools">
                     <h3 className="skill__title">Tools</h3>
                     <ul>
-                        <li>Visual Studio Code</li>
-                        <li>IntelliJ</li>
-                        <li>Android Studio Code</li>
-                        <li>iOS development tools</li>
-                        <li>Eclipse</li>
+                        {skills.tools.map((tool, index) => (
+                            <li key={index}>{tool}</li>
+                        ))}
                     </ul>
                 </article>
+
+                {/* Etc */}
                 <article className="skills__etc">
                     <h3 className="skill__title">Etc</h3>
                     <ul>
-                        <li>Git</li>
-                        <li>Scrum Master</li>
-                        <li>SVN</li>
+                        {skills.etc.map((item, index) => (
+                            <li key={index}>{item}</li>
+                        ))}
                     </ul>
                 </article>
             </div>
         </section>
     );
 }
-

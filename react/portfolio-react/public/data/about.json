@@ -1,0 +1,37 @@
+{
+    "major": [
+        {
+            "title": "Front-end",
+            "majorTitle": "HTML, CSS, JavaScript, TypeScript, React, WebAPIs"
+        },
+        {
+            "title": "Mobile",
+            "majorTitle": "Android Studio, React Native, iOS, Swift, Java, Kotlin"
+        },
+        {
+            "title": "Back-end",
+            "majorTitle": "Java, JavaScript, Go, Kotlin, Spring, Spring Boot"
+        },
+        {
+            "title": "Lorem",
+            "majorTitle": "Loremipsum, dolorsit, consecr, adipisi"
+        }
+    ],
+    "job": [
+        {
+            "img": "images/jobs/samsung.png",
+            "companyName": "Samsung",
+            "jobPeriod": "2010 Oct - 2019 Oct"
+        },
+        {
+            "img": "images/jobs/google.png",
+            "companyName": "Google",
+            "jobPeriod": "2019 Oct - 2022 Dec"
+        },
+        {
+            "img": "images/jobs/naver.png",
+            "companyName": "Naver",
+            "jobPeriod": "2022 Dec - Until now"
+        }
+    ]
+}

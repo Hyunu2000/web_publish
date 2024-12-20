@@ -1,0 +1,46 @@
+{
+    "codingSkills": [
+        {
+            "name": "HTML",
+            "usage": "98%"
+        },
+        {
+            "name": "CSS",
+            "usage": "90%"
+        },
+        {
+            "name": "JavaScript",
+            "usage": "90%"
+        },
+        {
+            "name": "TypeScript",
+            "usage": "80%"
+        },
+        {
+            "name": "React",
+            "usage": "79%"
+        },
+        {
+            "name": "NodeJS",
+            "usage": "68%"
+        },
+        {
+            "name": "Lorem ipsum",
+            "usage": "100%"
+        }
+    ],
+    "tools": [
+        "Visual Studio Code",
+        "IntelliJ",
+        "Android Studio Code",
+        "iOS development tools",
+        "Eclipse",
+        "Lorem ipsum"
+    ],
+    "etc": [
+        "Git",
+        "Scrum Master",
+        "SVN",
+        "Lorem ipsum"
+    ]
+}
