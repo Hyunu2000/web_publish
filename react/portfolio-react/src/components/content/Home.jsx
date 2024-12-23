@@ -7,9 +7,9 @@ export default function Home() {
                     src="https://eposu.com/wp-content/uploads/2024/09/Universe-Depicted-Sengai-71419.png"
                     alt="portfolio"/>
             <h2 className="home__title">Hello <br/> I'm
-                <strong className="home__title--strong">Dream Coder</strong>, Hyunu
+                <strong className="home__title--strong"> Dream Coder</strong>, Hyunu
             </h2>
-            <p className="home__description">A software engineer currently residing in Seoul, South Korea</p>
+            <p className="home__description">A software engineer currently residing in Suwon, South Korea</p>
             <a className="home__contact" href="#contact">Contact Me</a>
         </section>
     );

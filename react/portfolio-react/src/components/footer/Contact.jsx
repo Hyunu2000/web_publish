@@ -4,7 +4,7 @@ export default function Contact() {
     return (
         <footer id="contact" className="section">
             <h2 className="title">Let's talk</h2>
-            <p className="description">jeon.developer.judy@gmail.com</p>
+            <p className="description">hyunuhyunu@gmail.com</p>
             <ul className="contact__links">
                 <li>
                     <a className="contact__link" href="http://github.com"><i className="fa-brands fa-github"></i></a>
@@ -13,7 +13,7 @@ export default function Contact() {
                     <a className="contact__link" href="http://linkedin.com"><i className="fa-brands fa-linkedin"></i></a>
                 </li>
             </ul>
-            <p>Dream Software Engineer Judy - All right reserved</p>
+            <p>Dream Software Engineer Hyunu - All right reserved</p>
         </footer>
     );
 }
