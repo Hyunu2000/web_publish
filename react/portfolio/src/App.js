@@ -23,6 +23,73 @@ import Bottom from './components/footer/Bottom.jsx';
 
 
 export default function App() {
+  const sectionList = [
+    {
+      "id": "about",
+      "title": "About me",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure natus, temporibus perspiciatis repudiandae nostrum modi doloremque expedita non eius ipsum! Beatae porro adipisci omnis architecto dignissimos. Iusto ipsa inventore adipisci.",
+      "children": [
+        { "component": "Majors" },
+        { "component": "Jobs" }
+      ]
+    },
+    {
+      "id": "skill",
+      "title": "My Skills",
+      "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis beatae, aliquid ratione commodi nam ex voluptate rem eveniet cupiditate optio natus? Cum, harum eum sint id quod nulla adipisci. Sunt?",
+      "children": [
+        {
+          "component": "Skills",
+          "children": [
+            { "component": "Coding" },
+            { "component": "Article", "props": { "type": "Tools" } },
+            { "component": "Article", "props": { "type": "Etc" } }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "work",
+      "title": "My work",
+      "description": "Projects",
+      "children": [
+        { "component": "Categories" },
+        { "component": "Projects" }
+      ]
+    },
+    {
+      "id": "testimonial",
+      "title": "Testimonial",
+      "description": "See what they say about me",
+      "children": [
+        { "component": "Testimonials" }
+      ]
+    }
+  ];
+
+  const componentMap = {
+    Majors,
+    Jobs,
+    Skills,
+    Coding,
+    Article,
+    Categories,
+    Projects,
+    Testimonials
+  };
+
+  //자식 컴포넌트 렌더링 :: 재귀함수
+  const renderComponent = (childObj) => {
+    const Component = componentMap[childObj.component];
+    if (!Component) return null;
+
+    return (
+      <Component key={childObj.component + JSON.stringify(childObj.props || {})} {...(childObj.props || {})}>
+        {childObj.children && childObj.children.map((childObj) => renderComponent(childObj))}
+      </Component>
+    );
+  };
+
   return (
     <>
       <Header>
@@ -32,28 +99,19 @@ export default function App() {
       </Header>
       <Content>
         <Home img="images/aaa.png" name="Hyunu" />
-        <SectionWrap id="about" title="About me" description="Lorem ipsum dolor, sit amet consectetur adipisicing elit.Nobis beatae, aliquid ratione commodi nam ex voluptate remeveniet cupiditate optio natus? Cum, harum eum sint id quodnulla adipisci. Sunt?">
-          <Majors />
-          <Jobs />
-        </SectionWrap>
-        <SectionWrap id="skill" title="My Skills" description="Lorem ipsum dolor, sit amet consectetur adipisicing elit.Nobis beatae, aliquid ratione commodi nam ex voluptate remeveniet cupiditate optio natus? Cum, harum eum sint id quodnulla adipisci. Sunt?">
-          <Skills>
-            <Coding />
-            <Article type="Tools" />
-            <Article type="Etc" />
-          </Skills>
-        </SectionWrap>
-        <SectionWrap id="work" title="Mywork" description="Projects">
-          <Categories />
-          <Projects />
-        </SectionWrap>
-        <SectionWrap id="testimonial" title="Testimonial" description="See what they say about me">
-          <Testimonials />
-          <Arrow />
-        </SectionWrap>
+        {sectionList && sectionList.map((section) => (
+          <SectionWrap
+            key={section.id}
+            id={section.id}
+            title={section.title}
+            description={section.description}>
+            {section.children.map((child) => renderComponent(child))}
+          </SectionWrap>
+        ))}
+        <Arrow />
       </Content>
       <Footer>
-        <Top title="Let's talk" description="hyunuhyunu@gmail.com"/>
+        <Top title="Let's talk" description="hyunuhyunu@gmail.com" />
         <ContactLinks />
         <Bottom />
       </Footer>
