@@ -135,6 +135,10 @@ button {
     color: var(--color-text);
     border: 2px solid transparent;
 }
+.header__menu__item.active {
+    border: 2px solid var(--color-blue);
+    border-radius: 4px;
+}
 
 .header__menu__item:hover {
     border: 2px solid var(--color-blue);
