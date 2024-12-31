@@ -90,49 +90,43 @@ SELECT ORDER_ID, CUSTOMER_ID, EMPLOYEE_ID, ORDER_DATE, SUB_TOTAL, DELIVERY_FEE, 
 **/
 /** customer 테이블 사용 **/
 -- Q01) 고객의 포인트 합을 조회하세요.
-
+SELECT SUM(POINT) FROM CUSTOMER;
 -- Q02) '서울' 지역 고객의 포인트 합을 조회하세요.
-
+SELECT SUM(POINT) FROM CUSTOMER WHERE CITY = '서울';
 -- Q03) '서울' 지역 고객의 수를 조회하세요.
-
+SELECT COUNT(*) FROM CUSTOMER WHERE CITY = '서울';
 -- Q04) '서울' 지역 고객의 포인트 합과 평균을 조회하세요.
-     
+SELECT SUM(POINT), AVG(POINT) FROM CUSTOMER WHERE CITY = '서울';
 -- Q05) '서울' 지역 고객의 포인트 합, 평균, 최댓값, 최솟값을 조회하세요.
-
+SELECT SUM(POINT), AVG(POINT), MAX(POINT), MIN(POINT) FROM CUSTOMER WHERE CITY = '서울';
 -- Q06) 남녀별 고객의 수를 조회하세요.
-
+SELECT GENDER, COUNT(*) FROM CUSTOMER GROUP BY GENDER;
 -- Q07) 지역별 고객의 수를 조회하세요.
 --      단, 지역 이름을 기준으로 오름차순 정렬해서 조회하세요.
-
- 
+SELECT CITY, COUNT(*) FROM CUSTOMER GROUP BY CITY ORDER BY CITY ASC;
 -- Q08) 지역별 고객의 수를 조회하세요.
 --      단, 고객의 수가 10명 이상인 행만 지역 이름을 기준으로 오름차순 정렬해서 조회하세요.
-   
-    
+SELECT CITY, COUNT(*) FROM CUSTOMER GROUP BY CITY HAVING COUNT(*) >= 10 ORDER BY CITY ASC;    
 -- Q09) 남녀별 포인트 합을 조회하세요.
-    
+SELECT GENDER, SUM(POINT) FROM CUSTOMER GROUP BY GENDER;
 -- Q10) 지역별 포인트 합을 조회하세요.
 --      단, 지역 이름을 기준으로 오름차순 정렬해서 조회하세요.
-    
+SELECT CITY, SUM(POINT) FROM CUSTOMER GROUP BY CITY ORDER BY CITY ASC;
 -- Q11) 지역별 포인트 합을 조회하세요.
 --      단, 포인트 합이 1,000,000 이상인 행만 포인트 합을 기준으로 내림차순 정렬해서 조회하세요.
-
-      
+SELECT CITY, SUM(POINT) FROM CUSTOMER GROUP BY CITY HAVING SUM(POINT) >= 1000000 ORDER BY SUM(POINT) DESC;
 -- Q12) 지역별 포인트 합을 조회하세요.
 --      단, 포인트 합을 기준으로 내림차순 정렬해서 조회하세요.
-   
-
+SELECT CITY, SUM(POINT) FROM CUSTOMER GROUP BY CITY ORDER BY SUM(POINT) DESC;
 -- Q13) 지역별 고객의 수, 포인트 합을 조회하세요.
 --      단, 지역 이름을 기준으로 오름차순 정렬해서 조회하세요.
-
-
+SELECT CITY, COUNT(*), SUM(POINT) FROM CUSTOMER GROUP BY CITY ORDER BY CITY ASC;
 -- Q14) 지역별 포인트 합, 포인트 평균을 조회하세요.
 --      단, 포인트가 NULL이 아닌 고객을 대상으로 하며, 지역 이름을 기준으로 오름차순 정렬해서 조회하세요.
-
+SELECT CITY, SUM(POINT), AVG(POINT) FROM CUSTOMER WHERE POINT IS NOT NULL GROUP BY CITY ORDER BY CITY ASC;
 -- Q15) '서울', '부산', '대구' 지역 고객의 지역별, 남녀별 포인트 합과 평균을 조회하세요.
 --      단, 지역 이름을 기준으로 오름차순, 같은 지역은 성별을 기준으로 오름차순 정렬해서 조회하세요.
-
-
+SELECT CITY, GENDER, SUM(POINT), AVG(POINT) FROM CUSTOMER WHERE CITY IN ('서울', '부산', '대구') GROUP BY CITY, GENDER ORDER BY CITY ASC, GENDER ASC;
 /** order_header 테이블 사용 **/
     
 -- Q16) 2019년 1월 주문에 대하여 고객아이디별 전체금액 합을 조회하세요.
