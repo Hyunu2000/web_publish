@@ -126,26 +126,51 @@ SELECT CITY, COUNT(*), SUM(POINT) FROM CUSTOMER GROUP BY CITY ORDER BY CITY ASC;
 SELECT CITY, SUM(POINT), AVG(POINT) FROM CUSTOMER WHERE POINT IS NOT NULL GROUP BY CITY ORDER BY CITY ASC;
 -- Q15) '서울', '부산', '대구' 지역 고객의 지역별, 남녀별 포인트 합과 평균을 조회하세요.
 --      단, 지역 이름을 기준으로 오름차순, 같은 지역은 성별을 기준으로 오름차순 정렬해서 조회하세요.
-SELECT CITY, GENDER, SUM(POINT), AVG(POINT) FROM CUSTOMER WHERE CITY IN ('서울', '부산', '대구') GROUP BY CITY, GENDER ORDER BY CITY ASC, GENDER ASC;
-/** order_header 테이블 사용 **/
-    
+SELECT CITY, GENDER, SUM(POINT), AVG(POINT) FROM CUSTOMER WHERE CITY IN ('서울', '부산', '대구') 
+GROUP BY CITY, GENDER ORDER BY CITY ASC, GENDER ASC;
+
+/** order_header 테이블 사용 **/    
 -- Q16) 2019년 1월 주문에 대하여 고객아이디별 전체금액 합을 조회하세요.
-
-
+SELECT customer_id, SUM(total_due) AS total_amount
+FROM order_header
+WHERE order_date BETWEEN '2019-01-01' AND '2019-01-31'
+GROUP BY customer_id;
 -- Q17) 주문연도별 전체금액 합계를 조회하세요.
-
+SELECT YEAR(order_date) AS order_year, SUM(total_due) AS total_amount
+FROM order_header
+GROUP BY YEAR(order_date);
 -- Q18) 2019.01 ~ 2019.06 기간 주문에 대하여 주문연도별, 주문월별 전체금액 합을 조회하세요.
-
+SELECT YEAR(order_date) AS order_year, MONTH(order_date) AS order_month, SUM(total_due) AS total_amount
+FROM order_header
+WHERE order_date BETWEEN '2019-01-01' AND '2019-06-30'
+GROUP BY YEAR(order_date), MONTH(order_date)
+ORDER BY order_year, order_month;
 -- Q19) 2019.01 ~ 2019.06 기간 주문에 대하여 주문연도별, 주문월별 전체금액 합과 평균을 조회하세요.
-
+SELECT YEAR(order_date) AS order_year, MONTH(order_date) AS order_month, SUM(total_due) AS total_amount, 
+AVG(total_due) AS average_amount FROM order_header
+WHERE order_date >= '2019-01-01' AND order_date <= '2019-06-30'
+GROUP BY YEAR(order_date), MONTH(order_date)
+ORDER BY order_year, order_month;
 -- Q20) 주문연도별, 주문월별 전체금액 합과 평균을 조회하고, rollup 함수를 이용하여 소계와 총계를 출력해주세요.
-
-
+SELECT YEAR(order_date) AS order_year, 
+       MONTH(order_date) AS order_month, 
+       SUM(total_due) AS total_amount, 
+       AVG(total_due) AS average_amount
+FROM order_header
+GROUP BY YEAR(order_date), MONTH(order_date) 
+WITH ROLLUP
+ORDER BY order_year, order_month;
 /**
 	테이블 조인
 */
 -- Q01) 전체금액이 8,500,000 이상인 주문의 주문번호, 고객아이디, 사원번호, 주문일시, 전체금액을 조회하세요.
+SELECT order_id, customer_id, employee_id, order_date, total_due
+FROM order_header WHERE total_due >= 8500000;
 -- Q02) 위에서 작성한 쿼리문을 복사해 붙여 넣은 후 고객이름도 같이 조회되게 수정하세요.
+SELECT oh.order_id, oh.customer_id, c.customer_name, oh.employee_id, oh.order_date, oh.total_due
+FROM order_header oh
+JOIN customer c ON oh.customer_id = c.customer_id
+WHERE oh.total_due >= 8500000;
 -- Q03) Q01 쿼리를 복사해 붙여 넣은 후 직원이름도 같이 조회되게 수정하세요.
 -- Q04) 위에서 작성한 쿼리문을 복사해 붙여 넣은 후 고객이름, 직원이름도 같이 조회되게 수정하세요.
 -- Q05) 위에서 작성한 쿼리문을 복사해 붙여 넣은 후 전체금액이 8,500,000 이상인 '서울' 지역 고객만 조회되게 수정하세요.
