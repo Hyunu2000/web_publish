@@ -31,7 +31,6 @@ select customer_name, customer_id, gender, city, phone, point from customer wher
 select customer_name, customer_id, gender, city, phone, point from customer where point >= 500000;
 -- Q12) 이름에 공백이 들어간 고객의 이름, 아이디, 성별, 지역, 전화번호, 포인트를 조회하세요.
 SELECT customer_name, customer_id, gender, city, phone, point FROM customer WHERE customer_name LIKE '% %';
-
 -- Q13) 전화번호가 010으로 시작하지 않는 고객의 이름, 아이디, 성별, 지역, 전화번호, 포인트를 조회하세요.
 SELECT customer_name, customer_id, gender, city, phone, point FROM customer 
 		WHERE phone NOT LIKE '010%';
@@ -131,58 +130,96 @@ GROUP BY CITY, GENDER ORDER BY CITY ASC, GENDER ASC;
 
 /** order_header 테이블 사용 **/    
 -- Q16) 2019년 1월 주문에 대하여 고객아이디별 전체금액 합을 조회하세요.
-SELECT customer_id, SUM(total_due) AS total_amount
-FROM order_header
-WHERE order_date BETWEEN '2019-01-01' AND '2019-01-31'
-GROUP BY customer_id;
+SELECT CUSTOMER_ID, SUM(TOTAL_DUE) AS TOTAL_AMOUNT
+FROM ORDER_HEADER
+WHERE ORDER_DATE BETWEEN '2019-01-01' AND '2019-01-31'
+GROUP BY CUSTOMER_ID;
 -- Q17) 주문연도별 전체금액 합계를 조회하세요.
-SELECT YEAR(order_date) AS order_year, SUM(total_due) AS total_amount
-FROM order_header
-GROUP BY YEAR(order_date);
+SELECT YEAR(ORDER_DATE) AS ORDER_YEAR, SUM(TOTAL_DUE) AS TOTAL_AMOUNT
+FROM ORDER_HEADER
+GROUP BY YEAR(ORDER_DATE);
 -- Q18) 2019.01 ~ 2019.06 기간 주문에 대하여 주문연도별, 주문월별 전체금액 합을 조회하세요.
-SELECT YEAR(order_date) AS order_year, MONTH(order_date) AS order_month, SUM(total_due) AS total_amount
-FROM order_header
-WHERE order_date BETWEEN '2019-01-01' AND '2019-06-30'
-GROUP BY YEAR(order_date), MONTH(order_date)
-ORDER BY order_year, order_month;
+SELECT YEAR(ORDER_DATE) AS ORDER_YEAR, MONTH(ORDER_DATE) AS ORDER_MONTH, SUM(TOTAL_DUE) AS TOTAL_AMOUNT
+FROM ORDER_HEADER
+WHERE ORDER_DATE BETWEEN '2019-01-01' AND '2019-06-30'
+GROUP BY YEAR(ORDER_DATE), MONTH(ORDER_DATE)
+ORDER BY ORDER_YEAR, ORDER_MONTH;
 -- Q19) 2019.01 ~ 2019.06 기간 주문에 대하여 주문연도별, 주문월별 전체금액 합과 평균을 조회하세요.
-SELECT YEAR(order_date) AS order_year, MONTH(order_date) AS order_month, SUM(total_due) AS total_amount, 
-AVG(total_due) AS average_amount FROM order_header
-WHERE order_date >= '2019-01-01' AND order_date <= '2019-06-30'
-GROUP BY YEAR(order_date), MONTH(order_date)
-ORDER BY order_year, order_month;
+SELECT YEAR(ORDER_DATE) AS ORDER_YEAR, MONTH(ORDER_DATE) AS ORDER_MONTH, SUM(TOTAL_DUE) AS TOTAL_AMOUNT, 
+AVG(TOTAL_DUE) AS AVERAGE_AMOUNT FROM ORDER_HEADER
+WHERE ORDER_DATE >= '2019-01-01' AND ORDER_DATE <= '2019-06-30'
+GROUP BY YEAR(ORDER_DATE), MONTH(ORDER_DATE)
+ORDER BY ORDER_YEAR, ORDER_MONTH;
 -- Q20) 주문연도별, 주문월별 전체금액 합과 평균을 조회하고, rollup 함수를 이용하여 소계와 총계를 출력해주세요.
-SELECT YEAR(order_date) AS order_year, 
-       MONTH(order_date) AS order_month, 
-       SUM(total_due) AS total_amount, 
-       AVG(total_due) AS average_amount
-FROM order_header
-GROUP BY YEAR(order_date), MONTH(order_date) 
+SELECT YEAR(ORDER_DATE) AS ORDER_YEAR, 
+       MONTH(ORDER_DATE) AS ORDER_MONTH, 
+       SUM(TOTAL_DUE) AS TOTAL_AMOUNT, 
+       AVG(TOTAL_DUE) AS AVERAGE_AMOUNT
+FROM ORDER_HEADER
+GROUP BY YEAR(ORDER_DATE), MONTH(ORDER_DATE) 
 WITH ROLLUP
-ORDER BY order_year, order_month;
+ORDER BY ORDER_YEAR, ORDER_MONTH;
 /**
 	테이블 조인
 */
 -- Q01) 전체금액이 8,500,000 이상인 주문의 주문번호, 고객아이디, 사원번호, 주문일시, 전체금액을 조회하세요.
-SELECT order_id, customer_id, employee_id, order_date, total_due
-FROM order_header WHERE total_due >= 8500000;
+SELECT ORDER_ID, CUSTOMER_ID, EMPLOYEE_ID, ORDER_DATE, TOTAL_DUE
+	FROM ORDER_HEADER
+	WHERE TOTAL_DUE >= 8500000;
 -- Q02) 위에서 작성한 쿼리문을 복사해 붙여 넣은 후 고객이름도 같이 조회되게 수정하세요.
-SELECT oh.order_id, oh.customer_id, c.customer_name, oh.employee_id, oh.order_date, oh.total_due
-FROM order_header oh
-JOIN customer c ON oh.customer_id = c.customer_id
-WHERE oh.total_due >= 8500000;
+SELECT OH.ORDER_ID, OH.CUSTOMER_ID, C.CUSTOMER_NAME, OH.EMPLOYEE_ID, OH.ORDER_DATE, OH.TOTAL_DUE
+	FROM ORDER_HEADER OH INNER JOIN CUSTOMER C
+	ON OH.CUSTOMER_ID = C.CUSTOMER_ID
+	WHERE OH.TOTAL_DUE >= 8500000;
 -- Q03) Q01 쿼리를 복사해 붙여 넣은 후 직원이름도 같이 조회되게 수정하세요.
+SELECT OH.ORDER_ID, OH.CUSTOMER_ID, C.CUSTOMER_NAME, OH.EMPLOYEE_ID, E.EMPLOYEE_NAME, OH.ORDER_DATE, OH.TOTAL_DUE
+	FROM ORDER_HEADER OH 
+	INNER JOIN CUSTOMER C ON OH.CUSTOMER_ID = C.CUSTOMER_ID
+	INNER JOIN EMPLOYEE E ON OH.EMPLOYEE_ID = E.EMPLOYEE_ID
+	WHERE OH.TOTAL_DUE >= 8500000;
 -- Q04) 위에서 작성한 쿼리문을 복사해 붙여 넣은 후 고객이름, 직원이름도 같이 조회되게 수정하세요.
+	-- Q03과 동일한 답
 -- Q05) 위에서 작성한 쿼리문을 복사해 붙여 넣은 후 전체금액이 8,500,000 이상인 '서울' 지역 고객만 조회되게 수정하세요.
+SELECT OH.ORDER_ID, OH.CUSTOMER_ID, C.CUSTOMER_NAME, OH.EMPLOYEE_ID, E.EMPLOYEE_NAME, OH.ORDER_DATE, OH.TOTAL_DUE
+	FROM ORDER_HEADER OH 
+	INNER JOIN CUSTOMER C ON OH.CUSTOMER_ID = C.CUSTOMER_ID
+	INNER JOIN EMPLOYEE E ON OH.EMPLOYEE_ID = E.EMPLOYEE_ID
+	WHERE OH.TOTAL_DUE >= 8500000 AND C.CITY = '서울';
 -- Q06) 위에서 작성한 쿼리문을 복사해 붙여 넣은 후 전체금액이 8,500,000 이상인 '서울' 지역 '남자' 고객만 조회되게 수정하세요.
+SELECT OH.ORDER_ID, OH.CUSTOMER_ID, C.CUSTOMER_NAME, OH.EMPLOYEE_ID, E.EMPLOYEE_NAME, OH.ORDER_DATE, OH.TOTAL_DUE
+	FROM ORDER_HEADER OH 
+	INNER JOIN CUSTOMER C ON OH.CUSTOMER_ID = C.CUSTOMER_ID
+	INNER JOIN EMPLOYEE E ON OH.EMPLOYEE_ID = E.EMPLOYEE_ID
+	WHERE OH.TOTAL_DUE >= 8500000 AND C.CITY = '서울' AND C.GENDER = 'M';
 -- Q07) 주문수량이 30개 이상인 주문의 주문번호, 상품코드, 주문수량, 단가, 지불금액을 조회하세요.
+SELECT ORDER_ID, PRODUCT_ID, ORDER_QTY, UNIT_PRICE, LINE_TOTAL
+	FROM ORDER_DETAIL
+	WHERE ORDER_QTY >= 30;
 -- Q08) 위에서 작성한 쿼리문을 복사해서 붙여 넣은 후 상품이름도 같이 조회되도록 수정하세요.
+SELECT OD.ORDER_ID, OD.PRODUCT_ID, P.PRODUCT_NAME, OD.ORDER_QTY, OD.UNIT_PRICE, LINE_TOTAL
+	FROM ORDER_DETAIL OD INNER JOIN PRODUCT P 
+    ON OD.PRODUCT_ID = P.PRODUCT_ID
+	WHERE OD.ORDER_QTY >= 30;
 -- Q09) 상품코드, 상품이름, 소분류아이디를 조회하세요.
+SELECT PRODUCT_ID, PRODUCT_NAME, SUB_CATEGORY_ID FROM PRODUCT;
 -- Q10) 위에서 작성한 쿼리문을 복사해서 붙여 넣은 후 소분류이름, 대분류아이디가 조회되게 수정하세요.
+SELECT P.PRODUCT_ID, P.PRODUCT_NAME, P.SUB_CATEGORY_ID, SC.SUB_CATEGORY_NAME, SC.CATEGORY_ID
+	FROM PRODUCT P INNER JOIN SUB_CATEGORY SC
+	ON P.SUB_CATEGORY_ID = SC.SUB_CATEGORY_ID;
 -- Q11) 다정한 사원이 2019년에 주문한 상품명을 모두 출력해주세요.
+SELECT P.PRODUCT_NAME
+	FROM ORDER_HEADER OH
+	INNER JOIN ORDER_DETAIL OD ON OH.ORDER_ID = OD.ORDER_ID
+	INNER JOIN PRODUCT P ON OD.PRODUCT_ID = P.PRODUCT_ID
+	INNER JOIN EMPLOYEE E ON OH.EMPLOYEE_ID = E.EMPLOYEE_ID
+	WHERE E.EMPLOYEE_NAME = '다정한'
+	AND OH.ORDER_DATE LIKE '2019%';
 -- Q12) 청소기를 구입한 고객아이디, 사원번호, 주문번호, 주문일시를 조회하세요.
-    
-
+SELECT OH.CUSTOMER_ID, OH.EMPLOYEE_ID, OH.ORDER_ID, OH.ORDER_DATE
+	FROM ORDER_HEADER OH
+	INNER JOIN ORDER_DETAIL OD ON OH.ORDER_ID = OD.ORDER_ID
+	INNER JOIN PRODUCT P ON OD.PRODUCT_ID = P.PRODUCT_ID
+	WHERE P.PRODUCT_NAME LIKE '%청소기%';
 /**
 	서브쿼리
 */
