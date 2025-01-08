@@ -223,16 +223,54 @@ SELECT OH.CUSTOMER_ID, OH.EMPLOYEE_ID, OH.ORDER_ID, OH.ORDER_DATE
 /**
 	서브쿼리
 */
--- Q13) 'mtkim', 'odoh', 'soyoukim', 'winterkim' 고객 주문의 주문번호, 고객아이디, 주문일시, 전체금액을 조회하세요.    
+-- Q13) 'mtkim', 'odoh', 'soyoukim', 'winterkim' 고객 주문의 주문번호, 고객아이디, 주문일시, 전체금액을 조회하세요. 
+SELECT OH.ORDER_ID, OH.CUSTOMER_ID, OH.ORDER_DATE, OH.TOTAL_DUE
+	FROM ORDER_HEADER OH
+	WHERE OH.CUSTOMER_ID IN ('MTKIM', 'ODOH', 'SOYOUKIM', 'WINTERKIM');
 -- Q14) '전주' 지역 고객의 아이디를 조회하세요.    
+SELECT C.CUSTOMER_ID
+	FROM CUSTOMER C
+	WHERE C.CITY = '전주';
 -- Q15) 위 두 쿼리문을 조합해서 하위 쿼리를 사용해 '전주' 지역 고객 주문의 주문번호, 고객아이디, 주문일시, 전체금액을 조회하세요.
+SELECT OH.ORDER_ID, OH.CUSTOMER_ID, OH.ORDER_DATE, OH.TOTAL_DUE
+	FROM ORDER_HEADER OH
+	WHERE OH.CUSTOMER_ID IN 
+    (SELECT C.CUSTOMER_ID
+		FROM CUSTOMER C
+		WHERE C.CITY = '전주');
 -- Q16) 고객의 포인트 최댓값을 조회하세요.
+SELECT MAX(C.POINT) AS MAX_POINT
+	FROM CUSTOMER C;
 -- Q17) 하위 쿼리를 사용해 가장 포인트가 많은 고객의 이름, 아이디, 등록일, 포인트를 조회하세요.
+SELECT C.CUSTOMER_NAME, C.CUSTOMER_ID, C.REGISTER_DATE, C.POINT
+	FROM CUSTOMER C
+	WHERE C.POINT = 
+			(SELECT MAX(C2.POINT)
+				FROM CUSTOMER C2);
 -- Q18) 하위 쿼리를 사용해 홍길동(gdhong) 고객보다 포인트가 많은 고객 이름, 아이디, 등록일, 포인트를 조회하세요.
+SELECT C.CUSTOMER_NAME, C.CUSTOMER_ID, C.REGISTER_DATE, C.POINT
+	FROM CUSTOMER C
+	WHERE C.POINT > 
+		(SELECT C2.POINT
+			FROM CUSTOMER C2
+			WHERE C2.CUSTOMER_ID = 'GDHONG');
 -- Q19) 하위 쿼리를 사용해 홍길동(gdhong) 고객과 같은 지역의 고객 이름, 아이디, 지역, 등록일, 포인트를 조회하세요.
 --      단, 고객 이름을 기준으로 오름차순 정렬해서 조회하세요.
+SELECT C.CUSTOMER_NAME, C.CUSTOMER_ID, C.CITY, C.REGISTER_DATE, C.POINT
+	FROM CUSTOMER C
+	WHERE C.CITY = 
+		(SELECT C2.CITY
+			FROM CUSTOMER C2
+			WHERE C2.CUSTOMER_ID = 'GDHONG')
+	ORDER BY C.CUSTOMER_NAME;
 -- Q20) 하위 쿼리를 사용해 홍길동(gdhong) 고객보다 포인트가 많은 고객 이름, 아이디, 등록일, 포인트를 조회하고, 행번호를 추가하여 출력하세요.
-
+SELECT ROW_NUMBER() OVER (ORDER BY C.POINT DESC) AS ROW_NO,
+       C.CUSTOMER_NAME, C.CUSTOMER_ID, C.REGISTER_DATE, C.POINT
+		FROM CUSTOMER C
+		WHERE C.POINT > 
+			(SELECT C2.POINT
+				FROM CUSTOMER C2
+				WHERE C2.CUSTOMER_ID = 'GDHONG');
     
 
 
