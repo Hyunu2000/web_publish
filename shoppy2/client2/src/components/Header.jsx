@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FiShoppingBag } from "react-icons/fi";
 
 
-export default function Header() {
+export default function Header({cartCount}) {
     return (
         <div className='header-outer'>
             <div className='header'>
@@ -13,7 +13,7 @@ export default function Header() {
                 </Link>
                 <nav className='header-right'>
                     <Link to='/all'>Products</Link>
-                    <Link to='/cart'>MyCart</Link>
+                    <Link to='/cart'>MyCart({cartCount})</Link>
                     <Link to='/login'>
                         <button type='button'>Login</button>
                     </Link>
