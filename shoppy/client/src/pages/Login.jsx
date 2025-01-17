@@ -13,7 +13,9 @@ export default function Login() {
         "pwdRef": useRef(null)
     }
 
-
+    const msgRefs = {
+        "msgRef" : useRef(null)
+    }
 
     const [formData, setFormData] = useState({ 'id': '', 'pwd': '' }); // name을 일치시킬 것
 
@@ -24,27 +26,11 @@ export default function Login() {
         setFormData({ ...formData, [name]: value }); // property 값이 변수에 저장된 경우 []안에 호출
     }
 
-    // /** validate 함수 */
-    // const validate = () => {
-    //     let result = true;
-
-    //     if(idRef.current.value === ''){
-    //         alert('아이디를 입력해주세요');
-    //         idRef.current.focus();
-    //         result = false;
-    //     } else if(pwdRef.current.value === ''){
-    //         alert('패스워드를 입력해주세요');
-    //         pwdRef.current.focus();
-    //         result = false;
-    //     } 
-    //     return result;
-    // }
-
     /** Submit 함수 */
     const handleLoginSubmit = (event) => {
         event.preventDefault();
 
-        if (validateLogin(refs)) {
+        if (validateLogin(refs, msgRefs)) {
             console.log('send data -->>', formData);
             // 리액트 ---> 노드서버(express) 데이터 전송
         }
@@ -82,6 +68,10 @@ export default function Login() {
                                 placeholder="패스워드를 입력해주세요" />
                         </div>
                         <p id="error-msg-pwd"></p>
+                    </li>
+                    <li>
+                        <span style={{fontSize:"0.7em", color:"white"}} 
+                                ref={msgRefs.msgRef}>아이디 또는 패스워드를 입력해주세요</span>
                     </li>
                     <li>
                         <button type="submit" className="login-button">로그인</button>

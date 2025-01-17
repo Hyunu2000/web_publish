@@ -23,22 +23,15 @@ export default function Signup() {
             'emaildomainRef': useRef(null)
         };
     
-    //     const initFormData = {
-    //         id: '',
-    //         pwd: '',
-    //         cpwd: '',
-    //         name: '',
-    //         phone: '',
-    //         emailname: '',
-    //         emaildomain: ''
-    //     };
-        const names = ['id', 'pwd', 'cpwd', 'name', 'phone', 'emailname'];
-
-        const initFormData = names.reduce((acc, name) => {
-            acc[name] = '';
-            return acc;
-        }, {});
-        console.log('initFormData --->>', initFormData);
+        const initFormData = {
+            id: '',
+            pwd: '',
+            cpwd: '',
+            name: '',
+            phone: '',
+            emailname: '',
+            emaildomain: ''
+        };
 
         const [formData, setFormData] = useState(initFormData);
 
@@ -59,59 +52,7 @@ export default function Signup() {
                 <h1 className="center-title">SIGNUP</h1>
                 <form className="signup-form" onSubmit={handleSubmit}>
                     <ul>
-                        {
-                            names && names.map((name) => {
-                                <li>
-                                    <label><b>아이디</b></label>
-                                    <span ref={msgRefs.msgIdRef}>아이디를 입력해주세요</span>
-                                    <div>
-                                        {(name === 'emaildomain') ? (
-                                            <>
-                                                <input
-                                                    type="text"
-                                                    name="emailname"
-                                                    id="emailname"
-                                                    ref={refs.emailnameRef}
-                                                    onChange={handleChangeForm}
-                                                    placeholder="이메일 주소"
-                                                />
-                                                <span>@</span>
-                                                <select
-                                                    name="emaildomain"
-                                                    id="emaildomain"
-                                                    ref={refs.emaildomainRef}
-                                                    onChange={handleChangeForm}
-                                                >
-                                                    <option value="default">선택</option>
-                                                    <option value="naver.com">naver.com</option>
-                                                    <option value="gmail.com">gmail.com</option>
-                                                    <option value="daum.net">daum.net</option>
-                                                </select>
-                                            </>
-                                        ) : (
-                                            <>
-                                                    <input
-                                                        type="text"
-                                                        name="id"
-                                                        id="id"
-                                                        ref={refs.idRef}
-                                                        onChange={handleChangeForm}
-                                                        placeholder="아이디 입력(6~20자)" />
-                                                {   name === 'id' &&
-                                                    <>
-                                                        <button type="button">중복확인</button>
-                                                        <input type="hidden" id="idCheckResult" value="default" />
-                                                    </>
-                                                }
-                                            </>
-                                        )
-                                    }
-                                    </div>
-                                </li>
-                            })
-                        } {/** end of map */}
-
-                        {/* <li>
+                        <li>
                             <label><b>아이디</b></label>
                             <span ref={msgRefs.msgIdRef}>아이디를 입력해주세요</span>
                             <div>
@@ -208,7 +149,7 @@ export default function Signup() {
                                     <option value="daum.net">daum.net</option>
                                 </select>
                             </div>
-                        </li> */}
+                        </li>
                         <li>
                             <button type="submit">가입하기</button>
                             <button type="reset">가입취소</button>

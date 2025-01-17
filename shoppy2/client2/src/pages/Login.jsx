@@ -13,6 +13,10 @@ export default function Login() {
         "pwdRef" : useRef(null)
     }
 
+    const msgRefs = {
+        "msgRef" : useRef(null)
+    }
+
     const [formData, setFormData] = useState({'id' : '', 'pwd' : ''});
 
     const handleChangeForm = (event) => {
@@ -23,7 +27,7 @@ export default function Login() {
     const handleLoginSubmit = (event) => {
         event.preventDefault();
 
-        if(vaildateLogin(refs)) {
+        if(vaildateLogin(refs, msgRefs)) {
             console.log('send data -->>', formData);
         }
     }
@@ -59,6 +63,10 @@ export default function Login() {
                                 placeholder="패스워드를 입력해주세요" />
                         </div>
                         <p id="error-msg-pwd"></p>
+                    </li>
+                    <li>
+                        <span style={{fontSize:'0.7em', color:'white'}}
+                                ref={msgRefs.msgRef}>아이디 또는 패스워드를 입력해주세요</span>
                     </li>
                     <li>
                         <button type="submit" className="login-button">로그인</button>
