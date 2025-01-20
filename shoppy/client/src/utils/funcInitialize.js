@@ -28,14 +28,16 @@ export function initSignup() {
         return {names, placeholders, labels, initFormData};
 }
 
-export function useInitSignupRefs(names) { // 커스터머 훅
+export function useInitSignupRefs(names) { // Customer Hook (커스터머 훅)
     const refs = useRef(
         names.reduce((acc, name) => {
             acc[name.concat('Ref')] = React.createRef(); // useRef(null) Hook 바로 호출 X   
             return acc;
             }, {})
         );
-        refs.current.emaildomainRef = React.createRef();
+        refs.current.emaildomainRef = useRef(React.createRef());
+        // 반드시 useRef() 감싸줌 => 이벤트 호출 시 useXXX 객체들이 자동으로 업데이트 되므로 useRef() 제외시
+        // 자동 업데이트가 되지 않음
     
         const msgRefs = useRef(
             names.reduce((acc, name) => {
@@ -47,3 +49,4 @@ export function useInitSignupRefs(names) { // 커스터머 훅
         return {refs, msgRefs};
 
 }
+
