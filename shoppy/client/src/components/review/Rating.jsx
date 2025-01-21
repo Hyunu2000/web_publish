@@ -1,15 +1,24 @@
 import React, { useState, useEffect } from 'react';
+import {useParams} from 'react-router-dom';
+import axios from 'axios';
 
 export default function Rating() {
     const [reviewData, setReviewData] = useState([]);
+    const {pid} = useParams(1);
 
     useEffect(() => {
-        fetch('/data/reviewcontent.json')
-            .then((response) => response.json())
-            .then((data) => setReviewData(data.products))
+        axios.get('/data/reviewcontent.json')
+            .then((res) =>{
+                setReviewData(res.data.products)
+                
+                // const rarray = res.data.filter((rating)=>(rating.pid === parseInt(pid)))
+                // setReviewData(rarray)
+                
+            })
             .catch((error) => console.error(error));
     }, []);
-
+        console.log('asdsadasd',reviewData);
+        
     return (
         <div className="review-container">
             <h2>상품 만족도</h2>

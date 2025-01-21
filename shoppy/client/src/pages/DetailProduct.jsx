@@ -3,6 +3,11 @@ import { useParams } from "react-router-dom";
 import { PiGiftThin } from "react-icons/pi";
 import axios from "axios";
 import Review from "../components/review/Review.jsx";
+import Delivery from "../components/delivery/Delivery.jsx";
+import QnA from "../components/QnA/QnA.jsx";
+import DetailMenu from "../components/QnA/DetailMenu.jsx";
+import Detail from "../components/detail-tap/Detail.jsx";
+import '../styles/delivery.css';
 
 export default function DetailProduct({ addCart }) {
     const { pid } = useParams();
@@ -100,9 +105,13 @@ export default function DetailProduct({ addCart }) {
 
             {/* DETAIL / REVIEW / Q&A / RETURN & DELIVERY  */}
             <div className="product-detail-tab">
-    
-                <Review />
-                
+                <DetailMenu />
+                <div>
+                    <Detail selectedPid={pid} products={product} />
+                    <Review />
+                    <QnA />
+                    <Delivery />
+                </div>
             </div>
         </div>
     );
