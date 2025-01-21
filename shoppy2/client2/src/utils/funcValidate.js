@@ -70,6 +70,8 @@ export const validateSignup = (refs, msgRefs) => {
                 msgRef.current.style.setProperty('color', 'red');
                 ref.current.focus();
                 return false;
+            } else {
+                msgRef.current.style.setProperty('color', 'green');
             }
         } else {  // default
             if(ref.current.value === 'default') {
@@ -80,4 +82,54 @@ export const validateSignup = (refs, msgRefs) => {
         }
     }
     return true;
+}
+
+/*******************************
+    title : 아이디 중복체크
+*******************************/        // 구조분해할당이 아닐때는 맵핑 순서 지킬 것
+export const handleDuplicateIdCheck = (idRef, pwdRef, idMsgRef, setIdCheckResult) => {
+    if(idRef.current.value === '') {
+        idMsgRef.current.style.setProperty('color', 'red');
+        idRef.current.focus();
+        return false;
+    } else {
+        const did = 'test';
+        if(idRef.current.value === did) {
+            alert('이미 사용중인 아이디 입니다. 새로운 아이디를 입력해주세요.');
+            idRef.current.focus();
+            return false;
+        } else {
+            alert('사용이 가능한 아이디 입니다.');
+            setIdCheckResult('complete');
+            pwdRef.current.focus();
+            return false;
+        }
+    }
+};
+
+/**************************************
+    title : 비밀번호 & 비밀번호 체크
+**************************************/  
+export const handlePasswordCheck = (pwdRef, cpwdRef, nameRef, pwdMsgRef, cpwdMsgRef) => {
+    if(pwdRef.current.value === '') {
+        pwdMsgRef.current.style.setProperty('color', 'red');
+        pwdRef.current.focus();
+        return false;
+    } else if(cpwdRef.current.value === '') {
+        cpwdMsgRef.current.style.setProperty('color', 'red');
+        cpwdRef.current.focus();
+        return false;
+    } else {
+        if(pwdRef.current.value === cpwdRef.current.value) {
+            alert('비밀번호가 일치합니다.')
+            nameRef.current.focus();
+            return false;
+        } else {
+            alert('비밀번호가 일치하지 않습니다. 다시 입력해주세요.');
+            pwdRef.current.value = '';
+            cpwdRef.current.value = '';
+            pwdRef.current.focus();
+            return false;
+        }
+    }
 }

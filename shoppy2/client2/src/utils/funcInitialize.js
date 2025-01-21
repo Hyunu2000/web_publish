@@ -35,7 +35,7 @@ export function useInitSignupRefs(names) { // 커스터머 훅
             return acc;
             }, {})
         );
-        refs.current.emaildomainRef = React.createRef();
+        refs.current.emaildomainRef = useRef(React.createRef());
     
         const msgRefs = useRef(
             names.reduce((acc, name) => {

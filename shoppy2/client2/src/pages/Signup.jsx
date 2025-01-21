@@ -1,12 +1,13 @@
 import React, { useRef, useState } from 'react';
 import '../styles/signup.css';
-import { validateSignup } from '../utils/funcValidate.js';
+import { validateSignup, handleDuplicateIdCheck, handlePasswordCheck } from '../utils/funcValidate.js';
 import { initSignup, useInitSignupRefs } from '../utils/funcInitialize.js';
 
 export default function Signup() {
     const {names, placeholders, labels, initFormData} = initSignup();
     const {refs, msgRefs} = useInitSignupRefs(names); // names를 먼저 받아야 하기 때문에 코드 순서 주의
     const [formData, setFormData] = useState(initFormData);
+    const [idCheckResult, setIdCheckResult] = useState('default');
 
     // change
     const handleChangeForm = (e) => {
@@ -61,11 +62,32 @@ export default function Signup() {
                                                 name={name}
                                                 ref={refs.current[name.concat('Ref')]}
                                                 onChange={handleChangeForm}
+                                                onBlur={
+                                                    (name === 'cpwd') ? () => {
+                                                        handlePasswordCheck(
+                                                            refs.current['pwdRef'],
+                                                            refs.current['cpwdRef'],
+                                                            refs.current['nameRef'],
+                                                            msgRefs.current['pwdMsgRef'],
+                                                            msgRefs.current['cpwdMsgRef']
+                                                        )
+                                                    } : null
+                                                }
                                                 placeholder={placeholders[name]}/>
                                             {   name === 'id' &&    
                                                 <>
-                                                    <button type="button">중복확인</button>
-                                                    <input type="hidden" id="idCheckResult" value="default" />
+                                                    <button type="button"
+                                                            onClick={() => {
+                                                                handleDuplicateIdCheck(
+                                                                                        refs.current['idRef'],
+                                                                                        refs.current['pwdRef'],
+                                                                                        msgRefs.current['idMsgRef'],
+                                                                                        setIdCheckResult
+                                                                )
+                                                            }}
+                                                    >중복확인</button>
+                                                    <input type="text" 
+                                                            value={idCheckResult} />
                                                 </>
                                             }
                                         </>
