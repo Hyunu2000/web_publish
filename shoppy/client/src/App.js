@@ -19,9 +19,6 @@ export default function App() {
     setCartCount(cartCount + 1);
   }
 
-  console.log('cartCount ==>', cartCount);
-  console.log('cartList ==>', cartList);
-
   return (
     <div>
       <BrowserRouter>

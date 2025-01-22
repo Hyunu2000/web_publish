@@ -7,7 +7,6 @@ import Delivery from "../components/delivery/Delivery.jsx";
 import QnA from "../components/QnA/QnA.jsx";
 import DetailMenu from "../components/QnA/DetailMenu.jsx";
 import Detail from "../components/detail-tap/Detail.jsx";
-import '../styles/delivery.css';
 
 export default function DetailProduct({ addCart }) {
     const { pid } = useParams();

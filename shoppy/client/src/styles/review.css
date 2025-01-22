@@ -1,0 +1,247 @@
+/******************* REVIEW *************************/
+
+.review-container {
+    max-width: 800px;
+    /* 컨테이너의 최대 너비 */
+    margin: 0 auto;
+    /* 화면 중앙 정렬 */
+    padding: 20px;
+    /* 내부 여백 */
+    background-color: #f9f9f9;
+    /* 배경 색상 */
+    border: 1px solid #ddd;
+    /* 테두리 */
+    border-radius: 10px;
+    /* 테두리 모서리 둥글게 */
+}
+
+.review-container h2 {
+    font-size: 1.5rem;
+    /* 제목 크기 */
+    font-weight: bold;
+    /* 텍스트 굵기 */
+    margin-bottom: 10px;
+    /* 아래 여백 */
+    text-align: center;
+    /* 텍스트 중앙 정렬 */
+}
+
+/* 상품 평점 (별점 및 점수) 스타일 */
+.rating-summary {
+    display: flex;
+    /* 가로 정렬 */
+    align-items: center;
+    /* 세로 정렬 */
+    justify-content: space-between;
+    /* 요소 간 간격 균일하게 배치 */
+    margin-bottom: 10px;
+    /* 아래 여백 */
+}
+
+.rating-summary .stars {
+    font-size: 2rem;
+    /* 별점 크기 */
+    color: gold;
+    /* 별점 색상 */
+}
+
+.rating-summary .score {
+    font-size: 1.5rem;
+    /* 점수 크기 */
+    font-weight: bold;
+    /* 텍스트 굵기 */
+    color: #333;
+    /* 텍스트 색상 */
+}
+
+/* 평점 세부 항목 (사이즈, 색상, 소재 등) 스타일 */
+.ratings-summary {
+    display: flex;
+    /* 항목 정렬 */
+    flex-direction: column;
+    /* 세로 정렬 */
+    gap: 30px;
+    /* 각 항목 간 간격 */
+}
+
+.rating-item {
+    display: flex;
+    flex-direction: column;
+    /* 세로 정렬 */
+}
+
+.rating-category {
+    margin-bottom: 10px;
+    /* 항목 간 여백 */
+}
+
+.rating-category h4 {
+    font-size: 1rem;
+    /* 항목 제목 크기 */
+    font-weight: bold;
+    /* 텍스트 굵기 */
+    margin-bottom: 5px;
+    /* 제목과 아래 요소 간 여백 */
+}
+
+.rating-category p {
+    display: flex;
+    /* 가로 정렬 */
+    justify-content: space-between;
+    /* 텍스트 양쪽 정렬 */
+    font-size: 0.9rem;
+    /* 텍스트 크기 */
+    color: #555;
+    /* 텍스트 색상 */
+}
+
+/* Progress bar 스타일 */
+.progress-bar {
+    display: flex;
+    /* 가로 정렬 */
+    height: 10px;
+    /* 진행바 높이 */
+    background-color: #eee;
+    /* 진행바 배경색 */
+    border-radius: 5px;
+    /* 모서리 둥글게 */
+    overflow: hidden;
+    /* 자식 요소가 영역을 벗어나지 않도록 */
+    margin-bottom: 5px;
+    /* 아래 여백 */
+}
+
+.progress {
+    height: 100%;
+    /* 진행바 높이 */
+}
+
+.progress .small {
+    background-color: #ff9999;
+    /* 작은 값 진행바 색상 */
+}
+
+.progress.medium {
+    background-color: #99cc99;
+    /* 중간 값 진행바 색상 */
+}
+
+.progress.large {
+    background-color: #9999ff;
+    /* 큰 값 진행바 색상 */
+}
+
+.progress.match {
+    background-color: #99ccff;
+    /* 일치 진행바 색상 */
+}
+
+.progress.similar {
+    background-color: #ffcc99;
+    /* 비슷 진행바 색상 */
+}
+
+.progress.different {
+    background-color: #ff9999;
+    /* 다름 진행바 색상 */
+}
+
+/* 리뷰 이미지 스타일 */
+.review-images {
+    display: flex;
+    /* 가로 정렬 */
+    justify-content: space-between;
+    /* 간격 균일 배치 */
+    margin-top: 20px;
+    /* 위 여백 */
+}
+
+.review-images img {
+    width: 140px;
+    /* 이미지 너비 */
+    height: 140px;
+    /* 이미지 높이 */
+    object-fit: cover;
+    /* 이미지 비율 유지 */
+    border: 1px solid #ccc;
+    /* 테두리 */
+    margin: 5px;
+    /* 이미지 간 간격 */
+}
+
+/* 정렬 버튼 메뉴 스타일 */
+.sorting-menu {
+    margin: 15px 0;
+    /* 위아래 여백 */
+    height: 40px;
+    /* 메뉴 높이 */
+    border-bottom: 1px solid black;
+    /* 하단 테두리 */
+}
+
+.sorting-menu button {
+    background-color: white;
+    /* 버튼 배경색 */
+    border: none;
+    /* 버튼 테두리 제거 */
+    border-right: 1px solid gray;
+    /* 버튼 간 구분선 */
+    width: 100px;
+    /* 버튼 너비 */
+    height: 100%;
+    /* 버튼 높이 */
+}
+
+/* 리뷰 작성 버튼 스타일 */
+.review-button {
+    margin: 10px 0;
+    /* 위아래 여백 */
+}
+
+/* 리뷰 내용 스타일 */
+.review-content {
+    margin: 20px 0;
+    /* 위아래 여백 */
+}
+
+/* 리뷰 코멘트 섹션 스타일 */
+.review-coment {
+    border-bottom: 1px solid black;
+    /* 하단 테두리 */
+    width: 80%;
+    /* 섹션 너비 */
+}
+
+/* 리뷰 개별 항목 스타일 */
+.review-item {
+    border-bottom: 1px solid #ddd;
+    /* 하단 테두리 */
+    padding: 10px 0;
+    /* 위아래 여백 */
+}
+
+.review-header {
+    font-weight: bold;
+    /* 제목 굵기 */
+}
+
+.review-satisfaction {
+    margin-top: 10px;
+    /* 위 여백 */
+}
+
+.review-actions {
+    margin-top: 10px;
+    /* 위 여백 */
+}
+
+.review-actions button {
+    margin-right: 5px;
+    /* 버튼 간 간격 */
+}
+
+/* 리뷰 작성자 정보 */
+.review-user {
+    margin-right: 10px;
+    /* 이름과 다른 요소 간 간격 */
+}

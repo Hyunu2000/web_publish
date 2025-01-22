@@ -14,7 +14,6 @@ export default function QnAList() {
             })
             .catch((error) => console.log(error))
         }, []);
-      console.log(list);
       
     return (
         <table className='qna-table'>
