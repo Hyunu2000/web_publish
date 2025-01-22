@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-
 export default function Rating() {
     const [reviewData, setReviewData] = useState([]);
     const { pid } = useParams();
@@ -11,7 +10,7 @@ export default function Rating() {
         axios
             .get("/data/reviewcontent.json")
             .then((res) => {
-                const rarray = res.data.products.filter((r) => r.pid === pid);
+                const rarray = res.data.products.filter((rating) => rating.pid === pid);
                 setReviewData(rarray);
             })
             .catch((error) => console.error(error));
@@ -19,99 +18,136 @@ export default function Rating() {
 
     return (
         <div className="review-container">
-            <h2>상품 만족도</h2>
-            <div className="ratings-grid">
-                {/* 평점 데이터 출력 */}
-                {reviewData.map((product, index) => (
-                    <div key={index} className="rating-item">
-                        {/* 사이즈 */}
-                        <div className="rating-category">
-                            <h4>사이즈</h4>
-                            <div>
-                                <span>작음 {product.size.small}%</span>
-                                <div className="progress-bar">
-                                    <div
-                                        className="progress small"
-                                        style={{ width: `${product.size.small}%` }}
-                                    ></div>
-                                </div>
-                            </div>
-                            <div>
-                            <span>적당함 {product.size.justRight}%</span>
-                            <div className="progress-bar">
-                                <div
-                                    className="progress medium"
-                                    style={{ width: `${product.size.justRight}%` }}
-                                ></div>
-                            </div>
-                            </div>
-                            <div>
-                            <span>큼 {product.size.large}%</span>
-                            <div className="progress-bar">
-                                <div
-                                    className="progress large"
-                                    style={{ width: `${product.size.large}%` }}
-                                ></div>
-                            </div>
-                            </div>
-                        </div>
-                        {/* 색상 */}
-                        <div className="rating-category">
-                            <h4>색상</h4>
-                            <div>
-                                
-                            
-                            <div className="progress-bar">
-                                <div
-                                    className="progress match"
-                                    style={{ width: `${product.color.same}%` }}
-                                ></div>
-                            </div>
-                                <div
-                                    className="progress similar"
-                                    style={{ width: `${product.color.similar}%` }}
-                                ></div>
-                                <div
-                                    className="progress different"
-                                    style={{ width: `${product.color.different}%` }}
-                                ></div>
-                            </div>
-                            <p>
-                                
-                                <span>비슷함 {product.color.similar}%</span>
-                                <span>다름 {product.color.different}%</span>
-                            </p>
-                        </div>
-                        {/* 소재 */}
-                        <div className="rating-category">
-                            <h4>소재</h4>
-                            <div className="progress-bar">
-                                <div
-                                    className="progress match"
-                                    style={{ width: `${product.material.same}%` }}
-                                ></div>
-                                <div
-                                    className="progress similar"
-                                    style={{ width: `${product.material.similar}%` }}
-                                ></div>
-                                <div
-                                    className="progress different"
-                                    style={{ width: `${product.material.different}%` }}
-                                ></div>
-                            </div>
-                            <p>
-                                <span>같음 {product.material.same}%</span>
-                                <span>비슷함 {product.material.similar}%</span>
-                                <span>다름 {product.material.different}%</span>
-                            </p>
-                        </div>
-                        {/* 별점 및 평점 */}
-                        <div>
-                            <span className="stars">{product.star}★</span>
-                            <span className="score">{product.rating}</span>
-                        </div>
+            
+                <div className="review-title">
+                    상품 만족도
+                </div>
+            
+            <div className="review-top">
+                <div>
+                    <span>구매하신 분들의 상품에 대한 평점입니다.</span>
+                    <div>
+                        <span className="stars">★☆☆☆☆</span>
+                        <span className="score">1 / 5</span>
                     </div>
-                ))}
+                </div>
+
+                <div>
+                    {/* 평점 데이터 출력 */}
+                    {reviewData.map((product, index) => (
+                        <div key={index}>
+                            {/* 별점 및 평점 */}
+
+                            {/* 사이즈 */}
+                            <div className="review-percent">
+                                <div className="rating-category">
+                                    <h4>사이즈</h4>
+                                    <div className="review-percent-style">
+                                        <span className="review-detail-font">작음</span>
+                                        <div className="progress-bar">
+                                            <div
+                                                className="progress-bar-color"
+                                                style={{ width: `${product.size.small}%` }}
+                                            ></div>
+                                        </div>
+                                        <span>{product.size.small}%</span>
+                                    </div>
+                                    <div className="review-percent-style">
+                                        <span className="review-detail-font">적당함</span>
+                                        <div className="progress-bar">
+                                            <div
+                                                className="progress-bar-color"
+                                                style={{ width: `${product.size.justRight}%` }}
+                                            ></div>
+                                        </div>
+                                        <span>{product.size.justRight}%</span>
+                                    </div>
+                                    <div className="review-percent-style">
+                                        <span className="review-detail-font">큼</span>
+                                        <div className="progress-bar">
+                                            <div
+                                                className="progress-bar-color"
+                                                style={{ width: `${product.size.large}%` }}
+                                            ></div>
+                                        </div>
+                                        <span>{product.size.large}%</span>
+                                    </div>
+                                </div>
+
+                                {/* 색상 */}
+                                <div className="rating-category">
+                                    <h4>색상</h4>
+                                    <div className="review-percent-style">
+                                        <span className="review-detail-font">같음</span>
+                                        <div className="progress-bar">
+                                            <div
+                                                className="progress-bar-color"
+                                                style={{ width: `${product.color.same}%` }}
+                                            ></div>
+                                        </div>
+                                        <span>{product.color.same}%</span>
+                                    </div>
+                                    <div className="review-percent-style">
+                                        <span className="review-detail-font">비슷함</span>
+                                        <div className="progress-bar">
+                                            <div
+                                                className="progress-bar-color"
+                                                style={{ width: `${product.color.similar}%` }}
+                                            ></div>
+                                        </div>
+                                        <span>{product.color.similar}%</span>
+                                    </div>
+                                    <div className="review-percent-style">
+                                        <span className="review-detail-font">다름</span>
+                                        <div className="progress-bar">
+                                            <div
+                                                className="progress-bar-color"
+                                                style={{ width: `${product.color.different}%` }}
+                                            ></div>
+                                        </div>
+                                        <span>{product.color.different}%</span>
+                                    </div>
+                                </div>
+
+                                {/* 소재 */}
+                                <div className="rating-category">
+                                    <h4>소재</h4>
+                                    <div className="review-percent-style">
+                                        <span className="review-detail-font">같음</span>
+                                        <div className="progress-bar">
+                                            <div
+                                                className="progress-bar-color"
+                                                style={{ width: `${product.material.same}%` }}
+                                            ></div>
+                                        </div>
+                                        <span>{product.material.same}%</span>
+                                    </div>
+                                    <div className="review-percent-style">
+                                        <span className="review-detail-font">비슷함</span>
+                                        <div className="progress-bar">
+                                            <div
+                                                className="progress-bar-color"
+                                                style={{ width: `${product.material.similar}%` }}
+                                            ></div>
+                                        </div>
+                                        <span>{product.material.similar}%</span>
+                                    </div>
+                                    <div className="review-percent-style">
+                                        <span className="review-detail-font">다름</span>
+                                        <div className="progress-bar">
+                                            <div
+                                                className="progress-bar-color"
+                                                style={{ width: `${product.material.different}%` }}
+                                            ></div>
+                                        </div>
+                                        <span>{product.material.different}%</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     );
