@@ -26,7 +26,7 @@ export default function Rating() {
                         <div className="rating-group">
                             <div className="rating-stars">
                                 <span>구매하신 분들의 상품에 대한 평점입니다.</span>
-                                <div>
+                                <div >
                                     <span className="stars">{product.star}</span> {/* ★☆ */}
                                     <span className="score">{product.rating}</span>
                                 </div>

@@ -90,6 +90,9 @@ export default function ReviewComment() {
                         ))}
                     </tbody>
                 </table>
+                <div>
+                    {/* 페이지 로직 */}
+                </div>
             </div>
         </>
     );
