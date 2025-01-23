@@ -2,18 +2,18 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { PiGiftThin } from "react-icons/pi";
 import axios from "axios";
-import Review from "../components/review/Review.jsx";
-import Delivery from "../components/delivery/Delivery.jsx";
-import QnA from "../components/QnA/QnA.jsx";
-import DetailMenu from "../components/QnA/DetailMenu.jsx";
-import Detail from "../components/detail-tap/Detail.jsx";
+import QnA from "../components/QnA/QnA";
+import DetailMenu from "../components/QnA/DetailMenu";
+import Review from "../components/review/Review";
+import Detail from "../components/detail-tap/Detail";
+import Delivery from "../components/delivery/Delivery";
 
 export default function DetailProduct({ addCart }) {
     const { pid } = useParams();
     const [product, setProduct] = useState({});
     const [size, setSize] = useState("XS");
-    const [imgList, setImgList] = useState([]);
-    const [tabName, setTabName] = useState([]);
+    // tab state 추가
+    const [activeTab, setActiveTab] = useState('detail');
 
 
     useEffect(() => {
@@ -107,13 +107,14 @@ export default function DetailProduct({ addCart }) {
 
             {/* DETAIL / REVIEW / Q&A / RETURN & DELIVERY  */}
             <div className="product-detail-tab">
-                <DetailMenu />
+                <DetailMenu activeTab={activeTab} setActiveTab={setActiveTab} />
                 <div>
-                    <Detail selectedPid={pid} products={product} />
-                    <Review />
-                    <QnA />
-                    <Delivery />
+                    {activeTab === 'detail' && <Detail selectedPid={pid} product={product} />}
+                    {activeTab === 'review' && <Review />}
+                    {activeTab === 'qna' && <QnA />}
+                    {activeTab === 'delivery' && <Delivery />}
                 </div>
+
             </div>
         </div>
     );
