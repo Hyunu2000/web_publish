@@ -12,6 +12,9 @@ export default function DetailProduct({ addCart }) {
     const { pid } = useParams();
     const [product, setProduct] = useState({});
     const [size, setSize] = useState("XS");
+    const [imgList, setImgList] = useState([]);
+    const [tabName, setTabName] = useState([]);
+
 
     useEffect(() => {
         axios

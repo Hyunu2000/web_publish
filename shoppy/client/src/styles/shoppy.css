@@ -278,7 +278,6 @@ p {
 /******************* REVIEW *************************/
 .review-container {
   /* border: 1px solid red; */
-  height: 100%;
   margin: 20px 0;
 }
 
@@ -293,31 +292,22 @@ p {
   /* border: 1px solid red; */
   display: flex;
   justify-content: space-between;
+  width: 100%;
+  margin-bottom: 30px;
 }
 
-.review-top > div > span:first-child {
-  /* border: 1px solid red; */
-  display: inline-block;
-  margin-bottom: 10px;
-  font-size: 0.8rem;
-  color: gray;
-}
-
-.review-percent {
-  /* border: 1px solid red; */
-  width: 730px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.review-percent-style {
+.rating-group {
   /* border: 1px solid red; */
   display: flex;
-  align-items: center;
-  margin-bottom: 10px;
+  width: 100%;
+  gap: 20px;
 }
 
 /* 상품 평점 (별점 및 점수) 스타일 */
+.rating-stars {
+  width: 40%; /* 적당한 비율 설정 (예: 40%) */
+}
+
 .stars {
   font-size: 2.5rem;
   color: black;
@@ -330,21 +320,36 @@ p {
   color: black;
 }
 
+.review-percent-style {
+  /* border: 1px solid red; */
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
 /* 평점 세부 항목 (사이즈, 색상, 소재 등) 스타일 */
+.review-detail-group {
+  /* border: 1px solid red; */
+  width: 60%; /* 남은 공간 차지 (예: 60%) */
+  display: flex;
+  gap: 20px; /* 세부 항목 간 간격 추가 */
+}
+
 .rating-category {
   margin-bottom: 10px;
 }
 
 .rating-category h4 {
   /* border: 1px solid red; */
-  font-size: 0.8rem;
-  margin-bottom: 15px;
+  /* font-size: 0.8rem; */
+  margin: 0;
+  padding-bottom: 10px;
   color: gray;
 }
 
 .rating-category span {
   /* border: 1px solid red; */
-  font-size: 0.8rem;
+  /* font-size: 0.8rem; */
 }
 
 .review-detail-font {
@@ -356,11 +361,11 @@ p {
 .progress-bar {
   /* border: 1px solid red; */
   display: flex;
-  width: 130px;
+  width: 120px;
   height: 4px;
   background-color: #eee;
   overflow: hidden;
-  margin-right: 15px;
+  margin: 0 15px;
 }
 
 .progress-bar-color {
@@ -506,6 +511,12 @@ p {
   display: flex;
   align-items: center;
   padding: 6px;
+}
+
+.review-comment-image img {
+  width: 100px;
+  height: 100px;
+  margin: 10px 0;
 }
 
 .review-comment {

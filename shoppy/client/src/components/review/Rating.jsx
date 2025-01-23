@@ -18,28 +18,23 @@ export default function Rating() {
 
     return (
         <div className="review-container">
-            
-                <div className="review-title">
-                    상품 만족도
-                </div>
-            
+            <div className="review-title">상품 만족도</div>
             <div className="review-top">
-                <div>
-                    <span>구매하신 분들의 상품에 대한 평점입니다.</span>
-                    <div>
-                        <span className="stars">★☆☆☆☆</span>
-                        <span className="score">1 / 5</span>
-                    </div>
-                </div>
+                {reviewData.map((product, index) => (
+                    <div key={index}>
+                        {/* 별점 및 평점 */}
+                        <div className="rating-group">
+                            <div className="rating-stars">
+                                <span>구매하신 분들의 상품에 대한 평점입니다.</span>
+                                <div>
+                                    <span className="stars">{product.star}</span> {/* ★☆ */}
+                                    <span className="score">{product.rating}</span>
+                                </div>
+                            </div>
 
-                <div>
-                    {/* 평점 데이터 출력 */}
-                    {reviewData.map((product, index) => (
-                        <div key={index}>
-                            {/* 별점 및 평점 */}
-
-                            {/* 사이즈 */}
-                            <div className="review-percent">
+                            {/* 리뷰 상세 항목 그룹 */}
+                            <div className="review-detail-group">
+                                {/* 사이즈 */}
                                 <div className="rating-category">
                                     <h4>사이즈</h4>
                                     <div className="review-percent-style">
@@ -143,11 +138,10 @@ export default function Rating() {
                                         <span>{product.material.different}%</span>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
-                    ))}
-                </div>
+                    </div>
+                ))}
             </div>
         </div>
     );

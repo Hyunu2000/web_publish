@@ -62,7 +62,7 @@ export default function ReviewComment() {
                                         </ul>
                                     </div>
                                     {/* 리뷰 이미지 */}
-                                    <div>
+                                    <div className="review-comment-image">
                                         <img src={review.reviews.reviewImages}/>
                                     </div>
 
