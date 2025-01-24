@@ -228,6 +228,15 @@
     padding: 6px;
 }
 
+.review-comment-image {
+    margin: 10px 0;
+}
+
+.review-comment-image img {
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+}
 
 .review-comment {
     /* border: 1px solid red; */

@@ -572,16 +572,27 @@ p {
 }
 .reviews-list table {
   width: 100%;
+  border-collapse: collapse;
 }
-
+.reviews-list table td{
+  border-bottom: 1px solid silver;
+}
+.reviews-list table tr:last-child td{
+  border-bottom: none;
+}
 .review-stars {
   /* border: 1px solid red; */
   font-size: 1.6rem;
   color: black;
   margin-right: 20px;
-  display: inline-block;
-  padding: 10px;
+  padding: 20px;
 }
+.review-stars div{
+  /* border: 1px solid red; */
+  position: relative;
+  top: -150px;
+}
+
 
 .review-details {
   /* border: 1px solid red; */
@@ -651,7 +662,6 @@ p {
   display: flex;
   justify-content: space-between;
 }
-
 .review-actions button {
   margin-right: 5px;
 }
@@ -660,6 +670,10 @@ p {
   /* border: 1px solid red; */
   margin-right: 0;
 }
+/***** 페이지 네비게이션 스타일 *****/
+
+
+
 
 /********************detail************************/
 
