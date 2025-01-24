@@ -1,10 +1,9 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Pagination from './Pagination';
 
-export default function ReviewComment() {
-    const [reviewData, setReviewData] = useState([]);
+export default function ReviewComment({reviewList}) {
     const { pid } = useParams();
 
     // 페이지 정보 관련
@@ -21,15 +20,13 @@ export default function ReviewComment() {
                 const rcArray = res.data.products.filter((reviewComment) => reviewComment.pid === pid);
                 const totalReviews = rcArray[0].reviews.length;
                 setTotalPages(Math.ceil(totalReviews / itemsPerPage)); // 전체 페이지 수 계산
-                setReviewData(rcArray[0].reviews); // 현재 페이지에 해당하는 리뷰 데이터만 가져옴
             })
             .catch((error) => console.error(error));
     }, [pid, currentPage]); // `pid`와 `currentPage`가 변경될 때마다 다시 데이터 로딩
 
-
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = reviewData.slice(indexOfFirstItem, indexOfLastItem);
+    const currentItems = reviewList.slice(indexOfFirstItem, indexOfLastItem);
 
     return (
         <>

@@ -3,13 +3,13 @@ import Rating from "./Rating.jsx";
 import ReviewImage from "./ReviewImage.jsx";
 import ReviewComment from "./ReviewComment.jsx";
 
-export default function Review() {
+export default function Review({reviewList, reviewCount, review}) {
 
     return (
         <>
-            <Rating />
-            <ReviewImage />
-            <ReviewComment />
+            <Rating reviewCount={reviewCount}/>
+            <ReviewImage review={review} />
+            <ReviewComment  reviewList={reviewList}/>
         </>
     );
 }

@@ -586,13 +586,8 @@ p {
   color: black;
   margin-right: 20px;
   padding: 20px;
+  vertical-align: top;
 }
-.review-stars div{
-  /* border: 1px solid red; */
-  position: relative;
-  top: -150px;
-}
-
 
 .review-details {
   /* border: 1px solid red; */
