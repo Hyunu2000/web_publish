@@ -1,6 +1,7 @@
 1. web_publish\shoppy 프로젝트(폴더) 생성
     mkdir shoppy
     cd shoppy
+
 2. react 프로젝트생성 : client
     npx create-react-app client
 
@@ -9,3 +10,38 @@
     npm i react-router-dom  # 리액트 라우터 돔 패키지 설치
     npm i axios             # axios 패키지 설치
     npm i react-icons       # 리액트 제공 아이콘 패키지 설치
+
+3. NodeJS 서버 생성 : server
+   프로젝트디렉토리 > mkdir server
+
+   npm init --yes             : 프로젝트 초기화 - node모듈 설치
+   npm i express --save       : 익스프레스 서버 라이브러리 설치
+   npm i mysql2               : mysql 연동 라이브러리 설치
+   npm i cors                 : 리액트 연동 시 특정 도메인 허용 라이브러리 설치
+   npm i nodemon -g --save-dev   
+
+
+cat package.json > 설치가 제대로 이루어 졌는지 확인
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  ***** "type": "module", ***** 추가할 것 module일때 반드시 import시 확장자 적어야함
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "mysql2": "^3.12.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
+
+4. nodemon server.js  : 서버 실행
