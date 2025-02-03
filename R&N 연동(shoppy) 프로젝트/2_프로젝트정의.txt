@@ -26,7 +26,7 @@ cat package.json > 설치가 제대로 이루어 졌는지 확인
   "name": "server",
   "version": "1.0.0",
   "main": "index.js",
-  ***** "type": "module", ***** 추가할 것 module일때 반드시 import시 확장자 적어야함
+  ***** "type": "module", ***** 추가할 것 type:module일때 import시 확장자 적어야함
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
