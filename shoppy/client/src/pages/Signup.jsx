@@ -1,9 +1,12 @@
 import React, { useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import '../styles/signup.css';
 import { validateSignup, handleDuplicateIdCheck, handlePasswordCheck } from '../utils/funcValidate.js';
 import { initSignup, useInitSignupRefs } from '../utils/funcInitialize.js';
 
 export default function Signup() {
+    const navigate = useNavigate();
     const { names, placeholders, labels, initFormData } = initSignup();
     const { refs, msgRefs } = useInitSignupRefs(names); // names를 먼저 받아야 하기 때문에 코드 순서 주의
     const [formData, setFormData] = useState(initFormData);
@@ -15,6 +18,9 @@ export default function Signup() {
         // console.log(name, value);
 
         setFormData({ ...formData, [name]: value });
+        if (name === "id") {
+            setIdCheckResult('default');
+        }
         
     };
 
@@ -28,6 +34,30 @@ export default function Signup() {
                 return false;
             } else {
                 console.log('submit ---->>', formData);
+                // 서버 --> DB 테이블에 insert
+                // GET : URL 통해 호출 및 데이터 전달 => 패킷의 Header => req.params
+                //       보안이 필요X, 작은 데이터
+                // POST : URL 주소로 경로 호출, 데이터 전달 => 패킷의 Body => req.body
+                //        보안이 필요O, 큰 데이터
+                axios.post('http://localhost:9000/member/signup', formData)
+                    .then(res => {
+                        if(res.data.result_rows === 1){
+                            alert('회원가입에 성공하셨습니다.');
+                            // window.location.href = '/login';
+
+                            // 3초 후에 로그인 페이지 이동 --> useNavigate
+                            setTimeout(() => {
+                                navigate('/login');
+                            }, 1000);
+                        } else {
+                            alert('회원가입에 실패하셨습니다.');
+                        }
+                    })
+                    .catch(error => {
+                        alert('회원가입에 실패하셨습니다.');
+                        console.log(error)
+                    });
+
             }
         }
     };
@@ -90,11 +120,12 @@ export default function Signup() {
                                                                                     refs.current['idRef'],
                                                                                     refs.current['pwdRef'],
                                                                                     msgRefs.current['idMsgRef'],
-                                                                                    setIdCheckResult
+                                                                                    setIdCheckResult,
+                                                                                    formData
                                                             )
                                                         }}
                                                         >중복확인</button>
-                                                    <input type="text" 
+                                                    <input type="hidden" 
                                                             value={idCheckResult}
                                                             />
                                                 </>
