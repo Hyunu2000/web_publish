@@ -44,3 +44,16 @@ export const getIdCheck = async ({id}) => {
     
     return result[0];
 }
+
+/**
+ * 로그인 - select 
+ */
+export const checkLogin = async ({id, pwd}) => { // {id : 'test', pwd : '1234'}
+    const sql = `
+                    select count(*) as result_rows from shoppy_member 
+                        where id = ? and pwd = ?
+                `;
+    const [ result ] = await db.execute(sql, [id, pwd]); // [[], []]
+    // [{result_rows : 1}]
+    return result[0];
+}

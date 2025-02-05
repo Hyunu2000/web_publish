@@ -27,3 +27,10 @@ SELECT * FROM SHOPPY_MEMBER;
 -- 'TEST' 중복체크 : 결과를 COUNT 함수로 반환
 SELECT COUNT(ID) AS result FROM SHOPPY_MEMBER WHERE ID = 'TEST9';
 -- {result : 0} -- sql에서 대문자로 적으면 리액트에서도 대문자로 적어야함
+
+
+use hrdb2019;
+select database();
+
+-- login 
+select count(*) from shoppy_member where id = 'test1' and pwd = '1234';

@@ -39,7 +39,6 @@ export default function QnAList({ currentPage, itemsPerPage,sendTotalPages,  }) 
         const totalPages = Math.ceil(list.length / itemsPerPage);
         sendTotalPages(totalPages);
     },[list])
-    console.log(list);
     
 
     return (
