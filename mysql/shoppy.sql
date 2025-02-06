@@ -33,4 +33,4 @@ use hrdb2019;
 select database();
 
 -- login 
-select count(*) from shoppy_member where id = 'test1' and pwd = '1234';
+select count(*) as result_rows from shoppy_member where id = 'test1' and pwd = '1234';
