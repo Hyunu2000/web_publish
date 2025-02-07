@@ -1,8 +1,9 @@
 import express from 'express';
 import cors from 'cors';
+import path from 'path';
 import memberRouter from './router/memberRouter.js';
 import uploadRouter from './router/uploadRouter.js';
-import path from 'path';
+import productRouter from './router/productRouter.js';
 
 // 서버 생성 및 포트 정의
 const server = express();

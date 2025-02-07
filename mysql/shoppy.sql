@@ -47,5 +47,20 @@ create table shoppy_product(
     description		varchar(200),
     upload_file		varchar(100),
     source_file		varchar(100),
-    
+    pdate			datetime
 );
+
+desc shoppy_product;
+
+
+SELECT 
+    pid,
+    pname AS name,
+    description AS info,
+    CONCAT('http://localhost:9000/', upload_file) AS image,
+    source_file,
+    pdate
+FROM
+    shoppy_product;
+
+

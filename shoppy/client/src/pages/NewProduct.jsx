@@ -1,12 +1,14 @@
 import React, { useRef, useState } from 'react';
+import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import ImageUpload from '../components/ImageUpload.jsx';
 
 export default function NewProduct() {
+    const navigate = useNavigate();
     const productNameRef = useRef(null);
     const [fname, setFnames] = useState({});
     const [preview, setPreview] = useState('');
-    const [formData, setFormData] = useState({});
+    let [formData, setFormData] = useState({});
 
 
     const getFileName = (fileNames) => {
@@ -32,16 +34,24 @@ export default function NewProduct() {
         } else {
             // 서버 전송
             formData = {...formData, 
-                            "uploadFile": fname.uploadFileName, 
-                            "sourceFile": fname.sourceFileName};
+                "uploadFile": fname.uploadFileName, 
+                "sourceFile": fname.sourceFileName};
             // console.log('formData --->>', formData);
 
             axios
                 .post('http://localhost:9000/product/new', formData)
                 .then(res => {
-                    console.log('res.data --->>', res.data)
+                    if(res.data.result_rows === 1) {
+                        alert('상품이 등록되었습니다.');
+                        navigate('/all');
+                    } else {
+                        alert("상품 등록 실패");
+                    }
                 })
-                .catch(error => console.log(error));
+                .catch(error => {
+                    alert("상품 등록 실패");
+                    console.log(error)
+                });
         }
 
     }
@@ -80,8 +90,8 @@ export default function NewProduct() {
                                 style={{width:'100px', height:'100px'}} />}
                     </li>
                     <li>
-                        <input type="text" name="upload" value={fname.uploadFileName}/>
-                        <input type="text" name="source" value={fname.sourceFileName}/>
+                        <input type="hidden" name="upload" value={fname.uploadFileName}/>
+                        <input type="hidden" name="source" value={fname.sourceFileName}/>
                     </li>
 
                     <li>
