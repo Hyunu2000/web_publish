@@ -28,9 +28,24 @@ SELECT * FROM SHOPPY_MEMBER;
 SELECT COUNT(ID) AS result FROM SHOPPY_MEMBER WHERE ID = 'TEST9';
 -- {result : 0} -- sql에서 대문자로 적으면 리액트에서도 대문자로 적어야함
 
+-- login 
+select count(*) as result_rows from shoppy_member where id = 'test1' and pwd = '1234';
+
+
 
 use hrdb2019;
 select database();
 
--- login 
-select count(*) as result_rows from shoppy_member where id = 'test1' and pwd = '1234';
+select * from information_schema.tables
+	where table_name like 'shoppy%';
+    
+-- shoppy_product
+create table shoppy_product(
+	pid		int		primary key		auto_increment,
+    pname	varchar(50)		not null,
+	price	int,
+    description		varchar(200),
+    upload_file		varchar(100),
+    source_file		varchar(100),
+    
+);

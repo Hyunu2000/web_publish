@@ -19,6 +19,7 @@ server.use('/upload_files', express.static(path.join("upload_files"))); // 저�
 /** 서버의 요청 처리를 위한 미들웨어 정의 */
 server.use('/member', memberRouter);
 server.use('/uploads', uploadRouter);
+server.use('/product', productRouter);
 
 
 
