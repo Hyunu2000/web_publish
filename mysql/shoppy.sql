@@ -40,18 +40,19 @@ select * from information_schema.tables
 	where table_name like 'shoppy%';
     
 -- shoppy_product
+drop table shoppy_product;
 create table shoppy_product(
 	pid		int		primary key		auto_increment,
     pname	varchar(50)		not null,
 	price	int,
     description		varchar(200),
-    upload_file		varchar(100),
-    source_file		varchar(100),
+    upload_file		json,
+    source_file		json,
     pdate			datetime
 );
 
 desc shoppy_product;
-
+select * from shoppy_product;
 
 SELECT 
     pid,
@@ -62,5 +63,22 @@ SELECT
     pdate
 FROM
     shoppy_product;
+    
+    
+set sql_safe_updates = 0; -- 해제 0
+delete from shoppy_product;
+commit;
+select source_file from shoppy_product;
+select * from shoppy_product;
+
+--
+
+select  pid,
+		pname as name,
+		description as info,					-- 배열이 json파일 형식일 때
+		concat("http://localhost:9000/", upload_file->>'$[0]') as image,
+		source_file,
+		pdate 
+from shoppy_product;
 
 

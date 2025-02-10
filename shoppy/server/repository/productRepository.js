@@ -5,13 +5,13 @@ import { db } from './db.js';
  */
 export const getList = async () => {
     const sql = `
-                    select  pid,
-                            pname as name,
-                            description as info,
-                            concat("http://localhost:9000/", upload_file) as image,
-                            source_file,
-                            pdate 
-                    from shoppy_product
+                select  pid,
+                        pname as name,
+                        description as info,
+                        concat("http://localhost:9000/", upload_file->>'$[0]') as image,
+                        source_file,
+                        pdate 
+                from shoppy_product
                 `;
 
 
@@ -26,15 +26,15 @@ export const getList = async () => {
  */
 export const registerProduct = async (formData) => {
     const sql = `
-                    insert into shoppy_product(pname, price, description, upload_file, source_file, pdate)
-                        values(?, ?, ?, ?, ?, now())
+                insert into shoppy_product(pname, price, description, upload_file, source_file, pdate)
+                    values(?, ?, ?, ?, ?, now())
                 `;
     const values = [
         formData.productName,
-        formData.price,
-        formData.description,
-        formData.uploadFile,
-        formData.sourceFile
+        formData.price || 0,
+        formData.description || "",
+        formData.uploadFile || null,
+        formData.sourceFile || null
     ];
     const [result] = await db.execute(sql, values);
     return { "result_rows": result.affectedRows };
