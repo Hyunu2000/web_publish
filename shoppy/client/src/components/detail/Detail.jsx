@@ -1,56 +1,20 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import DetailItem from "./DetailItem.jsx";
+import ImageList from "../common/ImageList.jsx";
+import { useDetailDes } from "../../hooks/listCount.js";
+import { useParams } from "react-router-dom";
 
-export default function Detail({ selectedPid, product }) {
-  const [detailImgList, setDetailImgList] = useState([]);
-  const [detailDesList, setDetailDesList] = useState([]);
-  const [detailInfoList, setDetailInfoList] = useState([]);
+export default function Detail({ product,imgList }) {
+  const { pid } = useParams();
 
-  useEffect(() => {
-    /* 이미지 리스트 */
-    axios
-      .get("/data/product_detail.json")
-      .then((res) => {
-        const filteredImg = res.data.filter(
-          (item) => item.pid === selectedPid
-        );
-        if (filteredImg) {
-          setDetailImgList(filteredImg[0].images);
-        }
-      })
-      .catch((error) => console.log(error));
-
-    /* 제품 정보, 상세 설명 */
-    axios
-      .get("/data/product_detail_des.json")
-      .then((res) => {
-        const filteredDes = res.data.filter((des) => des.pid === selectedPid);
-        if (filteredDes) {
-          setDetailDesList(filteredDes[0].description);
-        }
-      })
-      .catch((error) => console.log(error));
-
-    /* 상품 정보 고시 */
-    axios
-    .get("/data/product_detail_info.json")
-    .then((res) => {
-      const filteredInfo = res.data.filter((info) => info.pid === selectedPid);
-      if (filteredInfo) {
-        setDetailInfoList(filteredInfo[0].contents);
-      }
-    })
-    .catch((error) => console.log(error));
-  }, [selectedPid]);
-
+  const{detailDesList,detailInfoList}= useDetailDes(pid);
   return (
     <div className="detail-container">
       <div className="detail-cont">
         {/* 이미지 리스트 */}
         <div className="detail-image">
-          {detailImgList &&
-            detailImgList.map((img, index) => <DetailItem key={index} img={img} />)}
+          <ImageList imgList={imgList}/>
         </div>
         {/* 제품 정보 */}
         <div className="detail-description">
@@ -58,7 +22,7 @@ export default function Detail({ selectedPid, product }) {
           <p>{product.ename}</p>
 
           {/* 상세 설명 */}
-          <>
+          <>                                                             
             {detailDesList &&
               detailDesList.map((section, index) => (
                 <div key={index}>

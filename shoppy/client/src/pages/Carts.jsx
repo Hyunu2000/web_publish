@@ -1,23 +1,23 @@
 import React from 'react';
 
-export default function Carts({ cartList }) {
+export default function Carts({cartList}) {
     return (
-        <div className='content'>
-            <h1>MyCart!!</h1>
-            <table border='1'>
+        <div>
+            <h1>Mycart</h1>
+            <table border={1}>
                 <tr>
-                    <th>PID</th>
-                    <th>Size</th>
-                    <th>Qty</th>
-                    <th>Price</th>
+                    <th>pid</th>
+                    <th>size</th>
+                    <th>qty</th>
+                    <th>price</th>
                 </tr>
                 {
-                    cartList.map((cartItem) => 
+                    cartList.map((item)=>
                         <tr>
-                            <td>{cartItem.pid}</td>
-                            <td>{cartItem.size}</td>
-                            <td>{cartItem.qty}</td>
-                            <td>{cartItem.price}</td>
+                            <td>{item.pid}</td>
+                            <td>{item.size}</td>
+                            <td>{item.qty}</td>
+                            <td>{item.price}</td>
                         </tr>
                     )
                 }

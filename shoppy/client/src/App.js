@@ -7,9 +7,9 @@ import Login from './pages/Login.jsx';
 import Signup from './pages/Signup.jsx';
 import './styles/shoppy.css';
 import DetailProduct from './pages/DetailProduct.jsx';
+import NewProduct from './pages/NewProduct.jsx';
 import { useState } from 'react';
 import { AuthProvider } from './auth/AuthContext.js';
-import NewProduct from './pages/NewProduct.jsx';
 
 export default function App() {
   const [cartList, setCartList] = useState([]);  // 장바구니 리스트 : 배열
@@ -17,24 +17,24 @@ export default function App() {
 
   const addCart = (cartItem) => {
     setCartList([...cartList, cartItem]);
-    setCartCount(cartCount+1);
-  }  
-  
+    setCartCount(cartCount + 1);
+  }
+
   return (
-      <AuthProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path='/' element={<Layout cartCount={cartCount} />}>
-              <Route index element={<Home />} />
-              <Route path='/all' element={<Products />} />
-              <Route path='/cart' element={<Carts cartList={cartList} />} />
-              <Route path='/login' element={<Login />} />
-              <Route path='/signup' element={<Signup />} />
-              <Route path='/products/:pid' element={<DetailProduct addCart={addCart} />} /> {/* DetailProduct.jsx 에서 정보를 전달 */}
-              <Route path='/products/new' element={<NewProduct/>} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </AuthProvider>
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Layout cartCount={cartCount} />}>
+            <Route index element={<Home />} />
+            <Route path='/all' element={<Products />} />
+            <Route path='/cart' element={<Carts cartList={cartList} />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/signup' element={<Signup />} />
+            <Route path='/products/:pid' element={<DetailProduct addCart={addCart} />} /> {/* DetailProduct.jsx 에서 정보를 전달 */}
+            <Route path='/products/new' element={<NewProduct />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }

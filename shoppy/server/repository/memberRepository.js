@@ -1,16 +1,14 @@
-import { db } from './db.js';
+import { db } from './db.js'
 
 /**
- * 회원가입 - insert
+ * 회원가입 - INSERT
  */
 export const registerMember = async (formData) => {
     // 1. SQL 생성
     const sql = `
-                    insert into shoppy_member(id, pwd, name, phone, emailname, 
-                                            emaildomain, zipcode, address, mdate)
-                        values(?, ?, ?, ?, ?, ?, ?, ?, now())
-                `;
-
+        insert into shoppy_member(id, pwd, name, phone, emailname, emaildomain, zipcode, address, mdate)
+                            values(?,?,?,?,?,?,?,?, now())
+    `;
     const values = [
         formData.id,
         formData.pwd,
@@ -21,39 +19,35 @@ export const registerMember = async (formData) => {
         null,
         null
     ];
-
-    // 2. db 객체를 이용하여 SQL 실행 후 결과 가져오기
+    // 2. db객체를 이용하여 SQL 실행 후 결과 가져오기
     const [result, fields] = await db.execute(sql, values);
-    // console.log(result);
-    // console.log(fields);
 
     // 3. 결과값 리턴
-    return {"result_rows" : result.affectedRows};
+    return { "result_rows": result.affectedRows };
 }
 
 /**
- * 아이디 중복체크 - 
+ * 아이디 중복체크 - SELECT
  */
-export const getIdCheck = async ({id}) => {
-    // idData = {id : 'test'}    ? 에 따옴표 X
+
+export const getIdCheck = async ({ id }) => {
     const sql = `
-                    select count(id) as result from shoppy_member where id = ? 
-                `;
+        select count(id) as result from shoppy_member where id = ?
+    `;
     const [result, fields] = await db.execute(sql, [id]);
-    console.log(result);
-    
+
     return result[0];
 }
 
 /**
- * 로그인 - select 
+ * 로그인 - SELECT
  */
-export const checkLogin = async ({id, pwd}) => { // {id : 'test', pwd : '1234'}
+export const checkLogin = async ({ id, pwd }) => {
     const sql = `
-                    select count(*) as result_rows from shoppy_member 
-                        where id = ? and pwd = ?
-                `;
-    const [ result ] = await db.execute(sql, [id, pwd]); // [[], []]
-    // [{result_rows : 1}]
+        select count(*) as result_rows from shoppy_member where id = ? and pwd = ?; 
+    `;
+    const values=[id,pwd];
+    const [result] = await db.execute(sql, values);
+    
     return result[0];
 }

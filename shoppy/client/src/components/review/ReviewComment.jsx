@@ -1,11 +1,10 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import Pagination from './Pagination';
+import { useParams, useNavigate } from 'react-router-dom';
+import Pagination from '../Pagination';
+import { useReview } from '../../hooks/listCount';
 
-export default function ReviewComment({reviewList}) {
-    const { pid } = useParams();
-
+export default function ReviewComment({reviewList, reviewCount}) {
     // 페이지 정보 관련
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
@@ -13,20 +12,15 @@ export default function ReviewComment({reviewList}) {
     const pagesPerGroup = 5; // 페이지 그룹당 최대 페이지 수
     const [pageGroup, setPageGroup] = useState(1);
 
-    useEffect(() => {
-        axios
-            .get('/data/reviewcontent.json')
-            .then((res) => {
-                const rcArray = res.data.products.filter((reviewComment) => reviewComment.pid === pid);
-                const totalReviews = rcArray[0].reviews.length;
-                setTotalPages(Math.ceil(totalReviews / itemsPerPage)); // 전체 페이지 수 계산
-            })
-            .catch((error) => console.error(error));
-    }, [pid, currentPage]); // `pid`와 `currentPage`가 변경될 때마다 다시 데이터 로딩
-
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = reviewList.slice(indexOfFirstItem, indexOfLastItem);
+
+        useEffect(() => {
+            const pages = Math.ceil(reviewList.length / itemsPerPage);
+            setTotalPages(pages);
+        }, [reviewList, itemsPerPage]);
+    
 
     return (
         <>

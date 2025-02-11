@@ -13,27 +13,20 @@ const storage = multer.diskStorage({
     }
 })
 
-/**
- * 파일업로드 실행 함수
- */
 export const fileUploadMultiple = (req, res) => {
     const maxFiles = parseInt(req.query.maxFiles);
-    const upload = multer({ storage: storage }).array("files", maxFiles);
+    const upload = multer({ storage: storage }).array("files", maxFiles)
 
     upload(req, res, (err) => {
         if (err) {
             console.log(err)
         } else {
-
-            const oldFileArray = req.body.oldFile.split(",");
-            console.log(oldFileArray);
-
-            /* 이전 파일 존재 시 삭제 로직 */
-            // const oldFile = req.body.oldFile;
-            for(const oldFile of oldFileArray) {
-                if (req.body.oldFile) {
+            // 이전파일 존재시 삭제로직
+            const oldFileArray = req.body.oldFile.split(','); // 문자열로 넘어오기때문에 배열로 만들어줌                
+            for (const oldFile of oldFileArray) {
+                if (oldFile) {
                     //oldFile 존재 시 업로드 폴더에서 삭제
-                    const oldFilePath = path.join("upload_files", oldFile)
+                    const oldFilePath = path.join("upload_files", oldFile);
                     if (fs.existsSync(oldFilePath)) {
                         try {
                             fs.unlinkSync(oldFilePath)
@@ -41,9 +34,8 @@ export const fileUploadMultiple = (req, res) => {
                             console.error("이전 파일 삭제 실패 : ", error)
                         }
                     }
-                } // if
-            } // for
-
+                }
+            }
             // res 객체를 이용한 전송객체 생성 <-> uploadController의 res 객체명과 동일하게 정의!!
             let uploadFileName = [];
             let sourceFileName = [];

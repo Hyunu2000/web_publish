@@ -1,28 +1,15 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import { FaLock } from "react-icons/fa";
 
 
-export default function QnAList({ currentPage, itemsPerPage,sendTotalPages,  }) {
-    const [list, setList] = useState([]);
-    const { pid } = useParams();
+export default function QnAList({
+    list,
+    currentPage,
+    itemsPerPage,
+}) {
     const [openAnswer, setOpenAnswer] = useState(null);
 
-    useEffect(() => {
-        axios
-            .get("/data/qna.json")
-            .then((res) => {
-                const farray = res.data.filter((d) => (d.pid === parseInt(pid)))
-                setList(farray[0].qnalist)
-            })
-            .catch((error) => console.log(error))
-    }, []);
-    
-    useEffect(() => {
-        setOpenAnswer(null);
-    }, [currentPage]);
-
+    // 질문 클릭 시 답변 토글
     const toggleAnswer = (item, index) => {
         if (openAnswer === index) {
             setOpenAnswer(null);
@@ -32,30 +19,31 @@ export default function QnAList({ currentPage, itemsPerPage,sendTotalPages,  }) 
             setOpenAnswer(index);
         }
     }
+    // currentPage 변경 시 openAnswer 닫기
+    useEffect(() => {
+        setOpenAnswer(null);
+    }, [currentPage]);
+
+    // 현재 페이지의 아이템들만 잘라서 노출
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = list.slice(indexOfFirstItem, indexOfLastItem);
-    useEffect(()=>{
-        const totalPages = Math.ceil(list.length / itemsPerPage);
-        sendTotalPages(totalPages);
-    },[list])
-    
 
     return (
         <table className='qna-table'>
             <tbody>
-                {currentItems &&currentItems.map((item, index) =>
+                {currentItems && currentItems.map((item, index) =>
                     <>
                         <tr>
                             <td className='complete'><span>{item.complete}</span></td>
                             <td className='question'
                                 onClick={() => { toggleAnswer(item, index) }}>
-                                <span>{item.question}{item.isSecret ===true ? <FaLock/>: ''}</span>
+                                <span>{item.question}{item.isSecret === true ? <FaLock /> : ''}</span>
                             </td>
                             <td className='qna-email'><span>{item.email}</span></td>
                             <td className='qna-date'><span>{item.date}</span></td>
                         </tr>
-                        {openAnswer === index && 
+                        {openAnswer === index &&
                             <tr className='answer-content'>
                                 <td></td>
                                 <td colSpan={2}>
@@ -84,3 +72,4 @@ export default function QnAList({ currentPage, itemsPerPage,sendTotalPages,  }) 
         </table>
     );
 }
+

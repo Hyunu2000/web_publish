@@ -1,5 +1,5 @@
 /**
- * 1. DB연동 라이브러리 호출 - DB서버 주소, user, password, port
+ * 1. DB 연동 라이브러리 호출 - DB서버주소, user, password, port 
  */
 import mysql from 'mysql2';
 

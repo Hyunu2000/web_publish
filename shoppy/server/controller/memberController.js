@@ -1,35 +1,37 @@
-import * as repository from '../repository/memberRepository.js';
+import * as repository from '../repository/memberRepository.js'
 import jwt from 'jsonwebtoken';
 
 /**
- * 아이디 중복체크 : getIdCheck
+ * 아이디 중복체크
  */
 export const getIdCheck = async (req, res) => {
-    // console.log('id--->>', req.body);
+    // console.log('id ===', req.body)
     const result = await repository.getIdCheck(req.body);
     res.json(result);
     res.end();
-}
-/**
- * 회원가입 : registerMember
- */
-export const registerMember = async (req, res) => { // DB연동은 비동기
-    // const formData = req.body;
-    const result = await repository.registerMember(req.body);
-    res.json(result);
-    res.end();
-}
+};
 
 /**
- * 로그인 : checkLogin
+ * 회원가입
+ */
+export const registerMember = async (req, res) => {
+    console.log('req.body -->', req.body);
+    const result = await repository.registerMember(req.body);
+    res.json(result);
+    res.end()
+};
+
+
+/**
+ * 로그인
  */
 export const checkLogin = async (req, res) => {
     let result = await repository.checkLogin(req.body);
-    // keygen 사이트 : https://randomkeygen.com/
-    if(result.result_rows === 1) {
-        const token = jwt.sign({"userId" : req.body.id}, 'vw8EMl1ttb');
-        result = {...result, "token" : token};
-    } 
+    // jwt token 생성 및 result 객체에 추가 전송 : {result_rows:1, token:~~~}
+    if (result.result_rows === 1) {
+        const token = jwt.sign({ "userId": req.body.id }, "64dAeD");
+        result = { ...result, "token": token };
+    }
     res.json(result);
     res.end();
-}
+};

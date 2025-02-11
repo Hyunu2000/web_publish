@@ -82,3 +82,39 @@ select  pid,
 from shoppy_product;
 
 
+
+
+--
+use hrdb2019;
+select database();
+select * from shoppy_product;
+desc shoppy_product;
+
+select  pid,
+		pname as name,
+        price,
+        description as info,
+        upload_file as uploadFile, 
+        source_file as sourceFile,
+        pdate,
+        concat('http://localhost:9000/',upload_file->>'$[0]') as image,
+        json_array(
+			'http://localhost:9000/',upload_file->>'$[0]',
+            'http://localhost:9000/',upload_file->>'$[1]',
+            'http://localhost:9000/',upload_file->>'$[2]'
+        ) as imgList,
+        json_arrayagg(
+			concat('http://localhost:9000/', jt.filename)
+        ) as detailImgList
+from shoppy_product, 
+	json_table(shoppy_product.upload_file, '$[*]'
+				columns( filename	varchar(100) path '$' )) as jt
+where pid = 3
+group by pid;
+
+
+select upload_file from shoppy_product;
+
+
+
+

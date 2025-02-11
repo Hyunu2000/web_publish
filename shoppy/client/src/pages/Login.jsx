@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext } from 'react';
+import React, { useRef, useState, useContext } from 'react';
 import '../styles/login.css';
 import { FaUser } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
@@ -8,54 +8,48 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../auth/AuthContext.js';
 
 export default function Login() {
-    const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+    const {isLoggedIn, setIsLoggedIn} = useContext(AuthContext); // AuthContext의 {isLoggedIn, setIsLoggedIn} 을 useContext를 통해 가져옴
     const navigate = useNavigate();
     const refs = {
-        "idRef": useRef(null),
-        "pwdRef": useRef(null)
-    }
+        idRef: useRef(null),
+        pwdRef: useRef(null)
+    };
+    const msgRef = useRef(null);
+    const [formData, setFormData] = useState({ "id": "", "pwd": "" });
 
-    const msgRefs = {
-        "msgRef" : useRef(null)
-    }
-
-    const [formData, setFormData] = useState({ 'id': '', 'pwd': '' }); // name을 일치시킬 것
-
-    /** form 데이터 입력 함수 */
+    // form 데이터 입력 함수
     const handleChangeForm = (event) => {
-        // setFormData에 아이디, 패스워드 저장
+        // setFormData 에 아이디, 패스워드 저장
         const { name, value } = event.target; // name, value
-        setFormData({ ...formData, [name]: value }); // property 값이 변수에 저장된 경우 []안에 호출
+        setFormData({ ...formData, [name]: value }); // property 값이 변수에 저장된 경우 []안에 호출        
     }
 
-    /** Submit 함수 */
+    // Submit 함수
     const handleLoginSubmit = (event) => {
         event.preventDefault();
+        if (validateLogin(refs, msgRef)) {
+            console.log('send', formData);
 
-        if (validateLogin(refs, msgRefs)) {
-            console.log('send data -->>', formData);
-
-            // 리액트 ---> 노드서버(express) 데이터 전송
+            // 리액트 ==> 노드서버(express) 데이터 전송
             axios
                 .post('http://localhost:9000/member/login', formData)
                 .then(res => {
-                    // console.log('res.data-->', res.data)
-                    if(res.data.result_rows === 1) {
-                        alert('로그인 성공!!');
+                    if (res.data.result_rows === 1) {
+                        alert('로그인 성공!!!!!!!');
                         localStorage.setItem("token", res.data.token);
                         setIsLoggedIn(true);
                         navigate('/');
                     } else {
-                        alert('로그인 실패!!');
+                        alert('로그인 실패');
                     }
+                    console.log(res.data);
                 })
-                .catch(error => {
-                    alert('로그인 실패!!');
-                    console.log(error)
+                .catch(err => {
+                    alert('로그인 실패');
+                    console.log(err)
                 });
         }
     }
-
 
     return (
         <div className="content">
@@ -90,8 +84,9 @@ export default function Login() {
                         <p id="error-msg-pwd"></p>
                     </li>
                     <li>
-                        <span style={{fontSize:"0.7em", color:"white"}} 
-                                ref={msgRefs.msgRef}>아이디 또는 패스워드를 입력해주세요</span>
+                        <span style={{ fontSize: "0.7em", color: "white" }} ref={msgRef}>
+                            아이디 또는 패스워드를 입력해주세요
+                        </span>
                     </li>
                     <li>
                         <button type="submit" className="login-button">로그인</button>
@@ -119,4 +114,3 @@ export default function Login() {
         </div>
     );
 }
-

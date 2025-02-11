@@ -3,21 +3,21 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FiShoppingBag } from "react-icons/fi";
 import { AuthContext } from '../auth/AuthContext.js';
 
-export default function Header({cartCount}) {
+export default function Header({ cartCount }) {
     const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    // console.log('isLoggedIn-->', isLoggedIn);
     const handleLoginToggle = () => {
-        if(isLoggedIn) { // Logout 버튼 클릭!!!
-            const select = window.confirm('정말로 로그아웃 하시겠습니까?');
-            if(select) {
-                localStorage.removeItem("token");
+        if (isLoggedIn) {
+            const select = window.confirm("정말로 로그아웃 하시겠습니까?");
+            if (select) {
+                alert('로그아웃 되었습니다.');
+                localStorage.removeItem('token');
                 setIsLoggedIn(false);
                 navigate('/');
             }
         } else {
-            navigate('/login');
+            navigate('/login')
         }
     }
 
@@ -30,15 +30,15 @@ export default function Header({cartCount}) {
                 </Link>
                 <nav className='header-right'>
                     <Link to='/all'>Products</Link>
-                    <Link to='/cart'>MyCart({cartCount})</Link>
+                    <Link to='/cart'>Mycart({cartCount})</Link>
                     <button type='button' onClick={handleLoginToggle}>
-                        { isLoggedIn ? "Logout" : "Login" }
+                        {isLoggedIn ? "Logout" : "Login"}
                     </button>
                     <Link to='/signup'>
                         <button type='button'>Signup</button>
                     </Link>
-
-                    { isLoggedIn &&
+                    {
+                        isLoggedIn &&
                         <Link to='/products/new'>
                             <button type='button'>New Product</button>
                         </Link>

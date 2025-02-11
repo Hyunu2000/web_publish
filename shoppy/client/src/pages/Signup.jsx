@@ -1,63 +1,50 @@
 import React, { useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import '../styles/signup.css';
-import { validateSignup, handleDuplicateIdCheck, handlePasswordCheck } from '../utils/funcValidate.js';
-import { initSignup, useInitSignupRefs } from '../utils/funcInitialize.js';
+import { validateSignup, handleDuplicateIdCheck, handlePwdCheck } from '../utils/funcValidate';
+import { initSignup, useInitSignupRefs } from '../utils/funcInitialize';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function Signup() {
-    const navigate = useNavigate();
     const { names, placeholders, labels, initFormData } = initSignup();
-    const { refs, msgRefs } = useInitSignupRefs(names); // names를 먼저 받아야 하기 때문에 코드 순서 주의
+    const { refs, msgRefs } = useInitSignupRefs(names);
     const [formData, setFormData] = useState(initFormData);
     const [idCheckResult, setIdCheckResult] = useState('default');
+    const navigate = useNavigate();
 
-    // change
-    const handleChangeForm = (e) => {
-        const { name, value } = e.target;
-        // console.log(name, value);
 
+    const handleChangeForm = (event) => {
+        const { name, value } = event.target;
         setFormData({ ...formData, [name]: value });
-        if (name === "id") {
-            setIdCheckResult('default');
+        if (name === 'id') {
+            setIdCheckResult('default'); // handleChangeForm에서 name이 "id"인 경우(즉, 아이디 입력 필드가 변경될 때), idCheckResult 상태를 "default"로 초기화하여 중복 확인 상태를 리셋한다.
         }
-        
     };
 
-    // submit
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
+    const handleSubmit = (event) => {
+        event.preventDefault();
         if (validateSignup(refs, msgRefs)) {
-            if(idCheckResult === 'default') {
-                alert('중복 확인을 진행해주세요.');
+            if (idCheckResult === 'default') {
+                alert('중복확인을 진행해주세요.');
                 return false;
             } else {
-                console.log('submit ---->>', formData);
                 // 서버 --> DB 테이블에 insert
-                // GET : URL 통해 호출 및 데이터 전달 => 패킷의 Header => req.params
-                //       보안이 필요X, 작은 데이터
-                // POST : URL 주소로 경로 호출, 데이터 전달 => 패킷의 Body => req.body
-                //        보안이 필요O, 큰 데이터
+                // GET : URL 통해 호출 및 데이터 전달 => 패킷의 Header => req.params, 보안필요X, 작은 데이터
+                // POST : URL 주소로 경로 호출, 데이터 전달은 패킷의 Body => req.body, 보안필요O, 큰 데이터
                 axios.post('http://localhost:9000/member/signup', formData)
                     .then(res => {
-                        if(res.data.result_rows === 1){
-                            alert('회원가입에 성공하셨습니다.');
-                            // window.location.href = '/login';
-
-                            // 3초 후에 로그인 페이지 이동 --> useNavigate
-                            setTimeout(() => {
-                                navigate('/login');
-                            }, 1000);
+                        if (res.data.result_rows === 1) {
+                            alert('회원가입에 성공하셨습니다');
+                            // 로그인 페이지 이동 : useNavigate(), window.location.href
+                            setTimeout(()=>navigate('/login'), 1000);
                         } else {
-                            alert('회원가입에 실패하셨습니다.');
+                            alert('회원가입에 실패하셨습니다');
                         }
                     })
                     .catch(error => {
-                        alert('회원가입에 실패하셨습니다.');
-                        console.log(error)
-                    });
-
+                        alert('회원가입에 실패하셨습니다');
+                        console.log('error ==>',error)
+                    })
             }
         }
     };
@@ -65,27 +52,27 @@ export default function Signup() {
     return (
         <div className="content">
             <h1 className="center-title">SIGNUP</h1>
-            <form className="signup-form" onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="signup-form">
                 <ul>
+                    {/* start of map */}
                     {
-                        names && names.map((name) => (
+                        names && names.map((name) =>
                             <li>
-                                <label><b>{labels[name]}</b></label>
-                                <span ref={msgRefs.current[name.concat('MsgRef')]}>{labels[name]}를(을) 입력해주세요</span>
+                                <label for="" ><b>{labels[name]}</b></label>
+                                <span ref={msgRefs.current[name.concat('MsgRef')]}>{labels[name]}을 입력해주세요</span>
                                 <div>
                                     {name === 'emailname' ? (
                                         <>
-                                            <input
-                                                type="text"
+                                            <input type="text"
                                                 name={name}
                                                 ref={refs.current[name.concat('Ref')]}
                                                 onChange={handleChangeForm}
                                                 placeholder={placeholders[name]} />
                                             <span>@</span>
-                                            <select
-                                                name="emaildomain"
-                                                ref={refs.current['emaildomainRef']}
-                                                onChange={handleChangeForm}>
+                                            <select name="emaildomain"
+                                                ref={refs.current["emaildomainRef"]}
+                                                onChange={handleChangeForm}
+                                            >
                                                 <option value="default">선택</option>
                                                 <option value="naver.com">naver.com</option>
                                                 <option value="gmail.com">gmail.com</option>
@@ -94,51 +81,40 @@ export default function Signup() {
                                         </>
                                     ) : (
                                         <>
-                                            <input
-                                                type={(name === 'pwd' || name === 'cpwd') ? 'password' : 'text'}
+                                            <input type={name === 'pwd' || name === 'cpwd' ? 'password' : 'text'}
                                                 name={name}
                                                 ref={refs.current[name.concat('Ref')]}
                                                 onChange={handleChangeForm}
-                                                onBlur={
-                                                    (name === 'cpwd') ? () => {
-                                                        handlePasswordCheck(
-                                                            refs.current['pwdRef'],
-                                                            refs.current['cpwdRef'],
-                                                            refs.current['nameRef'],
-                                                            msgRefs.current['pwdMsgRef'],
-                                                            msgRefs.current['cpwdMsgRef']
-                                                        )
-                                                    } : null
-                                                }
-                                                placeholder={placeholders[name]}
-                                            />
+                                                onBlur={(name === 'cpwd') ? (() => handlePwdCheck(
+                                                    refs.current['pwdRef'],
+                                                    refs.current['cpwdRef'],
+                                                    refs.current['nameRef'],
+                                                    msgRefs.current['pwdMsgRef'],
+                                                    msgRefs.current['cpwdMsgRef']
+                                                )) : (null)}
+                                                placeholder={placeholders[name]} />
                                             {name === 'id' &&
                                                 <>
                                                     <button type="button"
-                                                        onClick={() => {
-                                                            handleDuplicateIdCheck(
-                                                                                    refs.current['idRef'],
-                                                                                    refs.current['pwdRef'],
-                                                                                    msgRefs.current['idMsgRef'],
-                                                                                    setIdCheckResult,
-                                                                                    formData
-                                                            )
-                                                        }}
-                                                        >중복확인</button>
-                                                    <input type="hidden" 
-                                                            value={idCheckResult}
-                                                            />
+                                                        onClick={() => handleDuplicateIdCheck(
+                                                            refs.current['idRef'],
+                                                            msgRefs.current['idMsgRef'],
+                                                            refs.current['pwdRef'],
+                                                            setIdCheckResult,
+                                                            idCheckResult,
+                                                            formData
+                                                        )}
+                                                    >중복확인</button>
+                                                    <input type="hidden" value={idCheckResult} />
                                                 </>
                                             }
                                         </>
-                                    )
-                                    }
+                                    )}
                                 </div>
                             </li>
-                        ))
-                    } {/** end of map */}
-
-
+                        )
+                    }
+                    {/* end of map */}
                     <li>
                         <button type="submit">가입하기</button>
                         <button type="reset">가입취소</button>
@@ -148,4 +124,3 @@ export default function Signup() {
         </div>
     );
 }
-

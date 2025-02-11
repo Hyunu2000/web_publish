@@ -4,21 +4,19 @@ import ImageUpload from '../components/ImageUpload.jsx';
 import { useNavigate } from 'react-router-dom'
 import ImageUploadMultiple from '../components/ImageUploadMultiple.jsx';
 export default function NewProduct() {
-    const navigate = useNavigate();
     const productNameRef = useRef(null);
     const [fname, setFname] = useState({});
     const [preview, setPreview] = useState('');
     let [formData, setFormData] = useState({});
-    const [previewList, setPreviewList] = useState([]);
+    const [previewList, setPreviewList]=useState([]);
+    const navigate = useNavigate();
 
     const getFileName = (filenames) => {
         setFname(filenames);
         setPreviewList(filenames.uploadFileName);
-        // setPreview(`http://localhost:9000/${filenames.uploadFileName}`);
-        // console.log('NewProduct fileNames ===>>', filenames);
     }
 
-    // 폼 입력시 값을 formDatat로 추가하는 이벤트 처리
+    // 폼 입력시 값을 formData로 추가하는 이벤트 처리
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
@@ -34,11 +32,10 @@ export default function NewProduct() {
             return false;
         } else {
             // 서버연동
-            formData = {...formData, 
-                                "uploadFile": fname.uploadFileName,
-                                "sourceFile": fname.sourceFileName
-                        };
-            console.log('formData -->', formData);
+            formData = {
+                ...formData, "uploadFile": fname.uploadFileName,
+                             "sourceFile": fname.sourceFileName
+            };
 
             axios.post('http://localhost:9000/product/new', formData)
                 .then(res => {
@@ -53,7 +50,8 @@ export default function NewProduct() {
                 .catch(err => {
                     alert("상품 등록 실패");
                     console.log(err)
-                } );
+                }
+                )
         }
     }
 
@@ -64,7 +62,7 @@ export default function NewProduct() {
                 <ul>
                     <li>
                         <label>상품명</label>
-                        <input type="text" name='productName' ref={productNameRef} onChange={handleChange} />
+                        <input type="text" name='productname' ref={productNameRef} onChange={handleChange} />
                     </li>
                     <li>
                         <label>가격</label>
@@ -75,14 +73,14 @@ export default function NewProduct() {
                         <input type="text" name='description' onChange={handleChange} />
                     </li>
                     <li>
-                        <label>파일 업로드(다중)</label>
+                        <label>파일 업로드(multiple)</label>
                         <ImageUploadMultiple getFileName={getFileName}/>
-                        {/** 다중파일 preview */}
+                        {/* 다중파일 preview */}
                         {
-                            previewList && previewList.map((preview) => 
+                            previewList && previewList.map((preview)=>
                                 <img src={`http://localhost:9000/${preview}`}
-                                    alt="preview image"
-                                    style={{ width: '100px', height: '100px' , margin: '5px'}} />    
+                                alt="preview image"
+                                style={{ width: '100px', height: '100px', margin: '5px'}} />
                             )
                         }
                     </li>
@@ -107,3 +105,4 @@ export default function NewProduct() {
         </div>
     );
 }
+
