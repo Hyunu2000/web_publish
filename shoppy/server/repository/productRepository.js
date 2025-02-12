@@ -25,14 +25,14 @@ export const registerProduct = async (formData) => {
  */
 export const getList = async () => {
     const sql = `
-        select pid,
-               pname as name,
-               price,
-               description as info,
-               concat('http://localhost:9000/',upload_file->>'$[0]') as image,
-               source_file,
-               pdate
-         from shoppy_product
+        select  pid,
+                pname as name,
+                price,
+                description as info,
+                concat('http://localhost:9000/',upload_file->>'$[0]') as image,
+                source_file,
+                pdate
+        from shoppy_product
     `;
     const [result] = await db.execute(sql);
 
@@ -66,7 +66,7 @@ export const getProduct = async (pid) => {
                     shoppy_product, 
                     -- json_table(테이블.컬럼명,매핑데이터 columns(컬럼 생성 후 리턴)) as jt 
                     json_table(shoppy_product.upload_file,'$[*]'
-							   columns(filename varchar(100) path '$')) as jt
+					columns(filename varchar(100) path '$')) as jt
                 WHERE
                     pid = ?
                     group by pid;    
@@ -74,4 +74,24 @@ export const getProduct = async (pid) => {
 
     const [result] = await db.execute(sql, [pid]); // result = [[{pid:4,~~}],[컬럼명 fields]]
     return result[0];
+}
+
+/**
+ * 장바구니 상품 정보 조회
+ */
+export const getCartItems = async ({pids}) => {
+    const strArray = [];
+    pids.forEach(pid => strArray.push("?"));
+
+    const sql = `
+                    select  pid,
+                            pname,
+                            price,
+                            description,
+                            concat('http://localhost:9000/', upload_file->>'$[0]') as image
+                    from shoppy_product
+                    where pid in(${strArray.join(",")});    
+                `;
+    const [result] = await db.execute(sql,pids);
+    return result;
 }

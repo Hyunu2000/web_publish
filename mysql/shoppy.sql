@@ -115,6 +115,23 @@ group by pid;
 
 select upload_file from shoppy_product;
 
+--
+use hrdb2019;
+select database();
+select * from shoppy_product;
+
+-- pid, pname, price, description, upload_file 0번지 이미지
+select  pid,
+		pname,
+        price,
+        description,
+        concat('http://localhost:9000/', upload_file->>'$[0]') as image
+from shoppy_product
+where pid in(3, 5, 7);
+
+-- drop table shoppy_product;
+
+
 
 
 

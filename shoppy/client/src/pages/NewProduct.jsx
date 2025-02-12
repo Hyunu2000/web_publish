@@ -8,7 +8,7 @@ export default function NewProduct() {
     const [fname, setFname] = useState({});
     const [preview, setPreview] = useState('');
     let [formData, setFormData] = useState({});
-    const [previewList, setPreviewList]=useState([]);
+    const [previewList, setPreviewList] = useState([]);
     const navigate = useNavigate();
 
     const getFileName = (filenames) => {
@@ -34,7 +34,7 @@ export default function NewProduct() {
             // 서버연동
             formData = {
                 ...formData, "uploadFile": fname.uploadFileName,
-                             "sourceFile": fname.sourceFileName
+                "sourceFile": fname.sourceFileName
             };
 
             axios.post('http://localhost:9000/product/new', formData)
@@ -74,13 +74,13 @@ export default function NewProduct() {
                     </li>
                     <li>
                         <label>파일 업로드(multiple)</label>
-                        <ImageUploadMultiple getFileName={getFileName}/>
+                        <ImageUploadMultiple getFileName={getFileName} />
                         {/* 다중파일 preview */}
                         {
-                            previewList && previewList.map((preview)=>
+                            previewList && previewList.map((preview) =>
                                 <img src={`http://localhost:9000/${preview}`}
-                                alt="preview image"
-                                style={{ width: '100px', height: '100px', margin: '5px'}} />
+                                    alt="preview image"
+                                    style={{ width: '100px', height: '100px', margin: '5px' }} />
                             )
                         }
                     </li>

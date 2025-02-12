@@ -13,7 +13,7 @@ export const registerProduct = async (req, res) => {
 /**
  * 전체 상품 리스트 조회
  */
-export const getList=async(req,res)=>{
+export const getList=async(req,res) => {
     const result = await repository.getList();
     res.json(result);
     res.end();
@@ -22,8 +22,18 @@ export const getList=async(req,res)=>{
 /**
  * 상품 상세 정보 조회
  */
-export const getProduct = async(req,res)=>{
+export const getProduct = async(req,res) => {
     const result=await repository.getProduct(req.body.pid);
+    res.json(result);
+    res.end();
+}
+
+/**
+ * 장바구니 상품 정보 조회
+ */
+export const getCartItems = async(req, res) => {
+    // console.log('pids --->', req.body);
+    const result = await repository.getCartItems(req.body);
     res.json(result);
     res.end();
 }
