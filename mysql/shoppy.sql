@@ -131,6 +131,34 @@ where pid in(3, 5, 7);
 
 -- drop table shoppy_product;
 
+show tables;
+select * from shoppy_member;
+select * from shoppy_product;
+-- 어떤 회원(pk:id)이 어떤 상품(pk:pid)을 장바구니에 넣었는지 명확, 간단하게!!
+
+-- shoppy_cart
+-- 컬럼리스트 : cid(pk), id(shoppy_member:fk), pid(shoppy_product:fk), size, qty, cdate(장바구니 등록 날짜)
+desc shoppy_member;
+desc shoppy_product;
+
+create table shoppy_cart(
+	cid		int				primary key		auto_increment,
+    size 	varchar(10)		not null,
+    qty		int				not null,
+    cdate	datetime,
+    id		varchar(30)		not null,
+    pid		int				not null,
+    constraint fk_id_shoppy_member_id	foreign key(id) references shoppy_member(id),
+    constraint fk_pid_shppy_product_pid	foreign key(pid)references shoppy_product(pid)
+);
+show tables;
+desc shoppy_cart;
+select * from shoppy_cart;
+
+	
+-- drop table shoppy_cart;
+
+
 
 
 
