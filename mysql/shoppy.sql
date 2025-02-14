@@ -155,6 +155,8 @@ show tables;
 desc shoppy_cart;
 select * from shoppy_cart;
 
+
+
 	
 -- drop table shoppy_cart;
 
