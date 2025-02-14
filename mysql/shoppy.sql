@@ -161,6 +161,37 @@ select * from shoppy_cart;
 -- drop table shoppy_cart;
 
 
+truncate table shoppy_cart; -- 테이블 내의 데이터 모두 삭제, 복구 불가
+select * from shoppy_cart;
+
+--
+select * from shoppy_cart;
+
+insert into shoppy_cart(size, qty, cdate, id, pid)
+	values('XS', 2, now(), 'test2', 10);
+
+select * from shoppy_product where pid = 3;
+
+-- shoppy_cart, shoppy_member, shoppy_product 조인
+select	sc.cid,
+	    sc.size,
+        sc.qty,
+        sm.id,
+        sm.zipcode,
+        sm.address,
+        sp.pid,
+        sp.pname,
+        sp.price,
+        sp.description as info,
+        concat('http://localhost:9000/', sp.upload_file->>'$[0]') as image
+	from shoppy_cart sc,
+		 shoppy_member sm,
+         shoppy_product sp
+	where sc.id = sm.id 
+			and sc.pid = sp.pid
+            and sm.id = 'test2';
+
+
 
 
 

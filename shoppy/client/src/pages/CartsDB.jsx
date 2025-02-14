@@ -14,7 +14,7 @@ import { useNavigate } from 'react-router-dom';
             const initCartList = localStorage.getItem("cartItems");
             return initCartList ? JSON.parse(initCartList) : [];
         } catch (error) {
-            console.log("로컬스토리지 JSON 파싱 오류:", error);
+            console.error("로컬스토리지 JSON 파싱 오류:", error);
             return []; // 오류 발생 시 빈 배열 반환
         }
     });
@@ -139,9 +139,9 @@ import { useNavigate } from 'react-router-dom';
                             <td>
                                 <img src={item.image} alt="" style={{width:"100px"}}/>
                             </td>
-                            {/* <td>
+                            <td>
                                 <button onClick={() => { handleOrder("each", item.pid, item.size) }}>계속담아두기</button>
-                            </td> */}
+                            </td>
                         </tr>
                     )
                 }
