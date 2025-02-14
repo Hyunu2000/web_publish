@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 
     export default function Carts({refreshStorage}) {
-    const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext); // useContext로 함수와 함수 내의 데이터 자유롭게 사용
+    const { isLoggedIn } = useContext(AuthContext); // useContext로 함수와 함수 내의 데이터 자유롭게 사용
     const navigate = useNavigate();
 
      // 장바구니 아이템 저장 : 배열
@@ -14,8 +14,8 @@ import { useNavigate } from 'react-router-dom';
             const initCartList = localStorage.getItem("cartItems");
             return initCartList ? JSON.parse(initCartList) : [];
         } catch (error) {
-            console.log("로컬스토리지 데이터 작업 도중 에러 발생!");
-            console.log(error);
+            console.log("로컬스토리지 JSON 파싱 오류:", error);
+            return []; // 오류 발생 시 빈 배열 반환
         }
     });
 
@@ -139,9 +139,9 @@ import { useNavigate } from 'react-router-dom';
                             <td>
                                 <img src={item.image} alt="" style={{width:"100px"}}/>
                             </td>
-                            <td>
+                            {/* <td>
                                 <button onClick={() => { handleOrder("each", item.pid, item.size) }}>계속담아두기</button>
-                            </td>
+                            </td> */}
                         </tr>
                     )
                 }
