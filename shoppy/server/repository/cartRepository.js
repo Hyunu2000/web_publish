@@ -51,3 +51,28 @@ export const getItems = async ({id}) => {
     const [result] = await db.execute(sql, [id]);
     return result;
 }
+
+/**
+ * 장바구니 전체 카운트 조회
+ */
+export const getCount = async ({id}) => {
+    const sql = `  
+                    select count(*) as count from shoppy_Cart
+                        where id = ?
+                `;                              
+    const [result] = await db.execute(sql, [id]); // [[{ count : 2 }] [count 필드정보]]
+    return result[0]; // 2차원 배열의 0번지 결과를 return                
+}
+
+/**
+ * 장바구니 상품 수량 업데이트
+ */
+export const updateQty = async ({cid}) => {
+        const sql = `  
+                        update shoppy_cart
+                            set qty = qty + 1
+                            where cid = ?
+                    `;                              
+    const [result] = await db.execute(sql, [cid]); 
+    return {"result_rows" : result.affectedRows};
+}

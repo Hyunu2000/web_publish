@@ -11,8 +11,10 @@ import NewProduct from './pages/NewProduct.jsx';
 import CartsDB from './pages/CartsDB.jsx';
 import { useEffect, useState } from 'react';
 import { AuthProvider } from './auth/AuthContext.js';
+import { CartProvider } from './context/CartContext.js';
 
 export default function App() {
+
     // 장바구니 아이템 저장 : 배열
   const [cartList, setCartList] = useState(() => {
     try {
@@ -78,10 +80,11 @@ export default function App() {
   } // addCart
 
   return (
+    <CartProvider>
     <AuthProvider>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Layout cartCount={cartCount} />}>
+          <Route path='/' element={<Layout />}>
             <Route index element={<Home />} />
             <Route path='/all' element={<Products />} />
             <Route path='/cart' element={<Carts refreshStorage={refreshStorage}/>} />
@@ -94,5 +97,6 @@ export default function App() {
         </Routes>
       </BrowserRouter>
     </AuthProvider>
+    </CartProvider>
   );
 }
