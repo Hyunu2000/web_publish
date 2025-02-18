@@ -204,8 +204,7 @@ select * from shoppy_Cart
 where id = 'test1'; -- [[{ count : 2 }] [count 필드정보]]
 
 select * from shoppy_cart
-where id = 'test1' and pid = 1 and size = 'XS';
+where id = 'test1' and pid = 4 and size = 'XS';
 
 select * from shoppy_cart
 where id = 'test1';
-

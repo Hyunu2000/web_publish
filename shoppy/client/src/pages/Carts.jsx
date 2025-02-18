@@ -1,34 +1,44 @@
-import "../styles/cart.css";
-import axios from "axios";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../auth/AuthContext.js";
 import { CartContext } from "../context/CartContext.js";
+import { useCart } from "../hooks/useCart.js";
+import "../styles/cart.css";
 
 export default function Carts() {
     const navigate = useNavigate();
-    const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+    const { isLoggedIn } = useContext(AuthContext);
     const { cartList, setCartList } = useContext(CartContext);
+    const { getCartList, updateCartList, removeItem } = useCart();
+    const hasCheckedLogin = useRef(false);
 
     useEffect(() => {
+        if (hasCheckedLogin.current) return; // true : 로그인 상태 --> 블록 return
+            hasCheckedLogin.current = true;
+
         if (isLoggedIn) {
-            // 테이블의 로그인 아이디의 카트 리스트 가져오기
-            const id = localStorage.getItem("user_id");
-            axios
-                .post("http://localhost:9000/cart/items", { id: id })
-                .then((res) => {
-                    console.log('list ---> ', res.data);
-                    setCartList(res.data);
-                })
-                .catch((error) => console.log(error));
+            getCartList();
         } else {
             const select = window.confirm("로그인이 필요한 서비스입니다. \n로그인 하시겠습니까?");
-            if (select) {
-                navigate('/login');
-            }
+            select ? navigate('/login') : navigate('/');
+            setCartList([]);
         }
     }, [isLoggedIn]);
 
+    // 수량 업데이트
+    const handleQtyUpdate = (cid, type) => {
+        const result = updateCartList(cid, type);
+        // console.log(type, ' result :: ', result);
+    }
+
+    // 장바구니 상품 삭제
+    const handleRemoveItem = async (cid) => {
+        const confirmDelete = window.confirm("해당 상품을 삭제하시겠습니까?");
+        if (confirmDelete) {
+            await removeItem(cid);
+        }
+    };
+    
     return (
         <div className="cart-container">
             <h2 className="cart-header">장바구니</h2>
@@ -41,11 +51,11 @@ export default function Carts() {
                         <p className="cart-item-price">{item.price}원</p>
                     </div>
                     <div className="cart-quantity">
-                        <button>-</button>
+                        <button onClick={() => {handleQtyUpdate(item.cid, "decrease")}}>-</button>
                         <input type="text" value={item.qty} readOnly />
-                        <button>+</button>
+                        <button onClick={() => {handleQtyUpdate(item.cid, "increase")}}>+</button>
                     </div>
-                    <button className="cart-remove">🗑</button>
+                    <button className="cart-remove" onClick={() => handleRemoveItem(item.cid)}>🗑</button>
                 </div>
             ))}
             <div className="cart-actions">

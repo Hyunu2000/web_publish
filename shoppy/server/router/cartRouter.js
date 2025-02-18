@@ -7,6 +7,8 @@ router
     .post("/add", controller.addCart)
     .post("/items", controller.getItems)
     .post("/count", controller.getCount)
-    .put("/updateQty", controller.updateQty);
+    .put("/updateQty", controller.updateQty)
+    .delete("/remove", controller.removeItem);
+
 
 export default router;
