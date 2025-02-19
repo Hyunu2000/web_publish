@@ -17,9 +17,6 @@ export default function Header() {
         isLoggedIn ? getCount() : setCount(0);
     }, [isLoggedIn]);
 
-    console.log('Header :: cartList --->', cartList);
-    console.log('Header :: cartCount --->', cartCount);
-
     const handleLoginToggle = () => {
         if (isLoggedIn) { // Logout 버튼 클릭!!1
             const select = window.confirm("정말로 로그아웃 하시겠습니까?");

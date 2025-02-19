@@ -3,17 +3,18 @@ import { CartContext } from "../context/CartContext.js";
 import axios from "axios";
 
 export function useCart() { // custom Hook(커스텀 훅)
-    const { cartList, setCartList, cartCount, setCartCount } = useContext(CartContext);
+    const { cartList, setCartList, cartCount, setCartCount, totalPrice, setTotalPrice } = useContext(CartContext);
 
     // 함수 생성 - 비동기 로직 & useContext가 관리하는 변수는 await async를 통해 순서 보장!!!
     /**
      * 장바구니 전체 리스트 조회
      */
-    const getCartList = async () => {
+    const getCartList = async () => { // 업데이트가 되면 상품 가격도 즉시 반영
         const id = localStorage.getItem("user_id");
         const result = await axios.post("http://localhost:9000/cart/items", { "id": id });
         setCartList(result.data);
         setCartCount(result.data.length);
+        calculateTotalPrice(result.data);
     }
 
     /**
@@ -61,5 +62,15 @@ export function useCart() { // custom Hook(커스텀 훅)
                                                     { data: { "cid": cid } }); // delete 메서드는 data 오브젝트로 묶어야 한다
         result.data.result_rows && getCartList();
     };
-    return { getCartList, saveToCartList, updateCartList, getCount, setCount, removeItem }; // 사용할 함수 리턴 잊지말 것
+
+    
+    /**
+     * 장바구니 총 주문금액 계산하기
+     */
+    const calculateTotalPrice = (cartList) => {
+        const totalPrice = cartList.reduce((sum, item) => sum + item.price * item.qty, 0);
+        setTotalPrice(totalPrice);
+    }
+
+    return { saveToCartList, updateCartList, getCartList, getCount, setCount, removeItem, calculateTotalPrice }; // 사용할 함수 리턴 잊지말 것
 }

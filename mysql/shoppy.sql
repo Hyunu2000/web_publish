@@ -173,10 +173,13 @@ insert into shoppy_cart(size, qty, cdate, id, pid)
 select * from shoppy_product where pid = 3;
 
 -- shoppy_cart, shoppy_member, shoppy_product 조인
+select * from shoppy_member where id = 'test1';
 select	sc.cid,
 	    sc.size,
         sc.qty,
         sm.id,
+        sm.phone,
+        concat(sm.emailname,'@',sm.emaildomain) as email,
         sm.zipcode,
         sm.address,
         sp.pid,
@@ -189,7 +192,7 @@ select	sc.cid,
          shoppy_product sp
 	where sc.id = sm.id 
 			and sc.pid = sp.pid
-            and sm.id = 'test2';
+            and sm.id = 'test1';
 
 
 
@@ -208,3 +211,61 @@ where id = 'test1' and pid = 4 and size = 'XS';
 
 select * from shoppy_cart
 where id = 'test1';
+
+drop view view_order_list;
+-- 주문/결제페이지 : 출력
+create view view_order_list
+as
+	select	sc.cid,
+	    sc.size,
+        sc.qty,
+        sm.id,
+        sm.name,
+        sm.phone,
+        concat(sm.emailname,'@',sm.emaildomain) as email,
+        sm.zipcode,
+        sm.address,
+        sp.pid,
+        sp.pname,
+        sp.price,
+        sp.description as info,
+        concat('http://localhost:9000/', sp.upload_file->>'$[0]') as image
+	from shoppy_cart sc,
+		 shoppy_member sm,
+         shoppy_product sp
+	where sc.id = sm.id 
+			and sc.pid = sp.pid;
+
+select * from view_order_list
+	where id = 'test1';
+
+
+drop view view_cart_list;
+-- 전체 카트 리스트 뷰 생성
+create view view_cart_list
+as 
+select	sc.cid,
+	    sc.size,
+        sc.qty,
+        sm.id,
+        sm.name,
+        sm.phone,
+        concat(sm.emailname,'@',sm.emaildomain) as email,
+        sm.zipcode,
+        sm.address,
+        sp.pid,
+        sp.pname,
+        sp.price,
+        sp.description as info,
+        concat('http://localhost:9000/', sp.upload_file->>'$[0]') as image
+	from shoppy_cart sc,
+		shoppy_member sm,
+		shoppy_product sp
+	where sc.id = sm.id 
+			and sc.pid = sp.pid;
+
+select * from view_cart_list
+where id = 'test1'; 
+-- oracle은 뷰 생성에 권한이 필요하다
+-- 뷰 생성으로 쿼리가 짧아지지만 서버 효율이 떨어질 수 있다.
+
