@@ -1,62 +1,86 @@
 import React, { useState, useEffect, useContext } from "react";
 import DaumPostcode from "react-daum-postcode";
-import { useOrder } from "../hooks/useOrder.js";
-import { AuthContext } from "../auth/AuthContext.js";
+import { useOrder } from '../hooks/useOrder.js';
+import { AuthContext } from '../auth/AuthContext.js';
 import { OrderContext } from "../context/OrderContext.js";
 import { CartContext } from "../context/CartContext.js";
-import { useCart } from "../hooks/useCart.js";
+import axios from "axios";
 
 import "../styles/cart.css";
 import "../styles/checkoutinfo.css";
 
 export default function CheckoutInfo() {
+    const [zipcode, setZipcode] = useState("");
+    const [address, setAddress] = useState("");
     const { totalPrice } = useContext(CartContext);
     const { isLoggedIn } = useContext(AuthContext);
     const { orderList, member } = useContext(OrderContext);
     const { getOrderList } = useOrder();
+    const [ qrUrl, setQrUrl] = useState('');
 
-    useEffect(() => {
+    useEffect(()=>{
         if(isLoggedIn) {
             getOrderList();
         }
     }, [isLoggedIn]);
-// console.log('orderList---->', orderList);
-// console.log('member---->', member);
-// console.log('totalPrice :: order ---->', totalPrice);
 
-const [isOpen, setIsOpen] = useState(false); /** 주소검색 버튼Toggle */
-const handleToggle = () => { /** 주소 검색 버튼 */
-    setIsOpen(!isOpen);
-};
+    const [isOpen, setIsOpen] = useState(false);    /** 주소검색 버튼Toggle */
+    const handleToggle = () => {    /** 주소 검색 버튼 */
+        setIsOpen(!isOpen);
+    };
 
-//---- DaumPostcode 관련 디자인 및 이벤트 시작 ----//
-const themeObj = {
-    bgColor: "#FFFFFF",
-    pageBgColor: "#FFFFFF",
-    postcodeTextColor: "#C05850",
-    emphTextColor: "#222222",
-};
+    /** 결제 함수 - 카카오페이 QR 결제 연동 */
+    const handlePayment = async() => {
+        const id = localStorage.getItem('user_id');
 
-const postCodeStyle = {
-    width: "360px",
-    height: "480px",
-};
+        try { // try catch 안에서 axios...catch() 사용할 필요X
+            const res = await axios
+                                .post("http://localhost:9000/payment/qr", {
+                                    "id" : id,
+                                    "item_name" : "테스트 상품",
+                                    "total_amount" : 1000
+                                });
+            console.log(res.data);
+            if(res.data.next_redirect_pc_url) {
+                window.location.href = res.data.next_redirect_pc_url;
+                localStorage.setItem("tid", res.data.tid);
+            }
+            
+        } catch (error) {
+            console.log("카카오페이 QR 결제 에러 발생", error);
+        }
+    } // handlePayment
 
-const completeHandler = (data) => {
-    const { address, zonecode } = data;
-    // handleAddress({ zipcode: zonecode, address: address });
-};
 
-const closeHandler = (state) => {
-    if (state === "FORCE_CLOSE") {
-    setIsOpen(false);
-    } else if (state === "COMPLETE_CLOSE") {
-    setIsOpen(false);
-    // refs.detailAddressRef.current.value = "";
-    // refs.detailAddressRef.current.focus();
-    }
-};
-//---- DaumPostcode 관련 디자인 및 이벤트 종료 ----//
+    //---- DaumPostcode 관련 디자인 및 이벤트 시작 ----//
+    const themeObj = {
+        bgColor: "#FFFFFF",
+        pageBgColor: "#FFFFFF",
+        postcodeTextColor: "#C05850",
+        emphTextColor: "#222222",
+    };
+
+    const postCodeStyle = {
+        width: "360px",
+        height: "480px",
+    };
+
+    const completeHandler = (data) => {
+        setZipcode(data.zonecode);
+        setAddress(data.address);
+    };
+
+    const closeHandler = (state) => {
+        if (state === "FORCE_CLOSE") {
+        setIsOpen(false);
+        } else if (state === "COMPLETE_CLOSE") {
+        setIsOpen(false);
+        // refs.detailAddressRef.current.value = "";
+        // refs.detailAddressRef.current.focus();
+        }
+    };
+    //---- DaumPostcode 관련 디자인 및 이벤트 종료 ----//
+    
 
 return (
     <div className="cart-container">
@@ -74,7 +98,7 @@ return (
 
             <div className="label">휴대폰 번호</div>
             <div className="value phone-input">
-            <input type="text" defaultValue="010-1234-5678" />
+            <input type="text" defaultValue={member.phone} />
             <button className="btn">수정</button>
             </div>
         </div>
@@ -92,10 +116,23 @@ return (
             <div className="value">{member.name}</div>
 
             <div className="label">배송주소</div>
-            <div className="value">서울시 강남구 123</div>
+            {   member.zipcode ? 
+                <div className="value">{member.zipcode}/{member.address}</div>
+                :
+                <div className="value">
+                    { zipcode ? (
+                        <>
+                            <input type="text" value={zipcode} style={{width:'70px', background:'lightgray', opacity:'0.7'}}/>
+                            <input type="text" value={address} />
+                            <input type="text" placeholder="상세정보 입력" />
+                        </>
+                    ) :  "배송지를 추가해주세요!!"}
+                </div>
+            }
+            
 
             <div className="label">연락처</div>
-            <div className="value">{member.phone} / {member.phone}</div>
+            <div className="value">{member.phone}/{member.phone}</div>
 
             <div className="label">배송 요청사항</div>
             <div className="value phone-input">
@@ -122,10 +159,13 @@ return (
         <h2 className="section-title">주문 상품</h2>
         <div className="info-box">
         <div className="info-grid">
-            {orderList && orderList.map((item) => 
+            { orderList && orderList.map(item => 
                 <>
                     <div className="label">상품명</div>
-                    <div className="value">{item.pname}, {item.info}, {item.image}</div>
+                    <div className="value">
+                        <img src={item.image} alt="product image" style={{width:'35px'}} />
+                        {item.pname}, {item.info}, 수량({item.qty}), 가격({item.price.toLocaleString()}원)
+                    </div>
                 </>
             )}
         </div>
@@ -137,31 +177,31 @@ return (
         <table class="payment-table">
         <tr>
             <td>총상품가격</td>
-            <td class="price">{totalPrice.toLocaleString()} 원</td>
+            <td class="price">{totalPrice.toLocaleString()}원</td>
         </tr>
         <tr>
             <td>즉시할인</td>
-            <td class="discount">0 원</td>
+            <td class="discount">-0원</td>
         </tr>
         <tr>
             <td>할인쿠폰</td>
             <td class="coupon">
-            0 원 <span class="info">적용 가능한 할인쿠폰이 없습니다.</span>
+            0원 <span class="info">적용 가능한 할인쿠폰이 없습니다.</span>
             </td>
         </tr>
         <tr>
             <td>배송비</td>
-            <td class="price">0 원</td>
+            <td class="price">0원</td>
         </tr>
         <tr>
             <td>쿠페이캐시</td>
             <td class="price">
-            0 원 <span class="info">보유 : 0 원</span>
+            0원 <span class="info">보유 : 0원</span>
             </td>
         </tr>
         <tr class="total">
             <td>총결제금액</td>
-            <td class="total-price">{totalPrice.toLocaleString()} 원</td>
+            <td class="total-price">{totalPrice.toLocaleString()}원</td>
         </tr>
         </table>
     </div>
@@ -169,28 +209,16 @@ return (
     <div class="section">
         <h2>결제 수단</h2>
         <div class="payment-method">
-        <label class="radio-label">
-            <input type="radio" name="payment" checked />
-            신용/체크카드
-        </label>
-        <select>
-            <option>네모카드 4 (교통) / 12345******876*</option>
-        </select>
-        <input type="checkbox" checked /> 기본 결제 수단으로 사용
-        <p class="info">
-            할부는 5만원 이상부터 가능합니다.
-            <br />
-            해외발급 카드는 쿠팡 앱, 모바일 웹에서 사용 가능합니다.
-        </p>
-        <a href="#" class="link">
-            카드할인 및 무이자할부 안내
-        </a>
+            <label class="radio-label">
+                <input type="radio" name="payment" checked /> 카카오페이
+                <span class="badge">최대 캐시적립</span>
+            </label>
         </div>
 
         <div class="payment-method">
         <label class="radio-label">
             <input type="radio" name="payment" />
-            쿠페이 머니 <span class="badge">최대 캐시적립</span>
+            쿠페이 머니 
         </label>
         </div>
 
@@ -210,7 +238,7 @@ return (
         <label for="privacy">개인정보 국외 이전 동의</label>
     </div>
 
-    <button className="pay-button">결제하기</button>
+    <button className="pay-button" onClick={handlePayment}>결제하기</button>
     </div>
 );
 }

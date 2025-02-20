@@ -8,3 +8,13 @@ export const getOrderList = async(req, res) => {
     res.json(result);
     res.end();
 }
+
+/**
+ * 
+ */
+export const add = async(req, res) => {
+    console.log(req.body);
+    const result = await repository.add(req.body);
+    res.json(result);
+    res.end();
+}

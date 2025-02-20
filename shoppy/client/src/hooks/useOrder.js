@@ -13,12 +13,33 @@ export function useOrder() { // custom Hook 안에서 또 다른 custom Hook 사
     const getOrderList = async() => {
         const id = localStorage.getItem('user_id');
         const result = await axios.post('http://localhost:9000/order/all', {"id":id}); // method를 서버 작업에서도 동일하게 사용
-        console.log('result.data ----->', result.data);                      // 현재는 post method 이기 때문에 서버에서도 post method 사용
+        console.log('order List ----->', result.data);                      // 현재는 post method 이기 때문에 서버에서도 post method 사용
         setOrderList(result.data);
         setMember(result.data[0]);
         calculateTotalPrice(result.data);
+
+        return result.data;
     }
 
-    return { getOrderList };
+    const saveToOrder = async(orderList, totalPrice, tid, type) => {
+        // getOrderList();
+        console.log('saveToOrder :: orderList ---> ', orderList);
+        console.log('saveToOrder :: totalPrice --->', totalPrice);
+        const id = localStorage.getItem('user_id');
+        const formData = {
+            "id" : id,
+            "tid" : tid,
+            "type" : type,
+            "totalPrice" : totalPrice,
+            "orderList" : orderList
+        };
+
+        const result = await axios.post('http://localhost:9000/order/add', formData);
+        console.log('order add :: result ----->', result.data);                      
+        // setOrderList(result.data);
+        // setMember(result.data[0]);
+    }
+
+    return { getOrderList, saveToOrder };
 }
 

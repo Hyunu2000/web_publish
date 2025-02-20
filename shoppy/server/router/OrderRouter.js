@@ -3,7 +3,9 @@ import * as controller from '../controller/OrderController.js';
 
 const router = express.Router();
 
-router.post('/all', controller.getOrderList)
+router
+    .post('/all', controller.getOrderList)
+    .post('/add', controller.add)
 
 
 export default router;
