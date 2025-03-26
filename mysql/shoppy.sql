@@ -287,3 +287,4 @@ create table shoppy_order (
 );
 desc shoppy_order;
 select * from shoppy_order;
+truncate shoppy_order;

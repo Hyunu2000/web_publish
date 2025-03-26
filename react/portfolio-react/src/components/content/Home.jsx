@@ -4,7 +4,7 @@ export default function Home() {
     return (
         <section id="home">
             <img className="home__avatar" 
-                    src="https://eposu.com/wp-content/uploads/2024/09/Universe-Depicted-Sengai-71419.png"
+                    src="images/aaa.ico"
                     alt="portfolio"/>
             <h2 className="home__title">Hello <br/> I'm
                 <strong className="home__title--strong"> Dream Coder</strong>, Hyunu
